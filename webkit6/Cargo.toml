@@ -18,7 +18,6 @@ exclude = [
 dox = ["ffi/dox", "gio/dox", "glib/dox", "gdk/dox", "gtk/dox"]
 
 [dependencies]
-bitflags = "^1.0"
 once_cell = "1.8"
 libc = "^0.2"
 ffi = { package = "webkit6-sys", path = "sys", version = "0.1" }
