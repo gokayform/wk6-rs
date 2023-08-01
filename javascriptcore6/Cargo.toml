@@ -19,7 +19,6 @@ dox = ["ffi/dox", "glib/dox"]
 
 [dependencies]
 bitflags = "^1.0"
-once_cell = "1.8"
 libc = "^0.2"
 ffi = { package = "javascriptcore6-sys", path = "sys", version = "0.1" }
 

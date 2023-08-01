@@ -19,7 +19,6 @@ dox = ["ffi/dox", "glib/dox"]
 
 [dependencies]
 bitflags = "^1.0"
-once_cell = "1.8"
 libc = "^0.2"
 ffi = { package = "webkit-web-process-extension6-sys", path = "sys", version = "0.1" }
 javascriptcore = { package = "javascriptcore6", path = "../javascriptcore6", version = "0.1" }
