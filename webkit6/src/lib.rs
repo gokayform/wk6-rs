@@ -21,11 +21,18 @@ pub use gtk;
 pub use javascriptcore;
 pub use soup;
 
+mod website_data_manager;
+
 #[allow(unused_imports)]
 mod auto;
 pub use crate::auto::*;
 
 pub mod prelude {
+    #[doc(hidden)]
+    pub use gtk::prelude::*;
+    #[doc(hidden)]
+    pub use soup::prelude::*;
+
     pub use super::auto::traits::*;
 }
 

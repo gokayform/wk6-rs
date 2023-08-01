@@ -194,7 +194,7 @@ name = "WebKit.WebsiteDataManager"
 status = "generate"
   [[object.function]]
   name = "clear"
-  ignore = true # expected `i64`, found struct `TimeSpan`
+  manual = true # expected `i64`, found struct `TimeSpan`
   [[object.function]]
   name = "remove"
-  ignore = true # website_data` escapes the associated function body here
+  manual = true # website_data` escapes the associated function body here
