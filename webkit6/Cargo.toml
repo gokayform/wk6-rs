@@ -1,6 +1,6 @@
 [package]
 name = "webkit6"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>"]
 categories = ["api-bindings", "gui"]
@@ -22,8 +22,8 @@ rustdoc-args = ["--cfg", "docsrs"]
 [dependencies]
 once_cell = "1.8"
 libc = "^0.2"
-ffi = { package = "webkit6-sys", path = "sys", version = "0.1" }
-javascriptcore = { package = "javascriptcore6", path = "../javascriptcore6", version = "0.1" }
+ffi = { package = "webkit6-sys", path = "sys", version = "0.2" }
+javascriptcore = { package = "javascriptcore6", path = "../javascriptcore6", version = "0.2" }
 
 
 [dependencies.gtk]

@@ -1,6 +1,6 @@
 [package]
 name = "webkit-web-process-extension6-sys"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 build = "build.rs"
 authors = ["Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>"]
@@ -25,7 +25,7 @@ libc = "0.2"
 [dependencies.javascriptcore]
 package = "javascriptcore6-sys"
 path = "../../javascriptcore6/sys"
-version = "0.1"
+version = "0.2"
 
 [dependencies.gio]
 package = "gio-sys"

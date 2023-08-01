@@ -1,6 +1,6 @@
 [package]
 name = "javascriptcore6"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>"]
 categories = ["api-bindings", "gui"]
@@ -22,7 +22,7 @@ rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
 libc = "^0.2"
-ffi = { package = "javascriptcore6-sys", path = "sys", version = "0.1" }
+ffi = { package = "javascriptcore6-sys", path = "sys", version = "0.2" }
 
 [dependencies.glib]
 git = "https://github.com/gtk-rs/gtk-rs-core.git"
