@@ -297,7 +297,7 @@ const RUST_CONSTANTS: &[(&str, &str)] = &[
         "3",
     ),
     ("JSC_MAJOR_VERSION", "2"),
-    ("JSC_MICRO_VERSION", "1"),
+    ("JSC_MICRO_VERSION", "6"),
     ("JSC_MINOR_VERSION", "41"),
     ("JSC_OPTIONS_USE_DFG", "useDFGJIT"),
     ("JSC_OPTIONS_USE_FTL", "useFTLJIT"),

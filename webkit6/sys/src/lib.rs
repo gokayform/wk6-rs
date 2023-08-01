@@ -125,6 +125,16 @@ pub const WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED: WebKitFaviconDatabaseEr
 pub const WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_NOT_FOUND: WebKitFaviconDatabaseError = 1;
 pub const WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN: WebKitFaviconDatabaseError = 2;
 
+pub type WebKitFeatureStatus = c_int;
+pub const WEBKIT_FEATURE_STATUS_EMBEDDER: WebKitFeatureStatus = 0;
+pub const WEBKIT_FEATURE_STATUS_UNSTABLE: WebKitFeatureStatus = 1;
+pub const WEBKIT_FEATURE_STATUS_INTERNAL: WebKitFeatureStatus = 2;
+pub const WEBKIT_FEATURE_STATUS_DEVELOPER: WebKitFeatureStatus = 3;
+pub const WEBKIT_FEATURE_STATUS_TESTABLE: WebKitFeatureStatus = 4;
+pub const WEBKIT_FEATURE_STATUS_PREVIEW: WebKitFeatureStatus = 5;
+pub const WEBKIT_FEATURE_STATUS_STABLE: WebKitFeatureStatus = 6;
+pub const WEBKIT_FEATURE_STATUS_MATURE: WebKitFeatureStatus = 7;
+
 pub type WebKitHardwareAccelerationPolicy = c_int;
 pub const WEBKIT_HARDWARE_ACCELERATION_POLICY_ALWAYS: WebKitHardwareAccelerationPolicy = 0;
 pub const WEBKIT_HARDWARE_ACCELERATION_POLICY_NEVER: WebKitHardwareAccelerationPolicy = 1;
@@ -532,6 +542,32 @@ impl ::std::fmt::Debug for WebKitFaviconDatabaseClass {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         f.debug_struct(&format!("WebKitFaviconDatabaseClass @ {self:p}"))
             .field("parent_class", &self.parent_class)
+            .finish()
+    }
+}
+
+#[repr(C)]
+pub struct WebKitFeature {
+    _data: [u8; 0],
+    _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
+}
+
+impl ::std::fmt::Debug for WebKitFeature {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("WebKitFeature @ {self:p}"))
+            .finish()
+    }
+}
+
+#[repr(C)]
+pub struct WebKitFeatureList {
+    _data: [u8; 0],
+    _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
+}
+
+impl ::std::fmt::Debug for WebKitFeatureList {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("WebKitFeatureList @ {self:p}"))
             .finish()
     }
 }
@@ -2313,6 +2349,13 @@ extern "C" {
     pub fn webkit_favicon_database_error_quark() -> glib::GQuark;
 
     //=========================================================================
+    // WebKitFeatureStatus
+    //=========================================================================
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_status_get_type() -> GType;
+
+    //=========================================================================
     // WebKitHardwareAccelerationPolicy
     //=========================================================================
     pub fn webkit_hardware_acceleration_policy_get_type() -> GType;
@@ -2537,6 +2580,59 @@ extern "C" {
     ) -> WebKitCredentialPersistence;
     pub fn webkit_credential_get_username(credential: *mut WebKitCredential) -> *const c_char;
     pub fn webkit_credential_has_password(credential: *mut WebKitCredential) -> gboolean;
+
+    //=========================================================================
+    // WebKitFeature
+    //=========================================================================
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_get_type() -> GType;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_get_category(feature: *mut WebKitFeature) -> *const c_char;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_get_default_value(feature: *mut WebKitFeature) -> gboolean;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_get_details(feature: *mut WebKitFeature) -> *const c_char;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_get_identifier(feature: *mut WebKitFeature) -> *const c_char;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_get_name(feature: *mut WebKitFeature) -> *const c_char;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_get_status(feature: *mut WebKitFeature) -> WebKitFeatureStatus;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_ref(feature: *mut WebKitFeature) -> *mut WebKitFeature;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_unref(feature: *mut WebKitFeature);
+
+    //=========================================================================
+    // WebKitFeatureList
+    //=========================================================================
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_list_get_type() -> GType;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_list_get(
+        feature_list: *mut WebKitFeatureList,
+        index: size_t,
+    ) -> *mut WebKitFeature;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_list_get_length(feature_list: *mut WebKitFeatureList) -> size_t;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_list_ref(feature_list: *mut WebKitFeatureList) -> *mut WebKitFeatureList;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_feature_list_unref(feature_list: *mut WebKitFeatureList);
 
     //=========================================================================
     // WebKitGeolocationPosition
@@ -3642,6 +3738,15 @@ extern "C" {
     ) -> *mut WebKitSettings;
     pub fn webkit_settings_font_size_to_pixels(points: u32) -> u32;
     pub fn webkit_settings_font_size_to_points(pixels: u32) -> u32;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_settings_get_all_features() -> *mut WebKitFeatureList;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_settings_get_development_features() -> *mut WebKitFeatureList;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_settings_get_experimental_features() -> *mut WebKitFeatureList;
     pub fn webkit_settings_get_allow_file_access_from_file_urls(
         settings: *mut WebKitSettings,
     ) -> gboolean;
@@ -3707,6 +3812,12 @@ extern "C" {
         settings: *mut WebKitSettings,
     ) -> gboolean;
     pub fn webkit_settings_get_fantasy_font_family(settings: *mut WebKitSettings) -> *const c_char;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_settings_get_feature_enabled(
+        settings: *mut WebKitSettings,
+        feature: *mut WebKitFeature,
+    ) -> gboolean;
     pub fn webkit_settings_get_hardware_acceleration_policy(
         settings: *mut WebKitSettings,
     ) -> WebKitHardwareAccelerationPolicy;
@@ -3871,6 +3982,13 @@ extern "C" {
     pub fn webkit_settings_set_fantasy_font_family(
         settings: *mut WebKitSettings,
         fantasy_font_family: *const c_char,
+    );
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_settings_set_feature_enabled(
+        settings: *mut WebKitSettings,
+        feature: *mut WebKitFeature,
+        enabled: gboolean,
     );
     pub fn webkit_settings_set_hardware_acceleration_policy(
         settings: *mut WebKitSettings,

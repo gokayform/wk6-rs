@@ -32,6 +32,7 @@ int main() {
     printf("%s;%zu;%zu\n", "WebKitEditorTypingAttributes", sizeof(WebKitEditorTypingAttributes), alignof(WebKitEditorTypingAttributes));
     printf("%s;%zu;%zu\n", "WebKitFaviconDatabaseClass", sizeof(WebKitFaviconDatabaseClass), alignof(WebKitFaviconDatabaseClass));
     printf("%s;%zu;%zu\n", "WebKitFaviconDatabaseError", sizeof(WebKitFaviconDatabaseError), alignof(WebKitFaviconDatabaseError));
+    printf("%s;%zu;%zu\n", "WebKitFeatureStatus", sizeof(WebKitFeatureStatus), alignof(WebKitFeatureStatus));
     printf("%s;%zu;%zu\n", "WebKitFileChooserRequestClass", sizeof(WebKitFileChooserRequestClass), alignof(WebKitFileChooserRequestClass));
     printf("%s;%zu;%zu\n", "WebKitFindControllerClass", sizeof(WebKitFindControllerClass), alignof(WebKitFindControllerClass));
     printf("%s;%zu;%zu\n", "WebKitFindOptions", sizeof(WebKitFindOptions), alignof(WebKitFindOptions));

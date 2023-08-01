@@ -367,6 +367,13 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
         },
     ),
     (
+        "WebKitFeatureStatus",
+        Layout {
+            size: size_of::<WebKitFeatureStatus>(),
+            alignment: align_of::<WebKitFeatureStatus>(),
+        },
+    ),
+    (
         "WebKitFileChooserRequestClass",
         Layout {
             size: size_of::<WebKitFileChooserRequestClass>(),
@@ -1045,6 +1052,14 @@ const RUST_CONSTANTS: &[(&str, &str)] = &[
     ),
     ("(gint) WEBKIT_FAVICON_DATABASE_ERROR_FAVICON_UNKNOWN", "2"),
     ("(gint) WEBKIT_FAVICON_DATABASE_ERROR_NOT_INITIALIZED", "0"),
+    ("(gint) WEBKIT_FEATURE_STATUS_DEVELOPER", "3"),
+    ("(gint) WEBKIT_FEATURE_STATUS_EMBEDDER", "0"),
+    ("(gint) WEBKIT_FEATURE_STATUS_INTERNAL", "2"),
+    ("(gint) WEBKIT_FEATURE_STATUS_MATURE", "7"),
+    ("(gint) WEBKIT_FEATURE_STATUS_PREVIEW", "5"),
+    ("(gint) WEBKIT_FEATURE_STATUS_STABLE", "6"),
+    ("(gint) WEBKIT_FEATURE_STATUS_TESTABLE", "4"),
+    ("(gint) WEBKIT_FEATURE_STATUS_UNSTABLE", "1"),
     ("(guint) WEBKIT_FIND_OPTIONS_AT_WORD_STARTS", "2"),
     ("(guint) WEBKIT_FIND_OPTIONS_BACKWARDS", "8"),
     ("(guint) WEBKIT_FIND_OPTIONS_CASE_INSENSITIVE", "1"),

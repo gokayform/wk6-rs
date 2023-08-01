@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // from webkit-gir-files
 // DO NOT EDIT
+#![allow(deprecated)]
 
 use crate::HardwareAccelerationPolicy;
 use glib::{
@@ -425,6 +426,14 @@ impl Settings {
         }
     }
 
+    //#[cfg(feature = "v2_42")]
+    //#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    //#[doc(alias = "webkit_settings_get_feature_enabled")]
+    //#[doc(alias = "get_feature_enabled")]
+    //pub fn is_feature_enabled(&self, feature: /*Ignored*/&Feature) -> bool {
+    //    unsafe { TODO: call ffi:webkit_settings_get_feature_enabled() }
+    //}
+
     #[doc(alias = "webkit_settings_get_hardware_acceleration_policy")]
     #[doc(alias = "get_hardware_acceleration_policy")]
     pub fn hardware_acceleration_policy(&self) -> HardwareAccelerationPolicy {
@@ -457,6 +466,8 @@ impl Settings {
         }
     }
 
+    #[cfg_attr(feature = "v2_42", deprecated = "Since 2.42")]
+    #[allow(deprecated)]
     #[doc(alias = "webkit_settings_get_load_icons_ignoring_image_load_setting")]
     #[doc(alias = "get_load_icons_ignoring_image_load_setting")]
     pub fn is_load_icons_ignoring_image_load_setting(&self) -> bool {
@@ -942,6 +953,13 @@ impl Settings {
         }
     }
 
+    //#[cfg(feature = "v2_42")]
+    //#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    //#[doc(alias = "webkit_settings_set_feature_enabled")]
+    //pub fn set_feature_enabled(&self, feature: /*Ignored*/&Feature, enabled: bool) {
+    //    unsafe { TODO: call ffi:webkit_settings_set_feature_enabled() }
+    //}
+
     #[doc(alias = "webkit_settings_set_hardware_acceleration_policy")]
     pub fn set_hardware_acceleration_policy(&self, policy: HardwareAccelerationPolicy) {
         unsafe {
@@ -972,6 +990,8 @@ impl Settings {
         }
     }
 
+    #[cfg_attr(feature = "v2_42", deprecated = "Since 2.42")]
+    #[allow(deprecated)]
     #[doc(alias = "webkit_settings_set_load_icons_ignoring_image_load_setting")]
     pub fn set_load_icons_ignoring_image_load_setting(&self, enabled: bool) {
         unsafe {
@@ -1112,6 +1132,30 @@ impl Settings {
         assert_initialized_main_thread!();
         unsafe { ffi::webkit_settings_font_size_to_points(pixels) }
     }
+
+    //#[cfg(feature = "v2_42")]
+    //#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    //#[doc(alias = "webkit_settings_get_all_features")]
+    //#[doc(alias = "get_all_features")]
+    //pub fn all_features() -> /*Ignored*/Option<FeatureList> {
+    //    unsafe { TODO: call ffi:webkit_settings_get_all_features() }
+    //}
+
+    //#[cfg(feature = "v2_42")]
+    //#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    //#[doc(alias = "webkit_settings_get_development_features")]
+    //#[doc(alias = "get_development_features")]
+    //pub fn development_features() -> /*Ignored*/Option<FeatureList> {
+    //    unsafe { TODO: call ffi:webkit_settings_get_development_features() }
+    //}
+
+    //#[cfg(feature = "v2_42")]
+    //#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    //#[doc(alias = "webkit_settings_get_experimental_features")]
+    //#[doc(alias = "get_experimental_features")]
+    //pub fn experimental_features() -> /*Ignored*/Option<FeatureList> {
+    //    unsafe { TODO: call ffi:webkit_settings_get_experimental_features() }
+    //}
 
     #[doc(alias = "allow-file-access-from-file-urls")]
     pub fn connect_allow_file_access_from_file_urls_notify<F: Fn(&Self) + 'static>(
@@ -2259,6 +2303,7 @@ impl Settings {
         }
     }
 
+    #[cfg_attr(feature = "v2_42", deprecated = "Since 2.42")]
     #[doc(alias = "load-icons-ignoring-image-load-setting")]
     pub fn connect_load_icons_ignoring_image_load_setting_notify<F: Fn(&Self) + 'static>(
         &self,
