@@ -99,7 +99,7 @@ impl FindController {
     }
 
     pub fn text(&self) -> Option<glib::GString> {
-        glib::ObjectExt::property(self, "text")
+        ObjectExt::property(self, "text")
     }
 
     #[doc(alias = "counted-matches")]

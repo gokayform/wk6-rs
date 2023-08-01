@@ -40,7 +40,7 @@ impl WebsitePolicies {
     }
 
     pub fn autoplay(&self) -> AutoplayPolicy {
-        glib::ObjectExt::property(self, "autoplay")
+        ObjectExt::property(self, "autoplay")
     }
 }
 

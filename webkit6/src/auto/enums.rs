@@ -3,9 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use glib::{
-    error::ErrorDomain, translate::*, value::FromValue, value::ToValue, Quark, StaticType, Type,
-};
+use glib::{prelude::*, translate::*};
 use std::fmt;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
@@ -116,7 +114,7 @@ impl FromGlib<ffi::WebKitAuthenticationScheme> for AuthenticationScheme {
 
 impl StaticType for AuthenticationScheme {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_authentication_scheme_get_type()) }
     }
 }
@@ -135,7 +133,7 @@ impl glib::value::ValueType for AuthenticationScheme {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for AuthenticationScheme {
+unsafe impl<'a> glib::value::FromValue<'a> for AuthenticationScheme {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -227,7 +225,7 @@ impl FromGlib<ffi::WebKitAutomationBrowsingContextPresentation>
 
 impl StaticType for AutomationBrowsingContextPresentation {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_automation_browsing_context_presentation_get_type()) }
     }
 }
@@ -246,7 +244,7 @@ impl glib::value::ValueType for AutomationBrowsingContextPresentation {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for AutomationBrowsingContextPresentation {
+unsafe impl<'a> glib::value::FromValue<'a> for AutomationBrowsingContextPresentation {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -341,7 +339,7 @@ impl FromGlib<ffi::WebKitAutoplayPolicy> for AutoplayPolicy {
 
 impl StaticType for AutoplayPolicy {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_autoplay_policy_get_type()) }
     }
 }
@@ -360,7 +358,7 @@ impl glib::value::ValueType for AutoplayPolicy {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for AutoplayPolicy {
+unsafe impl<'a> glib::value::FromValue<'a> for AutoplayPolicy {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -455,7 +453,7 @@ impl FromGlib<ffi::WebKitCacheModel> for CacheModel {
 
 impl StaticType for CacheModel {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_cache_model_get_type()) }
     }
 }
@@ -474,7 +472,7 @@ impl glib::value::ValueType for CacheModel {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for CacheModel {
+unsafe impl<'a> glib::value::FromValue<'a> for CacheModel {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -799,7 +797,7 @@ impl FromGlib<ffi::WebKitContextMenuAction> for ContextMenuAction {
 
 impl StaticType for ContextMenuAction {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_context_menu_action_get_type()) }
     }
 }
@@ -818,7 +816,7 @@ impl glib::value::ValueType for ContextMenuAction {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for ContextMenuAction {
+unsafe impl<'a> glib::value::FromValue<'a> for ContextMenuAction {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -913,7 +911,7 @@ impl FromGlib<ffi::WebKitCookieAcceptPolicy> for CookieAcceptPolicy {
 
 impl StaticType for CookieAcceptPolicy {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_cookie_accept_policy_get_type()) }
     }
 }
@@ -932,7 +930,7 @@ impl glib::value::ValueType for CookieAcceptPolicy {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for CookieAcceptPolicy {
+unsafe impl<'a> glib::value::FromValue<'a> for CookieAcceptPolicy {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1022,7 +1020,7 @@ impl FromGlib<ffi::WebKitCookiePersistentStorage> for CookiePersistentStorage {
 
 impl StaticType for CookiePersistentStorage {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_cookie_persistent_storage_get_type()) }
     }
 }
@@ -1041,7 +1039,7 @@ impl glib::value::ValueType for CookiePersistentStorage {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for CookiePersistentStorage {
+unsafe impl<'a> glib::value::FromValue<'a> for CookiePersistentStorage {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1136,7 +1134,7 @@ impl FromGlib<ffi::WebKitCredentialPersistence> for CredentialPersistence {
 
 impl StaticType for CredentialPersistence {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_credential_persistence_get_type()) }
     }
 }
@@ -1155,7 +1153,7 @@ impl glib::value::ValueType for CredentialPersistence {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for CredentialPersistence {
+unsafe impl<'a> glib::value::FromValue<'a> for CredentialPersistence {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1256,9 +1254,9 @@ impl FromGlib<ffi::WebKitDownloadError> for DownloadError {
     }
 }
 
-impl ErrorDomain for DownloadError {
+impl glib::error::ErrorDomain for DownloadError {
     #[inline]
-    fn domain() -> Quark {
+    fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
         static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
@@ -1285,7 +1283,7 @@ impl ErrorDomain for DownloadError {
 
 impl StaticType for DownloadError {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_download_error_get_type()) }
     }
 }
@@ -1304,7 +1302,7 @@ impl glib::value::ValueType for DownloadError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for DownloadError {
+unsafe impl<'a> glib::value::FromValue<'a> for DownloadError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1405,9 +1403,9 @@ impl FromGlib<ffi::WebKitFaviconDatabaseError> for FaviconDatabaseError {
     }
 }
 
-impl ErrorDomain for FaviconDatabaseError {
+impl glib::error::ErrorDomain for FaviconDatabaseError {
     #[inline]
-    fn domain() -> Quark {
+    fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
         static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
@@ -1436,7 +1434,7 @@ impl ErrorDomain for FaviconDatabaseError {
 
 impl StaticType for FaviconDatabaseError {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_favicon_database_error_get_type()) }
     }
 }
@@ -1455,7 +1453,7 @@ impl glib::value::ValueType for FaviconDatabaseError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FaviconDatabaseError {
+unsafe impl<'a> glib::value::FromValue<'a> for FaviconDatabaseError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1545,7 +1543,7 @@ impl FromGlib<ffi::WebKitHardwareAccelerationPolicy> for HardwareAccelerationPol
 
 impl StaticType for HardwareAccelerationPolicy {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_hardware_acceleration_policy_get_type()) }
     }
 }
@@ -1564,7 +1562,7 @@ impl glib::value::ValueType for HardwareAccelerationPolicy {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for HardwareAccelerationPolicy {
+unsafe impl<'a> glib::value::FromValue<'a> for HardwareAccelerationPolicy {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1679,7 +1677,7 @@ impl FromGlib<ffi::WebKitInputPurpose> for InputPurpose {
 
 impl StaticType for InputPurpose {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_input_purpose_get_type()) }
     }
 }
@@ -1698,7 +1696,7 @@ impl glib::value::ValueType for InputPurpose {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for InputPurpose {
+unsafe impl<'a> glib::value::FromValue<'a> for InputPurpose {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1788,7 +1786,7 @@ impl FromGlib<ffi::WebKitInsecureContentEvent> for InsecureContentEvent {
 
 impl StaticType for InsecureContentEvent {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_insecure_content_event_get_type()) }
     }
 }
@@ -1807,7 +1805,7 @@ impl glib::value::ValueType for InsecureContentEvent {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for InsecureContentEvent {
+unsafe impl<'a> glib::value::FromValue<'a> for InsecureContentEvent {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -1908,9 +1906,9 @@ impl FromGlib<ffi::WebKitJavascriptError> for JavascriptError {
     }
 }
 
-impl ErrorDomain for JavascriptError {
+impl glib::error::ErrorDomain for JavascriptError {
     #[inline]
-    fn domain() -> Quark {
+    fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
         static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
@@ -1939,7 +1937,7 @@ impl ErrorDomain for JavascriptError {
 
 impl StaticType for JavascriptError {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_javascript_error_get_type()) }
     }
 }
@@ -1958,7 +1956,7 @@ impl glib::value::ValueType for JavascriptError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for JavascriptError {
+unsafe impl<'a> glib::value::FromValue<'a> for JavascriptError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2058,7 +2056,7 @@ impl FromGlib<ffi::WebKitLoadEvent> for LoadEvent {
 
 impl StaticType for LoadEvent {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_load_event_get_type()) }
     }
 }
@@ -2077,7 +2075,7 @@ impl glib::value::ValueType for LoadEvent {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for LoadEvent {
+unsafe impl<'a> glib::value::FromValue<'a> for LoadEvent {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2172,7 +2170,7 @@ impl FromGlib<ffi::WebKitMediaCaptureState> for MediaCaptureState {
 
 impl StaticType for MediaCaptureState {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_media_capture_state_get_type()) }
     }
 }
@@ -2191,7 +2189,7 @@ impl glib::value::ValueType for MediaCaptureState {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for MediaCaptureState {
+unsafe impl<'a> glib::value::FromValue<'a> for MediaCaptureState {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2282,9 +2280,9 @@ impl FromGlib<ffi::WebKitMediaError> for MediaError {
     }
 }
 
-impl ErrorDomain for MediaError {
+impl glib::error::ErrorDomain for MediaError {
     #[inline]
-    fn domain() -> Quark {
+    fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
         static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
@@ -2311,7 +2309,7 @@ impl ErrorDomain for MediaError {
 
 impl StaticType for MediaError {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_media_error_get_type()) }
     }
 }
@@ -2330,7 +2328,7 @@ impl glib::value::ValueType for MediaError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for MediaError {
+unsafe impl<'a> glib::value::FromValue<'a> for MediaError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2440,7 +2438,7 @@ impl FromGlib<ffi::WebKitNavigationType> for NavigationType {
 
 impl StaticType for NavigationType {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_navigation_type_get_type()) }
     }
 }
@@ -2459,7 +2457,7 @@ impl glib::value::ValueType for NavigationType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for NavigationType {
+unsafe impl<'a> glib::value::FromValue<'a> for NavigationType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2570,9 +2568,9 @@ impl FromGlib<ffi::WebKitNetworkError> for NetworkError {
     }
 }
 
-impl ErrorDomain for NetworkError {
+impl glib::error::ErrorDomain for NetworkError {
     #[inline]
-    fn domain() -> Quark {
+    fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
         static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
@@ -2600,7 +2598,7 @@ impl ErrorDomain for NetworkError {
 
 impl StaticType for NetworkError {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_network_error_get_type()) }
     }
 }
@@ -2619,7 +2617,7 @@ impl glib::value::ValueType for NetworkError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for NetworkError {
+unsafe impl<'a> glib::value::FromValue<'a> for NetworkError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2714,7 +2712,7 @@ impl FromGlib<ffi::WebKitNetworkProxyMode> for NetworkProxyMode {
 
 impl StaticType for NetworkProxyMode {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_network_proxy_mode_get_type()) }
     }
 }
@@ -2733,7 +2731,7 @@ impl glib::value::ValueType for NetworkProxyMode {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for NetworkProxyMode {
+unsafe impl<'a> glib::value::FromValue<'a> for NetworkProxyMode {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2828,7 +2826,7 @@ impl FromGlib<ffi::WebKitPermissionState> for PermissionState {
 
 impl StaticType for PermissionState {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_permission_state_get_type()) }
     }
 }
@@ -2847,7 +2845,7 @@ impl glib::value::ValueType for PermissionState {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for PermissionState {
+unsafe impl<'a> glib::value::FromValue<'a> for PermissionState {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -2942,7 +2940,7 @@ impl FromGlib<ffi::WebKitPolicyDecisionType> for PolicyDecisionType {
 
 impl StaticType for PolicyDecisionType {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_policy_decision_type_get_type()) }
     }
 }
@@ -2961,7 +2959,7 @@ impl glib::value::ValueType for PolicyDecisionType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for PolicyDecisionType {
+unsafe impl<'a> glib::value::FromValue<'a> for PolicyDecisionType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3076,9 +3074,9 @@ impl FromGlib<ffi::WebKitPolicyError> for PolicyError {
     }
 }
 
-impl ErrorDomain for PolicyError {
+impl glib::error::ErrorDomain for PolicyError {
     #[inline]
-    fn domain() -> Quark {
+    fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
         static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
@@ -3106,7 +3104,7 @@ impl ErrorDomain for PolicyError {
 
 impl StaticType for PolicyError {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_policy_error_get_type()) }
     }
 }
@@ -3125,7 +3123,7 @@ impl glib::value::ValueType for PolicyError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for PolicyError {
+unsafe impl<'a> glib::value::FromValue<'a> for PolicyError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3226,9 +3224,9 @@ impl FromGlib<ffi::WebKitPrintError> for PrintError {
     }
 }
 
-impl ErrorDomain for PrintError {
+impl glib::error::ErrorDomain for PrintError {
     #[inline]
-    fn domain() -> Quark {
+    fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
         static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
@@ -3255,7 +3253,7 @@ impl ErrorDomain for PrintError {
 
 impl StaticType for PrintError {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_print_error_get_type()) }
     }
 }
@@ -3274,7 +3272,7 @@ impl glib::value::ValueType for PrintError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for PrintError {
+unsafe impl<'a> glib::value::FromValue<'a> for PrintError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3364,7 +3362,7 @@ impl FromGlib<ffi::WebKitPrintOperationResponse> for PrintOperationResponse {
 
 impl StaticType for PrintOperationResponse {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_print_operation_response_get_type()) }
     }
 }
@@ -3383,7 +3381,7 @@ impl glib::value::ValueType for PrintOperationResponse {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for PrintOperationResponse {
+unsafe impl<'a> glib::value::FromValue<'a> for PrintOperationResponse {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3468,7 +3466,7 @@ impl FromGlib<ffi::WebKitSaveMode> for SaveMode {
 
 impl StaticType for SaveMode {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_save_mode_get_type()) }
     }
 }
@@ -3487,7 +3485,7 @@ impl glib::value::ValueType for SaveMode {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SaveMode {
+unsafe impl<'a> glib::value::FromValue<'a> for SaveMode {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3587,7 +3585,7 @@ impl FromGlib<ffi::WebKitScriptDialogType> for ScriptDialogType {
 
 impl StaticType for ScriptDialogType {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_script_dialog_type_get_type()) }
     }
 }
@@ -3606,7 +3604,7 @@ impl glib::value::ValueType for ScriptDialogType {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for ScriptDialogType {
+unsafe impl<'a> glib::value::FromValue<'a> for ScriptDialogType {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3697,9 +3695,9 @@ impl FromGlib<ffi::WebKitSnapshotError> for SnapshotError {
     }
 }
 
-impl ErrorDomain for SnapshotError {
+impl glib::error::ErrorDomain for SnapshotError {
     #[inline]
-    fn domain() -> Quark {
+    fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
         static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
@@ -3726,7 +3724,7 @@ impl ErrorDomain for SnapshotError {
 
 impl StaticType for SnapshotError {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_snapshot_error_get_type()) }
     }
 }
@@ -3745,7 +3743,7 @@ impl glib::value::ValueType for SnapshotError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SnapshotError {
+unsafe impl<'a> glib::value::FromValue<'a> for SnapshotError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3835,7 +3833,7 @@ impl FromGlib<ffi::WebKitSnapshotRegion> for SnapshotRegion {
 
 impl StaticType for SnapshotRegion {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_snapshot_region_get_type()) }
     }
 }
@@ -3854,7 +3852,7 @@ impl glib::value::ValueType for SnapshotRegion {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SnapshotRegion {
+unsafe impl<'a> glib::value::FromValue<'a> for SnapshotRegion {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -3944,7 +3942,7 @@ impl FromGlib<ffi::WebKitTLSErrorsPolicy> for TLSErrorsPolicy {
 
 impl StaticType for TLSErrorsPolicy {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_tls_errors_policy_get_type()) }
     }
 }
@@ -3963,7 +3961,7 @@ impl glib::value::ValueType for TLSErrorsPolicy {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for TLSErrorsPolicy {
+unsafe impl<'a> glib::value::FromValue<'a> for TLSErrorsPolicy {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4059,9 +4057,9 @@ impl FromGlib<ffi::WebKitUserContentFilterError> for UserContentFilterError {
     }
 }
 
-impl ErrorDomain for UserContentFilterError {
+impl glib::error::ErrorDomain for UserContentFilterError {
     #[inline]
-    fn domain() -> Quark {
+    fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
         static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
@@ -4090,7 +4088,7 @@ impl ErrorDomain for UserContentFilterError {
 
 impl StaticType for UserContentFilterError {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_user_content_filter_error_get_type()) }
     }
 }
@@ -4109,7 +4107,7 @@ impl glib::value::ValueType for UserContentFilterError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for UserContentFilterError {
+unsafe impl<'a> glib::value::FromValue<'a> for UserContentFilterError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4199,7 +4197,7 @@ impl FromGlib<ffi::WebKitUserContentInjectedFrames> for UserContentInjectedFrame
 
 impl StaticType for UserContentInjectedFrames {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_user_content_injected_frames_get_type()) }
     }
 }
@@ -4218,7 +4216,7 @@ impl glib::value::ValueType for UserContentInjectedFrames {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for UserContentInjectedFrames {
+unsafe impl<'a> glib::value::FromValue<'a> for UserContentInjectedFrames {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4309,9 +4307,9 @@ impl FromGlib<ffi::WebKitUserMessageError> for UserMessageError {
     }
 }
 
-impl ErrorDomain for UserMessageError {
+impl glib::error::ErrorDomain for UserMessageError {
     #[inline]
-    fn domain() -> Quark {
+    fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
         static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
@@ -4340,7 +4338,7 @@ impl ErrorDomain for UserMessageError {
 
 impl StaticType for UserMessageError {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_user_message_error_get_type()) }
     }
 }
@@ -4359,7 +4357,7 @@ impl glib::value::ValueType for UserMessageError {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for UserMessageError {
+unsafe impl<'a> glib::value::FromValue<'a> for UserMessageError {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4449,7 +4447,7 @@ impl FromGlib<ffi::WebKitUserScriptInjectionTime> for UserScriptInjectionTime {
 
 impl StaticType for UserScriptInjectionTime {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_user_script_injection_time_get_type()) }
     }
 }
@@ -4468,7 +4466,7 @@ impl glib::value::ValueType for UserScriptInjectionTime {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for UserScriptInjectionTime {
+unsafe impl<'a> glib::value::FromValue<'a> for UserScriptInjectionTime {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4558,7 +4556,7 @@ impl FromGlib<ffi::WebKitUserStyleLevel> for UserStyleLevel {
 
 impl StaticType for UserStyleLevel {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_user_style_level_get_type()) }
     }
 }
@@ -4577,7 +4575,7 @@ impl glib::value::ValueType for UserStyleLevel {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for UserStyleLevel {
+unsafe impl<'a> glib::value::FromValue<'a> for UserStyleLevel {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4672,7 +4670,7 @@ impl FromGlib<ffi::WebKitWebExtensionMode> for WebExtensionMode {
 
 impl StaticType for WebExtensionMode {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_web_extension_mode_get_type()) }
     }
 }
@@ -4691,7 +4689,7 @@ impl glib::value::ValueType for WebExtensionMode {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for WebExtensionMode {
+unsafe impl<'a> glib::value::FromValue<'a> for WebExtensionMode {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -4786,7 +4784,7 @@ impl FromGlib<ffi::WebKitWebProcessTerminationReason> for WebProcessTerminationR
 
 impl StaticType for WebProcessTerminationReason {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_web_process_termination_reason_get_type()) }
     }
 }
@@ -4805,7 +4803,7 @@ impl glib::value::ValueType for WebProcessTerminationReason {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for WebProcessTerminationReason {
+unsafe impl<'a> glib::value::FromValue<'a> for WebProcessTerminationReason {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]

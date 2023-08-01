@@ -46,560 +46,13 @@ impl Default for WebView {
     }
 }
 
-pub trait WebViewExt: 'static {
-    #[doc(alias = "webkit_web_view_call_async_javascript_function")]
-    fn call_async_javascript_function<
-        P: FnOnce(Result<javascriptcore::Value, glib::Error>) + 'static,
-    >(
-        &self,
-        body: &str,
-        arguments: Option<&glib::Variant>,
-        world_name: Option<&str>,
-        source_uri: Option<&str>,
-        cancellable: Option<&impl IsA<gio::Cancellable>>,
-        callback: P,
-    );
-
-    fn call_async_javascript_function_future(
-        &self,
-        body: &str,
-        arguments: Option<&glib::Variant>,
-        world_name: Option<&str>,
-        source_uri: Option<&str>,
-    ) -> Pin<
-        Box_<
-            dyn std::future::Future<Output = Result<javascriptcore::Value, glib::Error>> + 'static,
-        >,
-    >;
-
-    #[doc(alias = "webkit_web_view_can_execute_editing_command")]
-    fn can_execute_editing_command<P: FnOnce(Result<(), glib::Error>) + 'static>(
-        &self,
-        command: &str,
-        cancellable: Option<&impl IsA<gio::Cancellable>>,
-        callback: P,
-    );
-
-    fn can_execute_editing_command_future(
-        &self,
-        command: &str,
-    ) -> Pin<Box_<dyn std::future::Future<Output = Result<(), glib::Error>> + 'static>>;
-
-    #[doc(alias = "webkit_web_view_can_go_back")]
-    fn can_go_back(&self) -> bool;
-
-    #[doc(alias = "webkit_web_view_can_go_forward")]
-    fn can_go_forward(&self) -> bool;
-
-    #[doc(alias = "webkit_web_view_can_show_mime_type")]
-    fn can_show_mime_type(&self, mime_type: &str) -> bool;
-
-    #[doc(alias = "webkit_web_view_download_uri")]
-    fn download_uri(&self, uri: &str) -> Option<Download>;
-
-    #[doc(alias = "webkit_web_view_evaluate_javascript")]
-    fn evaluate_javascript<P: FnOnce(Result<javascriptcore::Value, glib::Error>) + 'static>(
-        &self,
-        script: &str,
-        world_name: Option<&str>,
-        source_uri: Option<&str>,
-        cancellable: Option<&impl IsA<gio::Cancellable>>,
-        callback: P,
-    );
-
-    fn evaluate_javascript_future(
-        &self,
-        script: &str,
-        world_name: Option<&str>,
-        source_uri: Option<&str>,
-    ) -> Pin<
-        Box_<
-            dyn std::future::Future<Output = Result<javascriptcore::Value, glib::Error>> + 'static,
-        >,
-    >;
-
-    #[doc(alias = "webkit_web_view_execute_editing_command")]
-    fn execute_editing_command(&self, command: &str);
-
-    #[doc(alias = "webkit_web_view_execute_editing_command_with_argument")]
-    fn execute_editing_command_with_argument(&self, command: &str, argument: &str);
-
-    #[doc(alias = "webkit_web_view_get_automation_presentation_type")]
-    #[doc(alias = "get_automation_presentation_type")]
-    fn automation_presentation_type(&self) -> AutomationBrowsingContextPresentation;
-
-    #[doc(alias = "webkit_web_view_get_back_forward_list")]
-    #[doc(alias = "get_back_forward_list")]
-    fn back_forward_list(&self) -> Option<BackForwardList>;
-
-    #[doc(alias = "webkit_web_view_get_background_color")]
-    #[doc(alias = "get_background_color")]
-    fn background_color(&self) -> gdk::RGBA;
-
-    #[doc(alias = "webkit_web_view_get_camera_capture_state")]
-    #[doc(alias = "get_camera_capture_state")]
-    fn camera_capture_state(&self) -> MediaCaptureState;
-
-    #[doc(alias = "webkit_web_view_get_context")]
-    #[doc(alias = "get_context")]
-    fn context(&self) -> Option<WebContext>;
-
-    #[doc(alias = "webkit_web_view_get_custom_charset")]
-    #[doc(alias = "get_custom_charset")]
-    fn custom_charset(&self) -> Option<glib::GString>;
-
-    #[doc(alias = "webkit_web_view_get_default_content_security_policy")]
-    #[doc(alias = "get_default_content_security_policy")]
-    fn default_content_security_policy(&self) -> Option<glib::GString>;
-
-    #[doc(alias = "webkit_web_view_get_display_capture_state")]
-    #[doc(alias = "get_display_capture_state")]
-    fn display_capture_state(&self) -> MediaCaptureState;
-
-    #[doc(alias = "webkit_web_view_get_editor_state")]
-    #[doc(alias = "get_editor_state")]
-    fn editor_state(&self) -> Option<EditorState>;
-
-    #[doc(alias = "webkit_web_view_get_estimated_load_progress")]
-    #[doc(alias = "get_estimated_load_progress")]
-    fn estimated_load_progress(&self) -> f64;
-
-    #[doc(alias = "webkit_web_view_get_favicon")]
-    #[doc(alias = "get_favicon")]
-    fn favicon(&self) -> Option<gdk::Texture>;
-
-    #[doc(alias = "webkit_web_view_get_find_controller")]
-    #[doc(alias = "get_find_controller")]
-    fn find_controller(&self) -> Option<FindController>;
-
-    #[doc(alias = "webkit_web_view_get_input_method_context")]
-    #[doc(alias = "get_input_method_context")]
-    fn input_method_context(&self) -> Option<InputMethodContext>;
-
-    #[doc(alias = "webkit_web_view_get_inspector")]
-    #[doc(alias = "get_inspector")]
-    fn inspector(&self) -> Option<WebInspector>;
-
-    #[doc(alias = "webkit_web_view_get_is_muted")]
-    #[doc(alias = "get_is_muted")]
-    fn is_muted(&self) -> bool;
-
-    #[doc(alias = "webkit_web_view_get_is_web_process_responsive")]
-    #[doc(alias = "get_is_web_process_responsive")]
-    fn is_web_process_responsive(&self) -> bool;
-
-    #[doc(alias = "webkit_web_view_get_main_resource")]
-    #[doc(alias = "get_main_resource")]
-    fn main_resource(&self) -> Option<WebResource>;
-
-    #[doc(alias = "webkit_web_view_get_microphone_capture_state")]
-    #[doc(alias = "get_microphone_capture_state")]
-    fn microphone_capture_state(&self) -> MediaCaptureState;
-
-    #[doc(alias = "webkit_web_view_get_network_session")]
-    #[doc(alias = "get_network_session")]
-    fn network_session(&self) -> Option<NetworkSession>;
-
-    #[doc(alias = "webkit_web_view_get_page_id")]
-    #[doc(alias = "get_page_id")]
-    fn page_id(&self) -> u64;
-
-    #[doc(alias = "webkit_web_view_get_session_state")]
-    #[doc(alias = "get_session_state")]
-    fn session_state(&self) -> Option<WebViewSessionState>;
-
-    #[doc(alias = "webkit_web_view_get_settings")]
-    #[doc(alias = "get_settings")]
-    fn settings(&self) -> Option<Settings>;
-
-    #[doc(alias = "webkit_web_view_get_snapshot")]
-    #[doc(alias = "get_snapshot")]
-    fn snapshot<P: FnOnce(Result<gdk::Texture, glib::Error>) + 'static>(
-        &self,
-        region: SnapshotRegion,
-        options: SnapshotOptions,
-        cancellable: Option<&impl IsA<gio::Cancellable>>,
-        callback: P,
-    );
-
-    fn snapshot_future(
-        &self,
-        region: SnapshotRegion,
-        options: SnapshotOptions,
-    ) -> Pin<Box_<dyn std::future::Future<Output = Result<gdk::Texture, glib::Error>> + 'static>>;
-
-    #[doc(alias = "webkit_web_view_get_title")]
-    #[doc(alias = "get_title")]
-    fn title(&self) -> Option<glib::GString>;
-
-    #[doc(alias = "webkit_web_view_get_tls_info")]
-    #[doc(alias = "get_tls_info")]
-    fn tls_info(&self) -> Option<(gio::TlsCertificate, gio::TlsCertificateFlags)>;
-
-    #[doc(alias = "webkit_web_view_get_uri")]
-    #[doc(alias = "get_uri")]
-    fn uri(&self) -> Option<glib::GString>;
-
-    #[doc(alias = "webkit_web_view_get_user_content_manager")]
-    #[doc(alias = "get_user_content_manager")]
-    fn user_content_manager(&self) -> Option<UserContentManager>;
-
-    #[doc(alias = "webkit_web_view_get_web_extension_mode")]
-    #[doc(alias = "get_web_extension_mode")]
-    fn web_extension_mode(&self) -> WebExtensionMode;
-
-    #[doc(alias = "webkit_web_view_get_website_policies")]
-    #[doc(alias = "get_website_policies")]
-    fn website_policies(&self) -> Option<WebsitePolicies>;
-
-    #[doc(alias = "webkit_web_view_get_window_properties")]
-    #[doc(alias = "get_window_properties")]
-    fn window_properties(&self) -> Option<WindowProperties>;
-
-    #[doc(alias = "webkit_web_view_get_zoom_level")]
-    #[doc(alias = "get_zoom_level")]
-    fn zoom_level(&self) -> f64;
-
-    #[doc(alias = "webkit_web_view_go_back")]
-    fn go_back(&self);
-
-    #[doc(alias = "webkit_web_view_go_forward")]
-    fn go_forward(&self);
-
-    #[doc(alias = "webkit_web_view_go_to_back_forward_list_item")]
-    fn go_to_back_forward_list_item(&self, list_item: &BackForwardListItem);
-
-    #[doc(alias = "webkit_web_view_is_controlled_by_automation")]
-    fn is_controlled_by_automation(&self) -> bool;
-
-    #[doc(alias = "webkit_web_view_is_editable")]
-    fn is_editable(&self) -> bool;
-
-    #[doc(alias = "webkit_web_view_is_loading")]
-    fn is_loading(&self) -> bool;
-
-    #[doc(alias = "webkit_web_view_is_playing_audio")]
-    fn is_playing_audio(&self) -> bool;
-
-    #[doc(alias = "webkit_web_view_load_alternate_html")]
-    fn load_alternate_html(&self, content: &str, content_uri: &str, base_uri: Option<&str>);
-
-    #[doc(alias = "webkit_web_view_load_bytes")]
-    fn load_bytes(
-        &self,
-        bytes: &glib::Bytes,
-        mime_type: Option<&str>,
-        encoding: Option<&str>,
-        base_uri: Option<&str>,
-    );
-
-    #[doc(alias = "webkit_web_view_load_html")]
-    fn load_html(&self, content: &str, base_uri: Option<&str>);
-
-    #[doc(alias = "webkit_web_view_load_plain_text")]
-    fn load_plain_text(&self, plain_text: &str);
-
-    #[doc(alias = "webkit_web_view_load_request")]
-    fn load_request(&self, request: &URIRequest);
-
-    #[doc(alias = "webkit_web_view_load_uri")]
-    fn load_uri(&self, uri: &str);
-
-    #[doc(alias = "webkit_web_view_reload")]
-    fn reload(&self);
-
-    #[doc(alias = "webkit_web_view_reload_bypass_cache")]
-    fn reload_bypass_cache(&self);
-
-    #[doc(alias = "webkit_web_view_restore_session_state")]
-    fn restore_session_state(&self, state: &WebViewSessionState);
-
-    #[doc(alias = "webkit_web_view_save")]
-    fn save<P: FnOnce(Result<gio::InputStream, glib::Error>) + 'static>(
-        &self,
-        save_mode: SaveMode,
-        cancellable: Option<&impl IsA<gio::Cancellable>>,
-        callback: P,
-    );
-
-    fn save_future(
-        &self,
-        save_mode: SaveMode,
-    ) -> Pin<Box_<dyn std::future::Future<Output = Result<gio::InputStream, glib::Error>> + 'static>>;
-
-    #[doc(alias = "webkit_web_view_save_to_file")]
-    fn save_to_file<P: FnOnce(Result<(), glib::Error>) + 'static>(
-        &self,
-        file: &impl IsA<gio::File>,
-        save_mode: SaveMode,
-        cancellable: Option<&impl IsA<gio::Cancellable>>,
-        callback: P,
-    );
-
-    fn save_to_file_future(
-        &self,
-        file: &(impl IsA<gio::File> + Clone + 'static),
-        save_mode: SaveMode,
-    ) -> Pin<Box_<dyn std::future::Future<Output = Result<(), glib::Error>> + 'static>>;
-
-    #[doc(alias = "webkit_web_view_send_message_to_page")]
-    fn send_message_to_page<P: FnOnce(Result<UserMessage, glib::Error>) + 'static>(
-        &self,
-        message: &UserMessage,
-        cancellable: Option<&impl IsA<gio::Cancellable>>,
-        callback: P,
-    );
-
-    fn send_message_to_page_future(
-        &self,
-        message: &UserMessage,
-    ) -> Pin<Box_<dyn std::future::Future<Output = Result<UserMessage, glib::Error>> + 'static>>;
-
-    #[doc(alias = "webkit_web_view_set_background_color")]
-    fn set_background_color(&self, rgba: &gdk::RGBA);
-
-    #[doc(alias = "webkit_web_view_set_camera_capture_state")]
-    fn set_camera_capture_state(&self, state: MediaCaptureState);
-
-    #[doc(alias = "webkit_web_view_set_cors_allowlist")]
-    fn set_cors_allowlist(&self, allowlist: &[&str]);
-
-    #[doc(alias = "webkit_web_view_set_custom_charset")]
-    fn set_custom_charset(&self, charset: Option<&str>);
-
-    #[doc(alias = "webkit_web_view_set_display_capture_state")]
-    fn set_display_capture_state(&self, state: MediaCaptureState);
-
-    #[doc(alias = "webkit_web_view_set_editable")]
-    fn set_editable(&self, editable: bool);
-
-    #[doc(alias = "webkit_web_view_set_input_method_context")]
-    fn set_input_method_context(&self, context: Option<&impl IsA<InputMethodContext>>);
-
-    #[doc(alias = "webkit_web_view_set_is_muted")]
-    fn set_is_muted(&self, muted: bool);
-
-    #[doc(alias = "webkit_web_view_set_microphone_capture_state")]
-    fn set_microphone_capture_state(&self, state: MediaCaptureState);
-
-    #[doc(alias = "webkit_web_view_set_settings")]
-    fn set_settings(&self, settings: &Settings);
-
-    #[doc(alias = "webkit_web_view_set_zoom_level")]
-    fn set_zoom_level(&self, zoom_level: f64);
-
-    #[doc(alias = "webkit_web_view_stop_loading")]
-    fn stop_loading(&self);
-
-    #[doc(alias = "webkit_web_view_terminate_web_process")]
-    fn terminate_web_process(&self);
-
-    #[doc(alias = "webkit_web_view_try_close")]
-    fn try_close(&self);
-
-    #[doc(alias = "web-context")]
-    fn web_context(&self) -> Option<WebContext>;
-
-    #[doc(alias = "authenticate")]
-    fn connect_authenticate<F: Fn(&Self, &AuthenticationRequest) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "close")]
-    fn connect_close<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "context-menu")]
-    fn connect_context_menu<F: Fn(&Self, &ContextMenu, &HitTestResult) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "context-menu-dismissed")]
-    fn connect_context_menu_dismissed<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "create")]
-    fn connect_create<F: Fn(&Self, &NavigationAction) -> gtk::Widget + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "decide-policy")]
-    fn connect_decide_policy<F: Fn(&Self, &PolicyDecision, PolicyDecisionType) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "enter-fullscreen")]
-    fn connect_enter_fullscreen<F: Fn(&Self) -> bool + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "insecure-content-detected")]
-    fn connect_insecure_content_detected<F: Fn(&Self, InsecureContentEvent) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "leave-fullscreen")]
-    fn connect_leave_fullscreen<F: Fn(&Self) -> bool + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "load-changed")]
-    fn connect_load_changed<F: Fn(&Self, LoadEvent) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "load-failed")]
-    fn connect_load_failed<F: Fn(&Self, LoadEvent, &str, &glib::Error) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "load-failed-with-tls-errors")]
-    fn connect_load_failed_with_tls_errors<
-        F: Fn(&Self, &str, &gio::TlsCertificate, gio::TlsCertificateFlags) -> bool + 'static,
-    >(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "mouse-target-changed")]
-    fn connect_mouse_target_changed<F: Fn(&Self, &HitTestResult, u32) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "permission-request")]
-    fn connect_permission_request<F: Fn(&Self, &PermissionRequest) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "print")]
-    fn connect_print<F: Fn(&Self, &PrintOperation) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "query-permission-state")]
-    fn connect_query_permission_state<F: Fn(&Self, &PermissionStateQuery) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "ready-to-show")]
-    fn connect_ready_to_show<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "resource-load-started")]
-    fn connect_resource_load_started<F: Fn(&Self, &WebResource, &URIRequest) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "run-as-modal")]
-    fn connect_run_as_modal<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "run-color-chooser")]
-    fn connect_run_color_chooser<F: Fn(&Self, &ColorChooserRequest) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "run-file-chooser")]
-    fn connect_run_file_chooser<F: Fn(&Self, &FileChooserRequest) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "script-dialog")]
-    fn connect_script_dialog<F: Fn(&Self, &ScriptDialog) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "show-notification")]
-    fn connect_show_notification<F: Fn(&Self, &Notification) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "show-option-menu")]
-    fn connect_show_option_menu<F: Fn(&Self, &OptionMenu, &gdk::Rectangle) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "submit-form")]
-    fn connect_submit_form<F: Fn(&Self, &FormSubmissionRequest) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "user-message-received")]
-    fn connect_user_message_received<F: Fn(&Self, &UserMessage) -> bool + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "web-process-terminated")]
-    fn connect_web_process_terminated<F: Fn(&Self, WebProcessTerminationReason) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "camera-capture-state")]
-    fn connect_camera_capture_state_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "display-capture-state")]
-    fn connect_display_capture_state_notify<F: Fn(&Self) + 'static>(&self, f: F)
-        -> SignalHandlerId;
-
-    #[doc(alias = "editable")]
-    fn connect_editable_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "estimated-load-progress")]
-    fn connect_estimated_load_progress_notify<F: Fn(&Self) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "favicon")]
-    fn connect_favicon_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "is-loading")]
-    fn connect_is_loading_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "is-muted")]
-    fn connect_is_muted_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "is-playing-audio")]
-    fn connect_is_playing_audio_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "is-web-process-responsive")]
-    fn connect_is_web_process_responsive_notify<F: Fn(&Self) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "microphone-capture-state")]
-    fn connect_microphone_capture_state_notify<F: Fn(&Self) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "page-id")]
-    fn connect_page_id_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "settings")]
-    fn connect_settings_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "title")]
-    fn connect_title_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "uri")]
-    fn connect_uri_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "zoom-level")]
-    fn connect_zoom_level_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId;
+mod sealed {
+    pub trait Sealed {}
+    impl<T: super::IsA<super::WebView>> Sealed for T {}
 }
 
-impl<O: IsA<WebView>> WebViewExt for O {
+pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
+    #[doc(alias = "webkit_web_view_call_async_javascript_function")]
     fn call_async_javascript_function<
         P: FnOnce(Result<javascriptcore::Value, glib::Error>) + 'static,
     >(
@@ -693,6 +146,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }))
     }
 
+    #[doc(alias = "webkit_web_view_can_execute_editing_command")]
     fn can_execute_editing_command<P: FnOnce(Result<(), glib::Error>) + 'static>(
         &self,
         command: &str,
@@ -758,6 +212,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }))
     }
 
+    #[doc(alias = "webkit_web_view_can_go_back")]
     fn can_go_back(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_view_can_go_back(
@@ -766,6 +221,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_can_go_forward")]
     fn can_go_forward(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_view_can_go_forward(
@@ -774,6 +230,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_can_show_mime_type")]
     fn can_show_mime_type(&self, mime_type: &str) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_view_can_show_mime_type(
@@ -783,6 +240,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_download_uri")]
     fn download_uri(&self, uri: &str) -> Option<Download> {
         unsafe {
             from_glib_full(ffi::webkit_web_view_download_uri(
@@ -792,6 +250,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_evaluate_javascript")]
     fn evaluate_javascript<P: FnOnce(Result<javascriptcore::Value, glib::Error>) + 'static>(
         &self,
         script: &str,
@@ -878,6 +337,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }))
     }
 
+    #[doc(alias = "webkit_web_view_execute_editing_command")]
     fn execute_editing_command(&self, command: &str) {
         unsafe {
             ffi::webkit_web_view_execute_editing_command(
@@ -887,6 +347,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_execute_editing_command_with_argument")]
     fn execute_editing_command_with_argument(&self, command: &str, argument: &str) {
         unsafe {
             ffi::webkit_web_view_execute_editing_command_with_argument(
@@ -897,6 +358,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_automation_presentation_type")]
+    #[doc(alias = "get_automation_presentation_type")]
     fn automation_presentation_type(&self) -> AutomationBrowsingContextPresentation {
         unsafe {
             from_glib(ffi::webkit_web_view_get_automation_presentation_type(
@@ -905,6 +368,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_back_forward_list")]
+    #[doc(alias = "get_back_forward_list")]
     fn back_forward_list(&self) -> Option<BackForwardList> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_back_forward_list(
@@ -913,6 +378,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_background_color")]
+    #[doc(alias = "get_background_color")]
     fn background_color(&self) -> gdk::RGBA {
         unsafe {
             let mut rgba = gdk::RGBA::uninitialized();
@@ -924,6 +391,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_camera_capture_state")]
+    #[doc(alias = "get_camera_capture_state")]
     fn camera_capture_state(&self) -> MediaCaptureState {
         unsafe {
             from_glib(ffi::webkit_web_view_get_camera_capture_state(
@@ -932,6 +401,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_context")]
+    #[doc(alias = "get_context")]
     fn context(&self) -> Option<WebContext> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_context(
@@ -940,6 +411,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_custom_charset")]
+    #[doc(alias = "get_custom_charset")]
     fn custom_charset(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_custom_charset(
@@ -948,6 +421,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_default_content_security_policy")]
+    #[doc(alias = "get_default_content_security_policy")]
     fn default_content_security_policy(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_default_content_security_policy(
@@ -956,6 +431,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_display_capture_state")]
+    #[doc(alias = "get_display_capture_state")]
     fn display_capture_state(&self) -> MediaCaptureState {
         unsafe {
             from_glib(ffi::webkit_web_view_get_display_capture_state(
@@ -964,6 +441,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_editor_state")]
+    #[doc(alias = "get_editor_state")]
     fn editor_state(&self) -> Option<EditorState> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_editor_state(
@@ -972,10 +451,14 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_estimated_load_progress")]
+    #[doc(alias = "get_estimated_load_progress")]
     fn estimated_load_progress(&self) -> f64 {
         unsafe { ffi::webkit_web_view_get_estimated_load_progress(self.as_ref().to_glib_none().0) }
     }
 
+    #[doc(alias = "webkit_web_view_get_favicon")]
+    #[doc(alias = "get_favicon")]
     fn favicon(&self) -> Option<gdk::Texture> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_favicon(
@@ -984,6 +467,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_find_controller")]
+    #[doc(alias = "get_find_controller")]
     fn find_controller(&self) -> Option<FindController> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_find_controller(
@@ -992,6 +477,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_input_method_context")]
+    #[doc(alias = "get_input_method_context")]
     fn input_method_context(&self) -> Option<InputMethodContext> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_input_method_context(
@@ -1000,6 +487,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_inspector")]
+    #[doc(alias = "get_inspector")]
     fn inspector(&self) -> Option<WebInspector> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_inspector(
@@ -1008,6 +497,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_is_muted")]
+    #[doc(alias = "get_is_muted")]
     fn is_muted(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_view_get_is_muted(
@@ -1016,6 +507,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_is_web_process_responsive")]
+    #[doc(alias = "get_is_web_process_responsive")]
     fn is_web_process_responsive(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_view_get_is_web_process_responsive(
@@ -1024,6 +517,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_main_resource")]
+    #[doc(alias = "get_main_resource")]
     fn main_resource(&self) -> Option<WebResource> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_main_resource(
@@ -1032,6 +527,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_microphone_capture_state")]
+    #[doc(alias = "get_microphone_capture_state")]
     fn microphone_capture_state(&self) -> MediaCaptureState {
         unsafe {
             from_glib(ffi::webkit_web_view_get_microphone_capture_state(
@@ -1040,6 +537,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_network_session")]
+    #[doc(alias = "get_network_session")]
     fn network_session(&self) -> Option<NetworkSession> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_network_session(
@@ -1048,10 +547,14 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_page_id")]
+    #[doc(alias = "get_page_id")]
     fn page_id(&self) -> u64 {
         unsafe { ffi::webkit_web_view_get_page_id(self.as_ref().to_glib_none().0) }
     }
 
+    #[doc(alias = "webkit_web_view_get_session_state")]
+    #[doc(alias = "get_session_state")]
     fn session_state(&self) -> Option<WebViewSessionState> {
         unsafe {
             from_glib_full(ffi::webkit_web_view_get_session_state(
@@ -1060,6 +563,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_settings")]
+    #[doc(alias = "get_settings")]
     fn settings(&self) -> Option<Settings> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_settings(
@@ -1068,6 +573,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_snapshot")]
+    #[doc(alias = "get_snapshot")]
     fn snapshot<P: FnOnce(Result<gdk::Texture, glib::Error>) + 'static>(
         &self,
         region: SnapshotRegion,
@@ -1133,6 +640,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }))
     }
 
+    #[doc(alias = "webkit_web_view_get_title")]
+    #[doc(alias = "get_title")]
     fn title(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_title(
@@ -1141,6 +650,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_tls_info")]
+    #[doc(alias = "get_tls_info")]
     fn tls_info(&self) -> Option<(gio::TlsCertificate, gio::TlsCertificateFlags)> {
         unsafe {
             let mut certificate = ptr::null_mut();
@@ -1158,10 +669,14 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_uri")]
+    #[doc(alias = "get_uri")]
     fn uri(&self) -> Option<glib::GString> {
         unsafe { from_glib_none(ffi::webkit_web_view_get_uri(self.as_ref().to_glib_none().0)) }
     }
 
+    #[doc(alias = "webkit_web_view_get_user_content_manager")]
+    #[doc(alias = "get_user_content_manager")]
     fn user_content_manager(&self) -> Option<UserContentManager> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_user_content_manager(
@@ -1170,6 +685,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_web_extension_mode")]
+    #[doc(alias = "get_web_extension_mode")]
     fn web_extension_mode(&self) -> WebExtensionMode {
         unsafe {
             from_glib(ffi::webkit_web_view_get_web_extension_mode(
@@ -1178,6 +695,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_website_policies")]
+    #[doc(alias = "get_website_policies")]
     fn website_policies(&self) -> Option<WebsitePolicies> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_website_policies(
@@ -1186,6 +705,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_window_properties")]
+    #[doc(alias = "get_window_properties")]
     fn window_properties(&self) -> Option<WindowProperties> {
         unsafe {
             from_glib_none(ffi::webkit_web_view_get_window_properties(
@@ -1194,22 +715,27 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_get_zoom_level")]
+    #[doc(alias = "get_zoom_level")]
     fn zoom_level(&self) -> f64 {
         unsafe { ffi::webkit_web_view_get_zoom_level(self.as_ref().to_glib_none().0) }
     }
 
+    #[doc(alias = "webkit_web_view_go_back")]
     fn go_back(&self) {
         unsafe {
             ffi::webkit_web_view_go_back(self.as_ref().to_glib_none().0);
         }
     }
 
+    #[doc(alias = "webkit_web_view_go_forward")]
     fn go_forward(&self) {
         unsafe {
             ffi::webkit_web_view_go_forward(self.as_ref().to_glib_none().0);
         }
     }
 
+    #[doc(alias = "webkit_web_view_go_to_back_forward_list_item")]
     fn go_to_back_forward_list_item(&self, list_item: &BackForwardListItem) {
         unsafe {
             ffi::webkit_web_view_go_to_back_forward_list_item(
@@ -1219,6 +745,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_is_controlled_by_automation")]
     fn is_controlled_by_automation(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_view_is_controlled_by_automation(
@@ -1227,6 +754,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_is_editable")]
     fn is_editable(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_view_is_editable(
@@ -1235,6 +763,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_is_loading")]
     fn is_loading(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_view_is_loading(
@@ -1243,6 +772,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_is_playing_audio")]
     fn is_playing_audio(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_view_is_playing_audio(
@@ -1251,6 +781,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_load_alternate_html")]
     fn load_alternate_html(&self, content: &str, content_uri: &str, base_uri: Option<&str>) {
         unsafe {
             ffi::webkit_web_view_load_alternate_html(
@@ -1262,6 +793,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_load_bytes")]
     fn load_bytes(
         &self,
         bytes: &glib::Bytes,
@@ -1280,6 +812,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_load_html")]
     fn load_html(&self, content: &str, base_uri: Option<&str>) {
         unsafe {
             ffi::webkit_web_view_load_html(
@@ -1290,6 +823,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_load_plain_text")]
     fn load_plain_text(&self, plain_text: &str) {
         unsafe {
             ffi::webkit_web_view_load_plain_text(
@@ -1299,6 +833,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_load_request")]
     fn load_request(&self, request: &URIRequest) {
         unsafe {
             ffi::webkit_web_view_load_request(
@@ -1308,24 +843,28 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_load_uri")]
     fn load_uri(&self, uri: &str) {
         unsafe {
             ffi::webkit_web_view_load_uri(self.as_ref().to_glib_none().0, uri.to_glib_none().0);
         }
     }
 
+    #[doc(alias = "webkit_web_view_reload")]
     fn reload(&self) {
         unsafe {
             ffi::webkit_web_view_reload(self.as_ref().to_glib_none().0);
         }
     }
 
+    #[doc(alias = "webkit_web_view_reload_bypass_cache")]
     fn reload_bypass_cache(&self) {
         unsafe {
             ffi::webkit_web_view_reload_bypass_cache(self.as_ref().to_glib_none().0);
         }
     }
 
+    #[doc(alias = "webkit_web_view_restore_session_state")]
     fn restore_session_state(&self, state: &WebViewSessionState) {
         unsafe {
             ffi::webkit_web_view_restore_session_state(
@@ -1335,6 +874,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_save")]
     fn save<P: FnOnce(Result<gio::InputStream, glib::Error>) + 'static>(
         &self,
         save_mode: SaveMode,
@@ -1396,6 +936,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }))
     }
 
+    #[doc(alias = "webkit_web_view_save_to_file")]
     fn save_to_file<P: FnOnce(Result<(), glib::Error>) + 'static>(
         &self,
         file: &impl IsA<gio::File>,
@@ -1461,6 +1002,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }))
     }
 
+    #[doc(alias = "webkit_web_view_send_message_to_page")]
     fn send_message_to_page<P: FnOnce(Result<UserMessage, glib::Error>) + 'static>(
         &self,
         message: &UserMessage,
@@ -1527,6 +1069,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }))
     }
 
+    #[doc(alias = "webkit_web_view_set_background_color")]
     fn set_background_color(&self, rgba: &gdk::RGBA) {
         unsafe {
             ffi::webkit_web_view_set_background_color(
@@ -1536,6 +1079,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_set_camera_capture_state")]
     fn set_camera_capture_state(&self, state: MediaCaptureState) {
         unsafe {
             ffi::webkit_web_view_set_camera_capture_state(
@@ -1545,6 +1089,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_set_cors_allowlist")]
     fn set_cors_allowlist(&self, allowlist: &[&str]) {
         unsafe {
             ffi::webkit_web_view_set_cors_allowlist(
@@ -1554,6 +1099,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_set_custom_charset")]
     fn set_custom_charset(&self, charset: Option<&str>) {
         unsafe {
             ffi::webkit_web_view_set_custom_charset(
@@ -1563,6 +1109,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_set_display_capture_state")]
     fn set_display_capture_state(&self, state: MediaCaptureState) {
         unsafe {
             ffi::webkit_web_view_set_display_capture_state(
@@ -1572,12 +1119,14 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_set_editable")]
     fn set_editable(&self, editable: bool) {
         unsafe {
             ffi::webkit_web_view_set_editable(self.as_ref().to_glib_none().0, editable.into_glib());
         }
     }
 
+    #[doc(alias = "webkit_web_view_set_input_method_context")]
     fn set_input_method_context(&self, context: Option<&impl IsA<InputMethodContext>>) {
         unsafe {
             ffi::webkit_web_view_set_input_method_context(
@@ -1587,12 +1136,14 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_set_is_muted")]
     fn set_is_muted(&self, muted: bool) {
         unsafe {
             ffi::webkit_web_view_set_is_muted(self.as_ref().to_glib_none().0, muted.into_glib());
         }
     }
 
+    #[doc(alias = "webkit_web_view_set_microphone_capture_state")]
     fn set_microphone_capture_state(&self, state: MediaCaptureState) {
         unsafe {
             ffi::webkit_web_view_set_microphone_capture_state(
@@ -1602,6 +1153,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_set_settings")]
     fn set_settings(&self, settings: &Settings) {
         unsafe {
             ffi::webkit_web_view_set_settings(
@@ -1611,34 +1163,40 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "webkit_web_view_set_zoom_level")]
     fn set_zoom_level(&self, zoom_level: f64) {
         unsafe {
             ffi::webkit_web_view_set_zoom_level(self.as_ref().to_glib_none().0, zoom_level);
         }
     }
 
+    #[doc(alias = "webkit_web_view_stop_loading")]
     fn stop_loading(&self) {
         unsafe {
             ffi::webkit_web_view_stop_loading(self.as_ref().to_glib_none().0);
         }
     }
 
+    #[doc(alias = "webkit_web_view_terminate_web_process")]
     fn terminate_web_process(&self) {
         unsafe {
             ffi::webkit_web_view_terminate_web_process(self.as_ref().to_glib_none().0);
         }
     }
 
+    #[doc(alias = "webkit_web_view_try_close")]
     fn try_close(&self) {
         unsafe {
             ffi::webkit_web_view_try_close(self.as_ref().to_glib_none().0);
         }
     }
 
+    #[doc(alias = "web-context")]
     fn web_context(&self) -> Option<WebContext> {
-        glib::ObjectExt::property(self.as_ref(), "web-context")
+        ObjectExt::property(self.as_ref(), "web-context")
     }
 
+    #[doc(alias = "authenticate")]
     fn connect_authenticate<F: Fn(&Self, &AuthenticationRequest) -> bool + 'static>(
         &self,
         f: F,
@@ -1671,6 +1229,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "close")]
     fn connect_close<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn close_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -1692,6 +1251,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "context-menu")]
     fn connect_context_menu<F: Fn(&Self, &ContextMenu, &HitTestResult) -> bool + 'static>(
         &self,
         f: F,
@@ -1726,6 +1286,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "context-menu-dismissed")]
     fn connect_context_menu_dismissed<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn context_menu_dismissed_trampoline<
             P: IsA<WebView>,
@@ -1750,6 +1311,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "create")]
     fn connect_create<F: Fn(&Self, &NavigationAction) -> gtk::Widget + 'static>(
         &self,
         f: F,
@@ -1782,6 +1344,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "decide-policy")]
     fn connect_decide_policy<
         F: Fn(&Self, &PolicyDecision, PolicyDecisionType) -> bool + 'static,
     >(
@@ -1818,6 +1381,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "enter-fullscreen")]
     fn connect_enter_fullscreen<F: Fn(&Self) -> bool + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn enter_fullscreen_trampoline<
             P: IsA<WebView>,
@@ -1842,6 +1406,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "insecure-content-detected")]
     fn connect_insecure_content_detected<F: Fn(&Self, InsecureContentEvent) + 'static>(
         &self,
         f: F,
@@ -1873,6 +1438,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "leave-fullscreen")]
     fn connect_leave_fullscreen<F: Fn(&Self) -> bool + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn leave_fullscreen_trampoline<
             P: IsA<WebView>,
@@ -1897,6 +1463,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "load-changed")]
     fn connect_load_changed<F: Fn(&Self, LoadEvent) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn load_changed_trampoline<
             P: IsA<WebView>,
@@ -1925,6 +1492,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "load-failed")]
     fn connect_load_failed<F: Fn(&Self, LoadEvent, &str, &glib::Error) -> bool + 'static>(
         &self,
         f: F,
@@ -1961,6 +1529,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "load-failed-with-tls-errors")]
     fn connect_load_failed_with_tls_errors<
         F: Fn(&Self, &str, &gio::TlsCertificate, gio::TlsCertificateFlags) -> bool + 'static,
     >(
@@ -1999,6 +1568,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "mouse-target-changed")]
     fn connect_mouse_target_changed<F: Fn(&Self, &HitTestResult, u32) + 'static>(
         &self,
         f: F,
@@ -2032,6 +1602,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "permission-request")]
     fn connect_permission_request<F: Fn(&Self, &PermissionRequest) -> bool + 'static>(
         &self,
         f: F,
@@ -2064,6 +1635,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "print")]
     fn connect_print<F: Fn(&Self, &PrintOperation) -> bool + 'static>(
         &self,
         f: F,
@@ -2096,6 +1668,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "query-permission-state")]
     fn connect_query_permission_state<F: Fn(&Self, &PermissionStateQuery) -> bool + 'static>(
         &self,
         f: F,
@@ -2128,6 +1701,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "ready-to-show")]
     fn connect_ready_to_show<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn ready_to_show_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2149,6 +1723,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "resource-load-started")]
     fn connect_resource_load_started<F: Fn(&Self, &WebResource, &URIRequest) + 'static>(
         &self,
         f: F,
@@ -2182,6 +1757,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "run-as-modal")]
     fn connect_run_as_modal<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn run_as_modal_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2203,6 +1779,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "run-color-chooser")]
     fn connect_run_color_chooser<F: Fn(&Self, &ColorChooserRequest) -> bool + 'static>(
         &self,
         f: F,
@@ -2235,6 +1812,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "run-file-chooser")]
     fn connect_run_file_chooser<F: Fn(&Self, &FileChooserRequest) -> bool + 'static>(
         &self,
         f: F,
@@ -2267,6 +1845,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "script-dialog")]
     fn connect_script_dialog<F: Fn(&Self, &ScriptDialog) -> bool + 'static>(
         &self,
         f: F,
@@ -2299,6 +1878,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "show-notification")]
     fn connect_show_notification<F: Fn(&Self, &Notification) -> bool + 'static>(
         &self,
         f: F,
@@ -2331,6 +1911,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "show-option-menu")]
     fn connect_show_option_menu<F: Fn(&Self, &OptionMenu, &gdk::Rectangle) -> bool + 'static>(
         &self,
         f: F,
@@ -2365,6 +1946,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "submit-form")]
     fn connect_submit_form<F: Fn(&Self, &FormSubmissionRequest) + 'static>(
         &self,
         f: F,
@@ -2396,6 +1978,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "user-message-received")]
     fn connect_user_message_received<F: Fn(&Self, &UserMessage) -> bool + 'static>(
         &self,
         f: F,
@@ -2428,6 +2011,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "web-process-terminated")]
     fn connect_web_process_terminated<F: Fn(&Self, WebProcessTerminationReason) + 'static>(
         &self,
         f: F,
@@ -2459,6 +2043,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "camera-capture-state")]
     fn connect_camera_capture_state_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_camera_capture_state_trampoline<
             P: IsA<WebView>,
@@ -2484,6 +2069,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "display-capture-state")]
     fn connect_display_capture_state_notify<F: Fn(&Self) + 'static>(
         &self,
         f: F,
@@ -2512,6 +2098,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "editable")]
     fn connect_editable_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_editable_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2534,6 +2121,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "estimated-load-progress")]
     fn connect_estimated_load_progress_notify<F: Fn(&Self) + 'static>(
         &self,
         f: F,
@@ -2562,6 +2150,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "favicon")]
     fn connect_favicon_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_favicon_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2584,6 +2173,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "is-loading")]
     fn connect_is_loading_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_is_loading_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2606,6 +2196,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "is-muted")]
     fn connect_is_muted_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_is_muted_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2628,6 +2219,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "is-playing-audio")]
     fn connect_is_playing_audio_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_is_playing_audio_trampoline<
             P: IsA<WebView>,
@@ -2653,6 +2245,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "is-web-process-responsive")]
     fn connect_is_web_process_responsive_notify<F: Fn(&Self) + 'static>(
         &self,
         f: F,
@@ -2681,6 +2274,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "microphone-capture-state")]
     fn connect_microphone_capture_state_notify<F: Fn(&Self) + 'static>(
         &self,
         f: F,
@@ -2709,6 +2303,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "page-id")]
     fn connect_page_id_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_page_id_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2731,6 +2326,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "settings")]
     fn connect_settings_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_settings_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2753,6 +2349,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "title")]
     fn connect_title_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_title_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2775,6 +2372,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "uri")]
     fn connect_uri_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_uri_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2797,6 +2395,7 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 
+    #[doc(alias = "zoom-level")]
     fn connect_zoom_level_notify<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
         unsafe extern "C" fn notify_zoom_level_trampoline<P: IsA<WebView>, F: Fn(&P) + 'static>(
             this: *mut ffi::WebKitWebView,
@@ -2819,6 +2418,8 @@ impl<O: IsA<WebView>> WebViewExt for O {
         }
     }
 }
+
+impl<O: IsA<WebView>> WebViewExt for O {}
 
 impl fmt::Display for WebView {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {

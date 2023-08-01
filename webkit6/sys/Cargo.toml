@@ -20,7 +20,7 @@ version = "2.40"
 version = "2.42"
 
 [package.metadata.docs.rs]
-features = ["dox"]
+features = []
 
 [dependencies]
 libc = "0.2"

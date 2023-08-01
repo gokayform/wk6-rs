@@ -55,30 +55,18 @@ impl WebFormManager {
     }
 }
 
-pub trait WebFormManagerExt: 'static {
-    //#[doc(alias = "form-controls-associated")]
-    //fn connect_form_controls_associated<Unsupported or ignored types>(&self, f: F) -> SignalHandlerId;
-
-    #[doc(alias = "will-send-submit-event")]
-    fn connect_will_send_submit_event<
-        F: Fn(&Self, &javascriptcore::Value, &Frame, &Frame) + 'static,
-    >(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
-
-    #[doc(alias = "will-submit-form")]
-    fn connect_will_submit_form<F: Fn(&Self, &javascriptcore::Value, &Frame, &Frame) + 'static>(
-        &self,
-        f: F,
-    ) -> SignalHandlerId;
+mod sealed {
+    pub trait Sealed {}
+    impl<T: super::IsA<super::WebFormManager>> Sealed for T {}
 }
 
-impl<O: IsA<WebFormManager>> WebFormManagerExt for O {
+pub trait WebFormManagerExt: IsA<WebFormManager> + sealed::Sealed + 'static {
+    //#[doc(alias = "form-controls-associated")]
     //fn connect_form_controls_associated<Unsupported or ignored types>(&self, f: F) -> SignalHandlerId {
     //    Empty ctype elements: *.PtrArray TypeId { ns_id: 16, id: 2 }
     //}
 
+    #[doc(alias = "will-send-submit-event")]
     fn connect_will_send_submit_event<
         F: Fn(&Self, &javascriptcore::Value, &Frame, &Frame) + 'static,
     >(
@@ -116,6 +104,7 @@ impl<O: IsA<WebFormManager>> WebFormManagerExt for O {
         }
     }
 
+    #[doc(alias = "will-submit-form")]
     fn connect_will_submit_form<F: Fn(&Self, &javascriptcore::Value, &Frame, &Frame) + 'static>(
         &self,
         f: F,
@@ -151,6 +140,8 @@ impl<O: IsA<WebFormManager>> WebFormManagerExt for O {
         }
     }
 }
+
+impl<O: IsA<WebFormManager>> WebFormManagerExt for O {}
 
 impl fmt::Display for WebFormManager {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {

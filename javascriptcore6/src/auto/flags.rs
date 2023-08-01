@@ -3,11 +3,11 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use bitflags::bitflags;
-use glib::translate::*;
+use glib::{bitflags::bitflags, translate::*};
 use std::fmt;
 
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = "JSCValuePropertyFlags")]
     pub struct ValuePropertyFlags: u32 {
         #[doc(alias = "JSC_VALUE_PROPERTY_CONFIGURABLE")]

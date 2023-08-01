@@ -15,11 +15,11 @@ pub use self::back_forward_list::BackForwardList;
 mod back_forward_list_item;
 pub use self::back_forward_list_item::BackForwardListItem;
 
-#[cfg(any(feature = "v2_42", feature = "dox"))]
-#[cfg_attr(feature = "dox", doc(cfg(feature = "v2_42")))]
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
 mod clipboard_permission_request;
-#[cfg(any(feature = "v2_42", feature = "dox"))]
-#[cfg_attr(feature = "dox", doc(cfg(feature = "v2_42")))]
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
 pub use self::clipboard_permission_request::ClipboardPermissionRequest;
 
 mod color_chooser_request;

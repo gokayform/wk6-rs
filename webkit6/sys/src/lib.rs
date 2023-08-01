@@ -10,7 +10,7 @@
     clippy::unreadable_literal,
     clippy::upper_case_acronyms
 )]
-#![cfg_attr(feature = "dox", feature(doc_cfg))]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 #[allow(unused_imports)]
 use libc::{
@@ -3010,8 +3010,8 @@ extern "C" {
     //=========================================================================
     // WebKitClipboardPermissionRequest
     //=========================================================================
-    #[cfg(any(feature = "v2_42", feature = "dox"))]
-    #[cfg_attr(feature = "dox", doc(cfg(feature = "v2_42")))]
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
     pub fn webkit_clipboard_permission_request_get_type() -> GType;
 
     //=========================================================================

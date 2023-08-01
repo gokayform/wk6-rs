@@ -13,7 +13,7 @@ keywords = ["webkit", "gtk-rs", "gnome", "GUI"]
 exclude = ["gir-files/*", "webkit-gir-files"]
 
 [package.metadata.docs.rs]
-features = ["dox"]
+features = []
 
 [package.metadata.system-deps.webkitgtk_web_process_extension_6_0]
 name = "webkitgtk-web-process-extension-6.0"

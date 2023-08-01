@@ -17,7 +17,7 @@ name = "javascriptcoregtk-6.0"
 version = "2.40.0"
 
 [package.metadata.docs.rs]
-features = ["dox"]
+features = []
 
 [dependencies]
 libc = "0.2"

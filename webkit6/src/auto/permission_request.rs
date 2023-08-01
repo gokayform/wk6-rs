@@ -19,27 +19,28 @@ impl PermissionRequest {
     pub const NONE: Option<&'static PermissionRequest> = None;
 }
 
-pub trait PermissionRequestExt: 'static {
-    #[doc(alias = "webkit_permission_request_allow")]
-    fn allow(&self);
-
-    #[doc(alias = "webkit_permission_request_deny")]
-    fn deny(&self);
+mod sealed {
+    pub trait Sealed {}
+    impl<T: super::IsA<super::PermissionRequest>> Sealed for T {}
 }
 
-impl<O: IsA<PermissionRequest>> PermissionRequestExt for O {
+pub trait PermissionRequestExt: IsA<PermissionRequest> + sealed::Sealed + 'static {
+    #[doc(alias = "webkit_permission_request_allow")]
     fn allow(&self) {
         unsafe {
             ffi::webkit_permission_request_allow(self.as_ref().to_glib_none().0);
         }
     }
 
+    #[doc(alias = "webkit_permission_request_deny")]
     fn deny(&self) {
         unsafe {
             ffi::webkit_permission_request_deny(self.as_ref().to_glib_none().0);
         }
     }
 }
+
+impl<O: IsA<PermissionRequest>> PermissionRequestExt for O {}
 
 impl fmt::Display for PermissionRequest {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {

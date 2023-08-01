@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-#![cfg(target_os = "linux")]
+#![cfg(unix)]
 
 use javascriptcore6_sys::*;
 use std::env;

@@ -90,7 +90,7 @@ impl PrintOperation {
 
     #[doc(alias = "web-view")]
     pub fn web_view(&self) -> Option<WebView> {
-        glib::ObjectExt::property(self, "web-view")
+        ObjectExt::property(self, "web-view")
     }
 
     #[doc(alias = "failed")]

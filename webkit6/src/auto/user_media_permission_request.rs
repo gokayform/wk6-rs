@@ -23,12 +23,12 @@ glib::wrapper! {
 impl UserMediaPermissionRequest {
     #[doc(alias = "is-for-audio-device")]
     pub fn is_for_audio_device(&self) -> bool {
-        glib::ObjectExt::property(self, "is-for-audio-device")
+        ObjectExt::property(self, "is-for-audio-device")
     }
 
     #[doc(alias = "is-for-video-device")]
     pub fn is_for_video_device(&self) -> bool {
-        glib::ObjectExt::property(self, "is-for-video-device")
+        ObjectExt::property(self, "is-for-video-device")
     }
 
     #[doc(alias = "is-for-audio-device")]

@@ -1,5 +1,5 @@
 //! # Migration to GTK4 api
-//! 
+//!
 //! Upstream webkit2gtk project has a document to help with the migration to the GTK4 api:
 //! <https://webkitgtk.org/reference/webkit2gtk/unstable/migrating-to-webkitgtk-6.0.html>
 

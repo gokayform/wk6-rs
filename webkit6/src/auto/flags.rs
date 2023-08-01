@@ -3,11 +3,11 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use bitflags::bitflags;
-use glib::{translate::*, value::FromValue, value::ToValue, StaticType, Type};
+use glib::{bitflags::bitflags, prelude::*, translate::*};
 use std::fmt;
 
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = "WebKitEditorTypingAttributes")]
     pub struct EditorTypingAttributes: u32 {
         #[doc(alias = "WEBKIT_EDITOR_TYPING_ATTRIBUTE_NONE")]
@@ -50,7 +50,7 @@ impl FromGlib<ffi::WebKitEditorTypingAttributes> for EditorTypingAttributes {
 
 impl StaticType for EditorTypingAttributes {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_editor_typing_attributes_get_type()) }
     }
 }
@@ -69,7 +69,7 @@ impl glib::value::ValueType for EditorTypingAttributes {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for EditorTypingAttributes {
+unsafe impl<'a> glib::value::FromValue<'a> for EditorTypingAttributes {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -104,6 +104,7 @@ impl From<EditorTypingAttributes> for glib::Value {
 }
 
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = "WebKitFindOptions")]
     pub struct FindOptions: u32 {
         #[doc(alias = "WEBKIT_FIND_OPTIONS_NONE")]
@@ -148,7 +149,7 @@ impl FromGlib<ffi::WebKitFindOptions> for FindOptions {
 
 impl StaticType for FindOptions {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_find_options_get_type()) }
     }
 }
@@ -167,7 +168,7 @@ impl glib::value::ValueType for FindOptions {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for FindOptions {
+unsafe impl<'a> glib::value::FromValue<'a> for FindOptions {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -202,6 +203,7 @@ impl From<FindOptions> for glib::Value {
 }
 
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = "WebKitHitTestResultContext")]
     pub struct HitTestResultContext: u32 {
         #[doc(alias = "WEBKIT_HIT_TEST_RESULT_CONTEXT_DOCUMENT")]
@@ -248,7 +250,7 @@ impl FromGlib<ffi::WebKitHitTestResultContext> for HitTestResultContext {
 
 impl StaticType for HitTestResultContext {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_hit_test_result_context_get_type()) }
     }
 }
@@ -267,7 +269,7 @@ impl glib::value::ValueType for HitTestResultContext {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for HitTestResultContext {
+unsafe impl<'a> glib::value::FromValue<'a> for HitTestResultContext {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -302,6 +304,7 @@ impl From<HitTestResultContext> for glib::Value {
 }
 
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = "WebKitInputHints")]
     pub struct InputHints: u32 {
         #[doc(alias = "WEBKIT_INPUT_HINT_NONE")]
@@ -348,7 +351,7 @@ impl FromGlib<ffi::WebKitInputHints> for InputHints {
 
 impl StaticType for InputHints {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_input_hints_get_type()) }
     }
 }
@@ -367,7 +370,7 @@ impl glib::value::ValueType for InputHints {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for InputHints {
+unsafe impl<'a> glib::value::FromValue<'a> for InputHints {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -402,6 +405,7 @@ impl From<InputHints> for glib::Value {
 }
 
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = "WebKitSnapshotOptions")]
     pub struct SnapshotOptions: u32 {
         #[doc(alias = "WEBKIT_SNAPSHOT_OPTIONS_NONE")]
@@ -440,7 +444,7 @@ impl FromGlib<ffi::WebKitSnapshotOptions> for SnapshotOptions {
 
 impl StaticType for SnapshotOptions {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_snapshot_options_get_type()) }
     }
 }
@@ -459,7 +463,7 @@ impl glib::value::ValueType for SnapshotOptions {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for SnapshotOptions {
+unsafe impl<'a> glib::value::FromValue<'a> for SnapshotOptions {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]
@@ -494,6 +498,7 @@ impl From<SnapshotOptions> for glib::Value {
 }
 
 bitflags! {
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
     #[doc(alias = "WebKitWebsiteDataTypes")]
     pub struct WebsiteDataTypes: u32 {
         #[doc(alias = "WEBKIT_WEBSITE_DATA_MEMORY_CACHE")]
@@ -552,7 +557,7 @@ impl FromGlib<ffi::WebKitWebsiteDataTypes> for WebsiteDataTypes {
 
 impl StaticType for WebsiteDataTypes {
     #[inline]
-    fn static_type() -> Type {
+    fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_website_data_types_get_type()) }
     }
 }
@@ -571,7 +576,7 @@ impl glib::value::ValueType for WebsiteDataTypes {
     type Type = Self;
 }
 
-unsafe impl<'a> FromValue<'a> for WebsiteDataTypes {
+unsafe impl<'a> glib::value::FromValue<'a> for WebsiteDataTypes {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
     #[inline]

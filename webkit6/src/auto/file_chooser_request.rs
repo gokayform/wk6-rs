@@ -78,7 +78,7 @@ impl FileChooserRequest {
     }
 
     pub fn filter(&self) -> Option<gtk::FileFilter> {
-        glib::ObjectExt::property(self, "filter")
+        ObjectExt::property(self, "filter")
     }
 
     #[doc(alias = "filter")]
