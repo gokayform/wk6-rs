@@ -53,3 +53,6 @@ package = "soup3"
 git = "https://gitlab.gnome.org/World/Rust/soup3-rs"
 version = "0.5"
 branch = "v0.5"
+
+[features]
+v2_42 = ["ffi/v2_42"]
