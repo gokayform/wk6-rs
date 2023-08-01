@@ -28,37 +28,38 @@ libc = "0.2"
 [dependencies.gio]
 package = "gio-sys"
 git = "https://github.com/gtk-rs/gtk-rs-core"
-version = "0.17"
-branch = "0.17"
+version = "0.18"
+branch = "0.18"
 
 [dependencies.glib]
 package = "glib-sys"
 git = "https://github.com/gtk-rs/gtk-rs-core"
-version = "0.17"
-branch = "0.17"
+version = "0.18"
+branch = "0.18"
 
 [dependencies.gobject]
 package = "gobject-sys"
 git = "https://github.com/gtk-rs/gtk-rs-core"
-version = "0.17"
-branch = "0.17"
+version = "0.18"
+branch = "0.18"
 
 [dependencies.gdk]
 package = "gdk4-sys"
 git = "https://github.com/gtk-rs/gtk4-rs"
-branch = "0.6"
-version = "0.6"
+branch = "0.7"
+version = "0.7"
 
 [dependencies.gtk]
 package = "gtk4-sys"
 git = "https://github.com/gtk-rs/gtk4-rs"
-branch = "0.6"
-version = "0.6"
+branch = "0.7"
+version = "0.7"
 
 [dependencies.soup]
 package = "soup3-sys"
 git = "https://gitlab.gnome.org/World/Rust/soup3-rs"
-version = "0.4"
+version = "0.5"
+branch = "v0.5"
 
 [dependencies.javascriptcore]
 package = "javascriptcore6-sys"
