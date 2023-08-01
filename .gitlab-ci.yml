@@ -34,7 +34,7 @@ docs:
     - ./generator.py --embed-docs
     - rustup default nightly
     - eval $(./gir-rustdoc.py pre-docs)
-    - cargo doc --all-features --no-deps -p webkit6 -p webkit6-sys -p javascriptcore6 -p javascriptcore6-sys -p webkit-web-process-extension6 -p webkit-web-process-extension6-sys
+    - cargo doc --no-deps -p webkit6 -p webkit6-sys -p javascriptcore6 -p javascriptcore6-sys -p webkit-web-process-extension6 -p webkit-web-process-extension6-sys
     - mv target/doc/ docs
   artifacts:
     paths:
