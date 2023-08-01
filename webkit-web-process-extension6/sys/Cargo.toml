@@ -62,6 +62,3 @@ system-deps = "6"
 [dev-dependencies]
 shell-words = "1.0.0"
 tempfile = "3"
-
-[features]
-dox = ["glib/dox", "gobject/dox", "javascriptcore/dox"]

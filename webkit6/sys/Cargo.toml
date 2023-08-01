@@ -73,5 +73,4 @@ shell-words = "1.0.0"
 tempfile = "3"
 
 [features]
-dox = ["glib/dox", "gobject/dox", "gio/dox", "javascriptcore/dox", "soup/dox", "gdk/dox", "gtk/dox"]
 v2_42 = []

@@ -14,8 +14,11 @@ exclude = [
     "webkit-gir-files",
 ]
 
-[features]
-dox = ["ffi/dox", "glib/dox"]
+[package.metadata.docs.rs]
+all-features = true
+rustc-args = ["--cfg", "docsrs"]
+rustdoc-args = ["--cfg", "docsrs"]
+
 
 [dependencies]
 libc = "^0.2"
