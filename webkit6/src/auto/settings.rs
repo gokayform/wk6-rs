@@ -34,6 +34,14 @@ impl Settings {
     //    unsafe { TODO: call ffi:webkit_settings_new_with_settings() }
     //}
 
+    // rustdoc-stripper-ignore-next
+    /// Creates a new builder-pattern struct instance to construct [`Settings`] objects.
+    ///
+    /// This method returns an instance of [`SettingsBuilder`](crate::builders::SettingsBuilder) which can be used to create [`Settings`] objects.
+    pub fn builder() -> SettingsBuilder {
+        SettingsBuilder::new()
+    }
+
     #[doc(alias = "webkit_settings_get_allow_file_access_from_file_urls")]
     #[doc(alias = "get_allow_file_access_from_file_urls")]
     pub fn allows_file_access_from_file_urls(&self) -> bool {
@@ -2627,6 +2635,498 @@ impl Settings {
 impl Default for Settings {
     fn default() -> Self {
         Self::new()
+    }
+}
+
+// rustdoc-stripper-ignore-next
+/// A [builder-pattern] type to construct [`Settings`] objects.
+///
+/// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
+#[must_use = "The builder must be built to be used"]
+pub struct SettingsBuilder {
+    builder: glib::object::ObjectBuilder<'static, Settings>,
+}
+
+impl SettingsBuilder {
+    fn new() -> Self {
+        Self {
+            builder: glib::object::Object::builder(),
+        }
+    }
+
+    pub fn allow_file_access_from_file_urls(self, allow_file_access_from_file_urls: bool) -> Self {
+        Self {
+            builder: self.builder.property(
+                "allow-file-access-from-file-urls",
+                allow_file_access_from_file_urls,
+            ),
+        }
+    }
+
+    pub fn allow_modal_dialogs(self, allow_modal_dialogs: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("allow-modal-dialogs", allow_modal_dialogs),
+        }
+    }
+
+    pub fn allow_top_navigation_to_data_urls(
+        self,
+        allow_top_navigation_to_data_urls: bool,
+    ) -> Self {
+        Self {
+            builder: self.builder.property(
+                "allow-top-navigation-to-data-urls",
+                allow_top_navigation_to_data_urls,
+            ),
+        }
+    }
+
+    pub fn allow_universal_access_from_file_urls(
+        self,
+        allow_universal_access_from_file_urls: bool,
+    ) -> Self {
+        Self {
+            builder: self.builder.property(
+                "allow-universal-access-from-file-urls",
+                allow_universal_access_from_file_urls,
+            ),
+        }
+    }
+
+    pub fn auto_load_images(self, auto_load_images: bool) -> Self {
+        Self {
+            builder: self.builder.property("auto-load-images", auto_load_images),
+        }
+    }
+
+    pub fn cursive_font_family(self, cursive_font_family: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("cursive-font-family", cursive_font_family.into()),
+        }
+    }
+
+    pub fn default_charset(self, default_charset: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("default-charset", default_charset.into()),
+        }
+    }
+
+    pub fn default_font_family(self, default_font_family: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("default-font-family", default_font_family.into()),
+        }
+    }
+
+    pub fn default_font_size(self, default_font_size: u32) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("default-font-size", default_font_size),
+        }
+    }
+
+    pub fn default_monospace_font_size(self, default_monospace_font_size: u32) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("default-monospace-font-size", default_monospace_font_size),
+        }
+    }
+
+    pub fn disable_web_security(self, disable_web_security: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("disable-web-security", disable_web_security),
+        }
+    }
+
+    pub fn draw_compositing_indicators(self, draw_compositing_indicators: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("draw-compositing-indicators", draw_compositing_indicators),
+        }
+    }
+
+    pub fn enable_back_forward_navigation_gestures(
+        self,
+        enable_back_forward_navigation_gestures: bool,
+    ) -> Self {
+        Self {
+            builder: self.builder.property(
+                "enable-back-forward-navigation-gestures",
+                enable_back_forward_navigation_gestures,
+            ),
+        }
+    }
+
+    pub fn enable_caret_browsing(self, enable_caret_browsing: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-caret-browsing", enable_caret_browsing),
+        }
+    }
+
+    pub fn enable_developer_extras(self, enable_developer_extras: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-developer-extras", enable_developer_extras),
+        }
+    }
+
+    pub fn enable_dns_prefetching(self, enable_dns_prefetching: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-dns-prefetching", enable_dns_prefetching),
+        }
+    }
+
+    pub fn enable_encrypted_media(self, enable_encrypted_media: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-encrypted-media", enable_encrypted_media),
+        }
+    }
+
+    pub fn enable_fullscreen(self, enable_fullscreen: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-fullscreen", enable_fullscreen),
+        }
+    }
+
+    pub fn enable_html5_database(self, enable_html5_database: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-html5-database", enable_html5_database),
+        }
+    }
+
+    pub fn enable_html5_local_storage(self, enable_html5_local_storage: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-html5-local-storage", enable_html5_local_storage),
+        }
+    }
+
+    pub fn enable_hyperlink_auditing(self, enable_hyperlink_auditing: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-hyperlink-auditing", enable_hyperlink_auditing),
+        }
+    }
+
+    pub fn enable_javascript(self, enable_javascript: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-javascript", enable_javascript),
+        }
+    }
+
+    pub fn enable_javascript_markup(self, enable_javascript_markup: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-javascript-markup", enable_javascript_markup),
+        }
+    }
+
+    pub fn enable_media(self, enable_media: bool) -> Self {
+        Self {
+            builder: self.builder.property("enable-media", enable_media),
+        }
+    }
+
+    pub fn enable_media_capabilities(self, enable_media_capabilities: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-media-capabilities", enable_media_capabilities),
+        }
+    }
+
+    pub fn enable_media_stream(self, enable_media_stream: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-media-stream", enable_media_stream),
+        }
+    }
+
+    pub fn enable_mediasource(self, enable_mediasource: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-mediasource", enable_mediasource),
+        }
+    }
+
+    pub fn enable_mock_capture_devices(self, enable_mock_capture_devices: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-mock-capture-devices", enable_mock_capture_devices),
+        }
+    }
+
+    pub fn enable_offline_web_application_cache(
+        self,
+        enable_offline_web_application_cache: bool,
+    ) -> Self {
+        Self {
+            builder: self.builder.property(
+                "enable-offline-web-application-cache",
+                enable_offline_web_application_cache,
+            ),
+        }
+    }
+
+    pub fn enable_page_cache(self, enable_page_cache: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-page-cache", enable_page_cache),
+        }
+    }
+
+    pub fn enable_resizable_text_areas(self, enable_resizable_text_areas: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-resizable-text-areas", enable_resizable_text_areas),
+        }
+    }
+
+    pub fn enable_site_specific_quirks(self, enable_site_specific_quirks: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-site-specific-quirks", enable_site_specific_quirks),
+        }
+    }
+
+    pub fn enable_smooth_scrolling(self, enable_smooth_scrolling: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-smooth-scrolling", enable_smooth_scrolling),
+        }
+    }
+
+    pub fn enable_spatial_navigation(self, enable_spatial_navigation: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-spatial-navigation", enable_spatial_navigation),
+        }
+    }
+
+    pub fn enable_tabs_to_links(self, enable_tabs_to_links: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("enable-tabs-to-links", enable_tabs_to_links),
+        }
+    }
+
+    pub fn enable_webaudio(self, enable_webaudio: bool) -> Self {
+        Self {
+            builder: self.builder.property("enable-webaudio", enable_webaudio),
+        }
+    }
+
+    pub fn enable_webgl(self, enable_webgl: bool) -> Self {
+        Self {
+            builder: self.builder.property("enable-webgl", enable_webgl),
+        }
+    }
+
+    pub fn enable_webrtc(self, enable_webrtc: bool) -> Self {
+        Self {
+            builder: self.builder.property("enable-webrtc", enable_webrtc),
+        }
+    }
+
+    pub fn enable_write_console_messages_to_stdout(
+        self,
+        enable_write_console_messages_to_stdout: bool,
+    ) -> Self {
+        Self {
+            builder: self.builder.property(
+                "enable-write-console-messages-to-stdout",
+                enable_write_console_messages_to_stdout,
+            ),
+        }
+    }
+
+    pub fn fantasy_font_family(self, fantasy_font_family: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("fantasy-font-family", fantasy_font_family.into()),
+        }
+    }
+
+    pub fn hardware_acceleration_policy(
+        self,
+        hardware_acceleration_policy: HardwareAccelerationPolicy,
+    ) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("hardware-acceleration-policy", hardware_acceleration_policy),
+        }
+    }
+
+    pub fn javascript_can_access_clipboard(self, javascript_can_access_clipboard: bool) -> Self {
+        Self {
+            builder: self.builder.property(
+                "javascript-can-access-clipboard",
+                javascript_can_access_clipboard,
+            ),
+        }
+    }
+
+    pub fn javascript_can_open_windows_automatically(
+        self,
+        javascript_can_open_windows_automatically: bool,
+    ) -> Self {
+        Self {
+            builder: self.builder.property(
+                "javascript-can-open-windows-automatically",
+                javascript_can_open_windows_automatically,
+            ),
+        }
+    }
+
+    #[cfg_attr(feature = "v2_42", deprecated = "Since 2.42")]
+    pub fn load_icons_ignoring_image_load_setting(
+        self,
+        load_icons_ignoring_image_load_setting: bool,
+    ) -> Self {
+        Self {
+            builder: self.builder.property(
+                "load-icons-ignoring-image-load-setting",
+                load_icons_ignoring_image_load_setting,
+            ),
+        }
+    }
+
+    pub fn media_content_types_requiring_hardware_support(
+        self,
+        media_content_types_requiring_hardware_support: impl Into<glib::GString>,
+    ) -> Self {
+        Self {
+            builder: self.builder.property(
+                "media-content-types-requiring-hardware-support",
+                media_content_types_requiring_hardware_support.into(),
+            ),
+        }
+    }
+
+    pub fn media_playback_allows_inline(self, media_playback_allows_inline: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("media-playback-allows-inline", media_playback_allows_inline),
+        }
+    }
+
+    pub fn media_playback_requires_user_gesture(
+        self,
+        media_playback_requires_user_gesture: bool,
+    ) -> Self {
+        Self {
+            builder: self.builder.property(
+                "media-playback-requires-user-gesture",
+                media_playback_requires_user_gesture,
+            ),
+        }
+    }
+
+    pub fn minimum_font_size(self, minimum_font_size: u32) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("minimum-font-size", minimum_font_size),
+        }
+    }
+
+    pub fn monospace_font_family(self, monospace_font_family: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("monospace-font-family", monospace_font_family.into()),
+        }
+    }
+
+    pub fn pictograph_font_family(self, pictograph_font_family: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("pictograph-font-family", pictograph_font_family.into()),
+        }
+    }
+
+    pub fn print_backgrounds(self, print_backgrounds: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("print-backgrounds", print_backgrounds),
+        }
+    }
+
+    pub fn sans_serif_font_family(self, sans_serif_font_family: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("sans-serif-font-family", sans_serif_font_family.into()),
+        }
+    }
+
+    pub fn serif_font_family(self, serif_font_family: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("serif-font-family", serif_font_family.into()),
+        }
+    }
+
+    pub fn user_agent(self, user_agent: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self.builder.property("user-agent", user_agent.into()),
+        }
+    }
+
+    pub fn zoom_text_only(self, zoom_text_only: bool) -> Self {
+        Self {
+            builder: self.builder.property("zoom-text-only", zoom_text_only),
+        }
+    }
+
+    // rustdoc-stripper-ignore-next
+    /// Build the [`Settings`].
+    #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
+    pub fn build(self) -> Settings {
+        self.builder.build()
     }
 }
 

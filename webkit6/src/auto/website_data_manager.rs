@@ -17,6 +17,14 @@ glib::wrapper! {
 }
 
 impl WebsiteDataManager {
+    // rustdoc-stripper-ignore-next
+    /// Creates a new builder-pattern struct instance to construct [`WebsiteDataManager`] objects.
+    ///
+    /// This method returns an instance of [`WebsiteDataManagerBuilder`](crate::builders::WebsiteDataManagerBuilder) which can be used to create [`WebsiteDataManager`] objects.
+    pub fn builder() -> WebsiteDataManagerBuilder {
+        WebsiteDataManagerBuilder::new()
+    }
+
     #[doc(alias = "webkit_website_data_manager_fetch")]
     pub fn fetch<P: FnOnce(Result<Vec<WebsiteData>, glib::Error>) + 'static>(
         &self,
@@ -205,6 +213,72 @@ impl WebsiteDataManager {
                 enabled.into_glib(),
             );
         }
+    }
+}
+
+// rustdoc-stripper-ignore-next
+/// A [builder-pattern] type to construct [`WebsiteDataManager`] objects.
+///
+/// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
+#[must_use = "The builder must be built to be used"]
+pub struct WebsiteDataManagerBuilder {
+    builder: glib::object::ObjectBuilder<'static, WebsiteDataManager>,
+}
+
+impl WebsiteDataManagerBuilder {
+    fn new() -> Self {
+        Self {
+            builder: glib::object::Object::builder(),
+        }
+    }
+
+    pub fn base_cache_directory(self, base_cache_directory: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("base-cache-directory", base_cache_directory.into()),
+        }
+    }
+
+    pub fn base_data_directory(self, base_data_directory: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("base-data-directory", base_data_directory.into()),
+        }
+    }
+
+    pub fn is_ephemeral(self, is_ephemeral: bool) -> Self {
+        Self {
+            builder: self.builder.property("is-ephemeral", is_ephemeral),
+        }
+    }
+
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn origin_storage_ratio(self, origin_storage_ratio: f64) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("origin-storage-ratio", origin_storage_ratio),
+        }
+    }
+
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn total_storage_ratio(self, total_storage_ratio: f64) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("total-storage-ratio", total_storage_ratio),
+        }
+    }
+
+    // rustdoc-stripper-ignore-next
+    /// Build the [`WebsiteDataManager`].
+    #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
+    pub fn build(self) -> WebsiteDataManager {
+        self.builder.build()
     }
 }
 

@@ -31,6 +31,14 @@ impl PrintOperation {
         }
     }
 
+    // rustdoc-stripper-ignore-next
+    /// Creates a new builder-pattern struct instance to construct [`PrintOperation`] objects.
+    ///
+    /// This method returns an instance of [`PrintOperationBuilder`](crate::builders::PrintOperationBuilder) which can be used to create [`PrintOperation`] objects.
+    pub fn builder() -> PrintOperationBuilder {
+        PrintOperationBuilder::new()
+    }
+
     #[doc(alias = "webkit_print_operation_get_page_setup")]
     #[doc(alias = "get_page_setup")]
     pub fn page_setup(&self) -> Option<gtk::PageSetup> {
@@ -182,6 +190,56 @@ impl PrintOperation {
                 Box_::into_raw(f),
             )
         }
+    }
+}
+
+impl Default for PrintOperation {
+    fn default() -> Self {
+        glib::object::Object::new::<Self>()
+    }
+}
+
+// rustdoc-stripper-ignore-next
+/// A [builder-pattern] type to construct [`PrintOperation`] objects.
+///
+/// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
+#[must_use = "The builder must be built to be used"]
+pub struct PrintOperationBuilder {
+    builder: glib::object::ObjectBuilder<'static, PrintOperation>,
+}
+
+impl PrintOperationBuilder {
+    fn new() -> Self {
+        Self {
+            builder: glib::object::Object::builder(),
+        }
+    }
+
+    pub fn page_setup(self, page_setup: &gtk::PageSetup) -> Self {
+        Self {
+            builder: self.builder.property("page-setup", page_setup.clone()),
+        }
+    }
+
+    pub fn print_settings(self, print_settings: &gtk::PrintSettings) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("print-settings", print_settings.clone()),
+        }
+    }
+
+    pub fn web_view(self, web_view: &impl IsA<WebView>) -> Self {
+        Self {
+            builder: self.builder.property("web-view", web_view.clone().upcast()),
+        }
+    }
+
+    // rustdoc-stripper-ignore-next
+    /// Build the [`PrintOperation`].
+    #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
+    pub fn build(self) -> PrintOperation {
+        self.builder.build()
     }
 }
 
