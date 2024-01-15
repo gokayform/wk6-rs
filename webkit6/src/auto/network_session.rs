@@ -41,6 +41,14 @@ impl NetworkSession {
         unsafe { from_glib_full(ffi::webkit_network_session_new_ephemeral()) }
     }
 
+    // rustdoc-stripper-ignore-next
+    /// Creates a new builder-pattern struct instance to construct [`NetworkSession`] objects.
+    ///
+    /// This method returns an instance of [`NetworkSessionBuilder`](crate::builders::NetworkSessionBuilder) which can be used to create [`NetworkSession`] objects.
+    pub fn builder() -> NetworkSessionBuilder {
+        NetworkSessionBuilder::new()
+    }
+
     #[doc(alias = "webkit_network_session_allow_tls_certificate_for_host")]
     pub fn allow_tls_certificate_for_host(
         &self,
@@ -286,6 +294,58 @@ impl NetworkSession {
                 Box_::into_raw(f),
             )
         }
+    }
+}
+
+impl Default for NetworkSession {
+    fn default() -> Self {
+        glib::object::Object::new::<Self>()
+    }
+}
+
+// rustdoc-stripper-ignore-next
+/// A [builder-pattern] type to construct [`NetworkSession`] objects.
+///
+/// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
+#[must_use = "The builder must be built to be used"]
+pub struct NetworkSessionBuilder {
+    builder: glib::object::ObjectBuilder<'static, NetworkSession>,
+}
+
+impl NetworkSessionBuilder {
+    fn new() -> Self {
+        Self {
+            builder: glib::object::Object::builder(),
+        }
+    }
+
+    pub fn cache_directory(self, cache_directory: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("cache-directory", cache_directory.into()),
+        }
+    }
+
+    pub fn data_directory(self, data_directory: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("data-directory", data_directory.into()),
+        }
+    }
+
+    pub fn is_ephemeral(self, is_ephemeral: bool) -> Self {
+        Self {
+            builder: self.builder.property("is-ephemeral", is_ephemeral),
+        }
+    }
+
+    // rustdoc-stripper-ignore-next
+    /// Build the [`NetworkSession`].
+    #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
+    pub fn build(self) -> NetworkSession {
+        self.builder.build()
     }
 }
 

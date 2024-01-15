@@ -4,8 +4,8 @@
 // DO NOT EDIT
 
 use crate::{
-    AutomationSession, CacheModel, GeolocationManager, NetworkSession, SecurityManager,
-    SecurityOrigin, URISchemeRequest, UserMessage,
+    AutomationSession, CacheModel, GeolocationManager, MemoryPressureSettings, NetworkSession,
+    SecurityManager, SecurityOrigin, URISchemeRequest, UserMessage,
 };
 use glib::{
     prelude::*,
@@ -28,6 +28,14 @@ impl WebContext {
     pub fn new() -> WebContext {
         assert_initialized_main_thread!();
         unsafe { from_glib_full(ffi::webkit_web_context_new()) }
+    }
+
+    // rustdoc-stripper-ignore-next
+    /// Creates a new builder-pattern struct instance to construct [`WebContext`] objects.
+    ///
+    /// This method returns an instance of [`WebContextBuilder`](crate::builders::WebContextBuilder) which can be used to create [`WebContext`] objects.
+    pub fn builder() -> WebContextBuilder {
+        WebContextBuilder::new()
     }
 
     #[doc(alias = "webkit_web_context_add_path_to_sandbox")]
@@ -368,6 +376,49 @@ impl WebContext {
 impl Default for WebContext {
     fn default() -> Self {
         Self::new()
+    }
+}
+
+// rustdoc-stripper-ignore-next
+/// A [builder-pattern] type to construct [`WebContext`] objects.
+///
+/// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
+#[must_use = "The builder must be built to be used"]
+pub struct WebContextBuilder {
+    builder: glib::object::ObjectBuilder<'static, WebContext>,
+}
+
+impl WebContextBuilder {
+    fn new() -> Self {
+        Self {
+            builder: glib::object::Object::builder(),
+        }
+    }
+
+    pub fn memory_pressure_settings(
+        self,
+        memory_pressure_settings: &MemoryPressureSettings,
+    ) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("memory-pressure-settings", memory_pressure_settings),
+        }
+    }
+
+    pub fn time_zone_override(self, time_zone_override: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("time-zone-override", time_zone_override.into()),
+        }
+    }
+
+    // rustdoc-stripper-ignore-next
+    /// Build the [`WebContext`].
+    #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
+    pub fn build(self) -> WebContext {
+        self.builder.build()
     }
 }
 

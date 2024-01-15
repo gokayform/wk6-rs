@@ -298,3 +298,15 @@ pub mod traits {
     pub use super::policy_decision::PolicyDecisionExt;
     pub use super::web_view::WebViewExt;
 }
+#[doc(hidden)]
+pub mod builders {
+    pub use super::network_session::NetworkSessionBuilder;
+    pub use super::print_operation::PrintOperationBuilder;
+    pub use super::settings::SettingsBuilder;
+    pub use super::user_message::UserMessageBuilder;
+    pub use super::web_context::WebContextBuilder;
+    pub use super::web_view::WebViewBuilder;
+    pub use super::website_data_manager::WebsiteDataManagerBuilder;
+    pub use super::website_policies::WebsitePoliciesBuilder;
+    pub use super::window_properties::WindowPropertiesBuilder;
+}

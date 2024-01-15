@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use glib::translate::*;
+use glib::{prelude::*, translate::*};
 use std::fmt;
 
 glib::wrapper! {
@@ -16,6 +16,14 @@ glib::wrapper! {
 }
 
 impl WindowProperties {
+    // rustdoc-stripper-ignore-next
+    /// Creates a new builder-pattern struct instance to construct [`WindowProperties`] objects.
+    ///
+    /// This method returns an instance of [`WindowPropertiesBuilder`](crate::builders::WindowPropertiesBuilder) which can be used to create [`WindowProperties`] objects.
+    pub fn builder() -> WindowPropertiesBuilder {
+        WindowPropertiesBuilder::new()
+    }
+
     #[doc(alias = "webkit_window_properties_get_fullscreen")]
     #[doc(alias = "get_fullscreen")]
     pub fn is_fullscreen(&self) -> bool {
@@ -97,6 +105,84 @@ impl WindowProperties {
                 self.to_glib_none().0,
             ))
         }
+    }
+}
+
+// rustdoc-stripper-ignore-next
+/// A [builder-pattern] type to construct [`WindowProperties`] objects.
+///
+/// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
+#[must_use = "The builder must be built to be used"]
+pub struct WindowPropertiesBuilder {
+    builder: glib::object::ObjectBuilder<'static, WindowProperties>,
+}
+
+impl WindowPropertiesBuilder {
+    fn new() -> Self {
+        Self {
+            builder: glib::object::Object::builder(),
+        }
+    }
+
+    pub fn fullscreen(self, fullscreen: bool) -> Self {
+        Self {
+            builder: self.builder.property("fullscreen", fullscreen),
+        }
+    }
+
+    pub fn geometry(self, geometry: &gdk::Rectangle) -> Self {
+        Self {
+            builder: self.builder.property("geometry", geometry),
+        }
+    }
+
+    pub fn locationbar_visible(self, locationbar_visible: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("locationbar-visible", locationbar_visible),
+        }
+    }
+
+    pub fn menubar_visible(self, menubar_visible: bool) -> Self {
+        Self {
+            builder: self.builder.property("menubar-visible", menubar_visible),
+        }
+    }
+
+    pub fn resizable(self, resizable: bool) -> Self {
+        Self {
+            builder: self.builder.property("resizable", resizable),
+        }
+    }
+
+    pub fn scrollbars_visible(self, scrollbars_visible: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("scrollbars-visible", scrollbars_visible),
+        }
+    }
+
+    pub fn statusbar_visible(self, statusbar_visible: bool) -> Self {
+        Self {
+            builder: self
+                .builder
+                .property("statusbar-visible", statusbar_visible),
+        }
+    }
+
+    pub fn toolbar_visible(self, toolbar_visible: bool) -> Self {
+        Self {
+            builder: self.builder.property("toolbar-visible", toolbar_visible),
+        }
+    }
+
+    // rustdoc-stripper-ignore-next
+    /// Build the [`WindowProperties`].
+    #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
+    pub fn build(self) -> WindowProperties {
+        self.builder.build()
     }
 }
 

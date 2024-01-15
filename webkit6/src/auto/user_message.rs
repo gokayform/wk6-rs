@@ -44,6 +44,14 @@ impl UserMessage {
         }
     }
 
+    // rustdoc-stripper-ignore-next
+    /// Creates a new builder-pattern struct instance to construct [`UserMessage`] objects.
+    ///
+    /// This method returns an instance of [`UserMessageBuilder`](crate::builders::UserMessageBuilder) which can be used to create [`UserMessage`] objects.
+    pub fn builder() -> UserMessageBuilder {
+        UserMessageBuilder::new()
+    }
+
     #[doc(alias = "webkit_user_message_get_fd_list")]
     #[doc(alias = "get_fd_list")]
     pub fn fd_list(&self) -> Option<gio::UnixFDList> {
@@ -71,6 +79,54 @@ impl UserMessage {
         unsafe {
             ffi::webkit_user_message_send_reply(self.to_glib_none().0, reply.to_glib_none().0);
         }
+    }
+}
+
+impl Default for UserMessage {
+    fn default() -> Self {
+        glib::object::Object::new::<Self>()
+    }
+}
+
+// rustdoc-stripper-ignore-next
+/// A [builder-pattern] type to construct [`UserMessage`] objects.
+///
+/// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
+#[must_use = "The builder must be built to be used"]
+pub struct UserMessageBuilder {
+    builder: glib::object::ObjectBuilder<'static, UserMessage>,
+}
+
+impl UserMessageBuilder {
+    fn new() -> Self {
+        Self {
+            builder: glib::object::Object::builder(),
+        }
+    }
+
+    pub fn fd_list(self, fd_list: &impl IsA<gio::UnixFDList>) -> Self {
+        Self {
+            builder: self.builder.property("fd-list", fd_list.clone().upcast()),
+        }
+    }
+
+    pub fn name(self, name: impl Into<glib::GString>) -> Self {
+        Self {
+            builder: self.builder.property("name", name.into()),
+        }
+    }
+
+    pub fn parameters(self, parameters: &glib::Variant) -> Self {
+        Self {
+            builder: self.builder.property("parameters", parameters.clone()),
+        }
+    }
+
+    // rustdoc-stripper-ignore-next
+    /// Build the [`UserMessage`].
+    #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
+    pub fn build(self) -> UserMessage {
+        self.builder.build()
     }
 }
 
