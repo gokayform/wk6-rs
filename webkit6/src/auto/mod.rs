@@ -163,6 +163,20 @@ pub use self::application_info::ApplicationInfo;
 mod credential;
 pub use self::credential::Credential;
 
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+mod feature;
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+pub use self::feature::Feature;
+
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+mod feature_list;
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+pub use self::feature_list::FeatureList;
+
 mod geolocation_position;
 pub use self::geolocation_position::GeolocationPosition;
 
@@ -225,6 +239,9 @@ pub use self::enums::CookiePersistentStorage;
 pub use self::enums::CredentialPersistence;
 pub use self::enums::DownloadError;
 pub use self::enums::FaviconDatabaseError;
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+pub use self::enums::FeatureStatus;
 pub use self::enums::HardwareAccelerationPolicy;
 pub use self::enums::InputPurpose;
 pub use self::enums::InsecureContentEvent;

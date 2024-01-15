@@ -1487,6 +1487,165 @@ impl From<FaviconDatabaseError> for glib::Value {
     }
 }
 
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
+#[doc(alias = "WebKitFeatureStatus")]
+pub enum FeatureStatus {
+    #[doc(alias = "WEBKIT_FEATURE_STATUS_EMBEDDER")]
+    Embedder,
+    #[doc(alias = "WEBKIT_FEATURE_STATUS_UNSTABLE")]
+    Unstable,
+    #[doc(alias = "WEBKIT_FEATURE_STATUS_INTERNAL")]
+    Internal,
+    #[doc(alias = "WEBKIT_FEATURE_STATUS_DEVELOPER")]
+    Developer,
+    #[doc(alias = "WEBKIT_FEATURE_STATUS_TESTABLE")]
+    Testable,
+    #[doc(alias = "WEBKIT_FEATURE_STATUS_PREVIEW")]
+    Preview,
+    #[doc(alias = "WEBKIT_FEATURE_STATUS_STABLE")]
+    Stable,
+    #[doc(alias = "WEBKIT_FEATURE_STATUS_MATURE")]
+    Mature,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+impl fmt::Display for FeatureStatus {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(
+            f,
+            "FeatureStatus::{}",
+            match *self {
+                Self::Embedder => "Embedder",
+                Self::Unstable => "Unstable",
+                Self::Internal => "Internal",
+                Self::Developer => "Developer",
+                Self::Testable => "Testable",
+                Self::Preview => "Preview",
+                Self::Stable => "Stable",
+                Self::Mature => "Mature",
+                _ => "Unknown",
+            }
+        )
+    }
+}
+
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+#[doc(hidden)]
+impl IntoGlib for FeatureStatus {
+    type GlibType = ffi::WebKitFeatureStatus;
+
+    #[inline]
+    fn into_glib(self) -> ffi::WebKitFeatureStatus {
+        match self {
+            Self::Embedder => ffi::WEBKIT_FEATURE_STATUS_EMBEDDER,
+            Self::Unstable => ffi::WEBKIT_FEATURE_STATUS_UNSTABLE,
+            Self::Internal => ffi::WEBKIT_FEATURE_STATUS_INTERNAL,
+            Self::Developer => ffi::WEBKIT_FEATURE_STATUS_DEVELOPER,
+            Self::Testable => ffi::WEBKIT_FEATURE_STATUS_TESTABLE,
+            Self::Preview => ffi::WEBKIT_FEATURE_STATUS_PREVIEW,
+            Self::Stable => ffi::WEBKIT_FEATURE_STATUS_STABLE,
+            Self::Mature => ffi::WEBKIT_FEATURE_STATUS_MATURE,
+            Self::__Unknown(value) => value,
+        }
+    }
+}
+
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+#[doc(hidden)]
+impl FromGlib<ffi::WebKitFeatureStatus> for FeatureStatus {
+    #[inline]
+    unsafe fn from_glib(value: ffi::WebKitFeatureStatus) -> Self {
+        skip_assert_initialized!();
+
+        match value {
+            ffi::WEBKIT_FEATURE_STATUS_EMBEDDER => Self::Embedder,
+            ffi::WEBKIT_FEATURE_STATUS_UNSTABLE => Self::Unstable,
+            ffi::WEBKIT_FEATURE_STATUS_INTERNAL => Self::Internal,
+            ffi::WEBKIT_FEATURE_STATUS_DEVELOPER => Self::Developer,
+            ffi::WEBKIT_FEATURE_STATUS_TESTABLE => Self::Testable,
+            ffi::WEBKIT_FEATURE_STATUS_PREVIEW => Self::Preview,
+            ffi::WEBKIT_FEATURE_STATUS_STABLE => Self::Stable,
+            ffi::WEBKIT_FEATURE_STATUS_MATURE => Self::Mature,
+            value => Self::__Unknown(value),
+        }
+    }
+}
+
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+impl StaticType for FeatureStatus {
+    #[inline]
+    fn static_type() -> glib::Type {
+        unsafe { from_glib(ffi::webkit_feature_status_get_type()) }
+    }
+}
+
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+impl glib::HasParamSpec for FeatureStatus {
+    type ParamSpec = glib::ParamSpecEnum;
+    type SetValue = Self;
+    type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
+    fn param_spec_builder() -> Self::BuilderFn {
+        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+    }
+}
+
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+impl glib::value::ValueType for FeatureStatus {
+    type Type = Self;
+}
+
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+unsafe impl<'a> glib::value::FromValue<'a> for FeatureStatus {
+    type Checker = glib::value::GenericValueTypeChecker<Self>;
+
+    #[inline]
+    unsafe fn from_value(value: &'a glib::Value) -> Self {
+        skip_assert_initialized!();
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+impl ToValue for FeatureStatus {
+    #[inline]
+    fn to_value(&self) -> glib::Value {
+        let mut value = glib::Value::for_value_type::<Self>();
+        unsafe {
+            glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
+        }
+        value
+    }
+
+    #[inline]
+    fn value_type(&self) -> glib::Type {
+        Self::static_type()
+    }
+}
+
+#[cfg(feature = "v2_42")]
+#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+impl From<FeatureStatus> for glib::Value {
+    #[inline]
+    fn from(v: FeatureStatus) -> Self {
+        skip_assert_initialized!();
+        ToValue::to_value(&v)
+    }
+}
+
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
 #[doc(alias = "WebKitHardwareAccelerationPolicy")]

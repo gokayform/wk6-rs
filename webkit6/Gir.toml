@@ -43,6 +43,9 @@ generate = [
   "WebKit.EditorTypingAttributes",
   "WebKit.FaviconDatabase",
   "WebKit.FaviconDatabaseError",
+  "WebKit.Feature",
+  "WebKit.FeatureStatus",
+  "WebKit.FeatureList",
   "WebKit.FileChooserRequest",
   "WebKit.FindController",
   "WebKit.FindOptions",
@@ -163,6 +166,9 @@ status = "generate"
     [[object.function.parameter]]
     name = "cookie"
     const = true
+  [[object.function]]
+  name = "replace_cookies"
+  ignore = true # TODO: implement me
 
 [[object]]
 name = "WebKit.AuthenticationRequest"
