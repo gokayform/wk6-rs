@@ -3248,6 +3248,21 @@ extern "C" {
         result: *mut gio::GAsyncResult,
         error: *mut *mut glib::GError,
     ) -> WebKitCookieAcceptPolicy;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_cookie_manager_get_all_cookies(
+        cookie_manager: *mut WebKitCookieManager,
+        cancellable: *mut gio::GCancellable,
+        callback: gio::GAsyncReadyCallback,
+        user_data: gpointer,
+    );
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_cookie_manager_get_all_cookies_finish(
+        cookie_manager: *mut WebKitCookieManager,
+        result: *mut gio::GAsyncResult,
+        error: *mut *mut glib::GError,
+    ) -> *mut glib::GList;
     pub fn webkit_cookie_manager_get_cookies(
         cookie_manager: *mut WebKitCookieManager,
         uri: *const c_char,
@@ -3260,6 +3275,22 @@ extern "C" {
         result: *mut gio::GAsyncResult,
         error: *mut *mut glib::GError,
     ) -> *mut glib::GList;
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_cookie_manager_replace_cookies(
+        cookie_manager: *mut WebKitCookieManager,
+        cookies: *mut glib::GList,
+        cancellable: *mut gio::GCancellable,
+        callback: gio::GAsyncReadyCallback,
+        user_data: gpointer,
+    );
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn webkit_cookie_manager_replace_cookies_finish(
+        cookie_manager: *mut WebKitCookieManager,
+        result: *mut gio::GAsyncResult,
+        error: *mut *mut glib::GError,
+    ) -> gboolean;
     pub fn webkit_cookie_manager_set_accept_policy(
         cookie_manager: *mut WebKitCookieManager,
         policy: WebKitCookieAcceptPolicy,

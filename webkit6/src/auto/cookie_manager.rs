@@ -216,6 +216,74 @@ impl CookieManager {
         }))
     }
 
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    #[doc(alias = "webkit_cookie_manager_get_all_cookies")]
+    #[doc(alias = "get_all_cookies")]
+    pub fn all_cookies<P: FnOnce(Result<Vec<soup::Cookie>, glib::Error>) + 'static>(
+        &self,
+        cancellable: Option<&impl IsA<gio::Cancellable>>,
+        callback: P,
+    ) {
+        let main_context = glib::MainContext::ref_thread_default();
+        let is_main_context_owner = main_context.is_owner();
+        let has_acquired_main_context = (!is_main_context_owner)
+            .then(|| main_context.acquire().ok())
+            .flatten();
+        assert!(
+            is_main_context_owner || has_acquired_main_context.is_some(),
+            "Async operations only allowed if the thread is owning the MainContext"
+        );
+
+        let user_data: Box_<glib::thread_guard::ThreadGuard<P>> =
+            Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+        unsafe extern "C" fn all_cookies_trampoline<
+            P: FnOnce(Result<Vec<soup::Cookie>, glib::Error>) + 'static,
+        >(
+            _source_object: *mut glib::gobject_ffi::GObject,
+            res: *mut gio::ffi::GAsyncResult,
+            user_data: glib::ffi::gpointer,
+        ) {
+            let mut error = ptr::null_mut();
+            let ret = ffi::webkit_cookie_manager_get_all_cookies_finish(
+                _source_object as *mut _,
+                res,
+                &mut error,
+            );
+            let result = if error.is_null() {
+                Ok(FromGlibPtrContainer::from_glib_full(ret))
+            } else {
+                Err(from_glib_full(error))
+            };
+            let callback: Box_<glib::thread_guard::ThreadGuard<P>> =
+                Box_::from_raw(user_data as *mut _);
+            let callback: P = callback.into_inner();
+            callback(result);
+        }
+        let callback = all_cookies_trampoline::<P>;
+        unsafe {
+            ffi::webkit_cookie_manager_get_all_cookies(
+                self.to_glib_none().0,
+                cancellable.map(|p| p.as_ref()).to_glib_none().0,
+                Some(callback),
+                Box_::into_raw(user_data) as *mut _,
+            );
+        }
+    }
+
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn all_cookies_future(
+        &self,
+    ) -> Pin<Box_<dyn std::future::Future<Output = Result<Vec<soup::Cookie>, glib::Error>> + 'static>>
+    {
+        Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
+            obj.all_cookies(Some(cancellable), move |res| {
+                send.resolve(res);
+            });
+        }))
+    }
+
     #[doc(alias = "webkit_cookie_manager_get_cookies")]
     #[doc(alias = "get_cookies")]
     pub fn cookies<P: FnOnce(Result<Vec<soup::Cookie>, glib::Error>) + 'static>(
@@ -279,6 +347,76 @@ impl CookieManager {
         let uri = String::from(uri);
         Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
             obj.cookies(&uri, Some(cancellable), move |res| {
+                send.resolve(res);
+            });
+        }))
+    }
+
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    #[doc(alias = "webkit_cookie_manager_replace_cookies")]
+    pub fn replace_cookies<P: FnOnce(Result<(), glib::Error>) + 'static>(
+        &self,
+        cookies: &[soup::Cookie],
+        cancellable: Option<&impl IsA<gio::Cancellable>>,
+        callback: P,
+    ) {
+        let main_context = glib::MainContext::ref_thread_default();
+        let is_main_context_owner = main_context.is_owner();
+        let has_acquired_main_context = (!is_main_context_owner)
+            .then(|| main_context.acquire().ok())
+            .flatten();
+        assert!(
+            is_main_context_owner || has_acquired_main_context.is_some(),
+            "Async operations only allowed if the thread is owning the MainContext"
+        );
+
+        let user_data: Box_<glib::thread_guard::ThreadGuard<P>> =
+            Box_::new(glib::thread_guard::ThreadGuard::new(callback));
+        unsafe extern "C" fn replace_cookies_trampoline<
+            P: FnOnce(Result<(), glib::Error>) + 'static,
+        >(
+            _source_object: *mut glib::gobject_ffi::GObject,
+            res: *mut gio::ffi::GAsyncResult,
+            user_data: glib::ffi::gpointer,
+        ) {
+            let mut error = ptr::null_mut();
+            let _ = ffi::webkit_cookie_manager_replace_cookies_finish(
+                _source_object as *mut _,
+                res,
+                &mut error,
+            );
+            let result = if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            };
+            let callback: Box_<glib::thread_guard::ThreadGuard<P>> =
+                Box_::from_raw(user_data as *mut _);
+            let callback: P = callback.into_inner();
+            callback(result);
+        }
+        let callback = replace_cookies_trampoline::<P>;
+        unsafe {
+            ffi::webkit_cookie_manager_replace_cookies(
+                self.to_glib_none().0,
+                cookies.to_glib_none().0,
+                cancellable.map(|p| p.as_ref()).to_glib_none().0,
+                Some(callback),
+                Box_::into_raw(user_data) as *mut _,
+            );
+        }
+    }
+
+    #[cfg(feature = "v2_42")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
+    pub fn replace_cookies_future(
+        &self,
+        cookies: &[soup::Cookie],
+    ) -> Pin<Box_<dyn std::future::Future<Output = Result<(), glib::Error>> + 'static>> {
+        let cookies = cookies.clone();
+        Box_::pin(gio::GioFuture::new(self, move |obj, cancellable, send| {
+            obj.replace_cookies(&cookies, Some(cancellable), move |res| {
                 send.resolve(res);
             });
         }))

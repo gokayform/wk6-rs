@@ -71,6 +71,30 @@ impl EditorState {
         }
     }
 
+    #[cfg(feature = "v2_44")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_44")))]
+    #[doc(alias = "changed")]
+    pub fn connect_changed<F: Fn(&Self) + 'static>(&self, f: F) -> SignalHandlerId {
+        unsafe extern "C" fn changed_trampoline<F: Fn(&EditorState) + 'static>(
+            this: *mut ffi::WebKitEditorState,
+            f: glib::ffi::gpointer,
+        ) {
+            let f: &F = &*(f as *const F);
+            f(&from_glib_borrow(this))
+        }
+        unsafe {
+            let f: Box_<F> = Box_::new(f);
+            connect_raw(
+                self.as_ptr() as *mut _,
+                b"changed\0".as_ptr() as *const _,
+                Some(transmute::<_, unsafe extern "C" fn()>(
+                    changed_trampoline::<F> as *const (),
+                )),
+                Box_::into_raw(f),
+            )
+        }
+    }
+
     #[doc(alias = "typing-attributes")]
     pub fn connect_typing_attributes_notify<F: Fn(&Self) + 'static>(
         &self,
