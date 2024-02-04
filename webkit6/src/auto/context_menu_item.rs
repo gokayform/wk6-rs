@@ -5,7 +5,6 @@
 
 use crate::{ContextMenu, ContextMenuAction};
 use glib::{prelude::*, translate::*};
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitContextMenuItem")]
@@ -124,11 +123,5 @@ impl ContextMenuItem {
                 submenu.to_glib_none().0,
             );
         }
-    }
-}
-
-impl fmt::Display for ContextMenuItem {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("ContextMenuItem")
     }
 }

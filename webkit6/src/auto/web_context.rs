@@ -12,7 +12,7 @@ use glib::{
     signal::{connect_raw, SignalHandlerId},
     translate::*,
 };
-use std::{boxed::Box as Box_, fmt, mem::transmute};
+use std::boxed::Box as Box_;
 
 glib::wrapper! {
     #[doc(alias = "WebKitWebContext")]
@@ -155,14 +155,14 @@ impl WebContext {
             user_data: glib::ffi::gpointer,
         ) {
             let request = from_glib_borrow(request);
-            let callback: &P = &*(user_data as *mut _);
+            let callback = &*(user_data as *mut P);
             (*callback)(&request)
         }
         let callback = Some(callback_func::<P> as _);
         unsafe extern "C" fn user_data_destroy_func_func<P: Fn(&URISchemeRequest) + 'static>(
             data: glib::ffi::gpointer,
         ) {
-            let _callback: Box_<P> = Box_::from_raw(data as *mut _);
+            let _callback = Box_::from_raw(data as *mut P);
         }
         let destroy_call4 = Some(user_data_destroy_func_func::<P> as _);
         let super_callback0: Box_<P> = callback_data;
@@ -282,7 +282,7 @@ impl WebContext {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"automation-started\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     automation_started_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -309,7 +309,7 @@ impl WebContext {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"initialize-notification-permissions\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     initialize_notification_permissions_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -336,7 +336,7 @@ impl WebContext {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"initialize-web-process-extensions\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     initialize_web_process_extensions_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -364,7 +364,7 @@ impl WebContext {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"user-message-received\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     user_message_received_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -419,11 +419,5 @@ impl WebContextBuilder {
     #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
     pub fn build(self) -> WebContext {
         self.builder.build()
-    }
-}
-
-impl fmt::Display for WebContext {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("WebContext")
     }
 }

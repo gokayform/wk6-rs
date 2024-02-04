@@ -12,6 +12,14 @@
 )]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
+use gdk4_sys as gdk;
+use gio_sys as gio;
+use glib_sys as glib;
+use gobject_sys as gobject;
+use gtk4_sys as gtk;
+use javascriptcore6_rs_sys as javascriptcore;
+use soup3_rs_sys as soup;
+
 #[allow(unused_imports)]
 use libc::{
     c_char, c_double, c_float, c_int, c_long, c_short, c_uchar, c_uint, c_ulong, c_ushort, c_void,
@@ -787,7 +795,7 @@ pub struct _WebKitInputMethodContextPrivate {
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
 }
 
-pub type WebKitInputMethodContextPrivate = *mut _WebKitInputMethodContextPrivate;
+pub type WebKitInputMethodContextPrivate = _WebKitInputMethodContextPrivate;
 
 #[repr(C)]
 pub struct WebKitInputMethodUnderline {
@@ -1025,7 +1033,7 @@ pub struct _WebKitPolicyDecisionPrivate {
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
 }
 
-pub type WebKitPolicyDecisionPrivate = *mut _WebKitPolicyDecisionPrivate;
+pub type WebKitPolicyDecisionPrivate = _WebKitPolicyDecisionPrivate;
 
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -1343,7 +1351,7 @@ pub struct _WebKitWebViewBasePrivate {
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
 }
 
-pub type WebKitWebViewBasePrivate = *mut _WebKitWebViewBasePrivate;
+pub type WebKitWebViewBasePrivate = _WebKitWebViewBasePrivate;
 
 #[derive(Copy, Clone)]
 #[repr(C)]
@@ -1541,7 +1549,7 @@ pub struct _WebKitWebViewPrivate {
     _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
 }
 
-pub type WebKitWebViewPrivate = *mut _WebKitWebViewPrivate;
+pub type WebKitWebViewPrivate = _WebKitWebViewPrivate;
 
 #[repr(C)]
 pub struct WebKitWebViewSessionState {

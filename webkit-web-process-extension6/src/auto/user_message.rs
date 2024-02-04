@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::{prelude::*, translate::*};
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitUserMessage")]
@@ -77,11 +76,5 @@ impl UserMessage {
     pub fn error_quark() -> glib::Quark {
         assert_initialized_main_thread!();
         unsafe { from_glib(ffi::webkit_user_message_error_quark()) }
-    }
-}
-
-impl fmt::Display for UserMessage {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("UserMessage")
     }
 }

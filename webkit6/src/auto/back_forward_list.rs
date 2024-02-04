@@ -5,7 +5,6 @@
 
 use crate::BackForwardListItem;
 use glib::translate::*;
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitBackForwardList")]
@@ -114,10 +113,4 @@ impl BackForwardList {
     //pub fn connect_changed<Unsupported or ignored types>(&self, f: F) -> SignalHandlerId {
     //    Unimplemented items_removed: *.Pointer
     //}
-}
-
-impl fmt::Display for BackForwardList {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("BackForwardList")
-    }
 }

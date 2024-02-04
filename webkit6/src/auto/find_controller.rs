@@ -9,7 +9,7 @@ use glib::{
     signal::{connect_raw, SignalHandlerId},
     translate::*,
 };
-use std::{boxed::Box as Box_, fmt, mem::transmute};
+use std::boxed::Box as Box_;
 
 glib::wrapper! {
     #[doc(alias = "WebKitFindController")]
@@ -117,7 +117,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"counted-matches\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     counted_matches_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -139,7 +139,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"failed-to-find-text\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     failed_to_find_text_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -162,7 +162,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"found-text\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     found_text_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -185,7 +185,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::max-match-count\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_max_match_count_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -208,7 +208,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::options\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_options_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -231,17 +231,11 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::text\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_text_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
             )
         }
-    }
-}
-
-impl fmt::Display for FindController {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("FindController")
     }
 }

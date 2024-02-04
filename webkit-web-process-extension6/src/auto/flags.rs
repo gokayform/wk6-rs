@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::{bitflags::bitflags, translate::*};
-use std::fmt;
 
 bitflags! {
     #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -24,12 +23,6 @@ bitflags! {
         const SCROLLBAR = ffi::WEBKIT_HIT_TEST_RESULT_CONTEXT_SCROLLBAR as _;
         #[doc(alias = "WEBKIT_HIT_TEST_RESULT_CONTEXT_SELECTION")]
         const SELECTION = ffi::WEBKIT_HIT_TEST_RESULT_CONTEXT_SELECTION as _;
-    }
-}
-
-impl fmt::Display for HitTestResultContext {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        <Self as fmt::Debug>::fmt(self, f)
     }
 }
 

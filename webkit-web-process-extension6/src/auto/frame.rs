@@ -5,7 +5,6 @@
 
 use crate::ScriptWorld;
 use glib::translate::*;
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitFrame")]
@@ -52,11 +51,5 @@ impl Frame {
     #[doc(alias = "webkit_frame_is_main_frame")]
     pub fn is_main_frame(&self) -> bool {
         unsafe { from_glib(ffi::webkit_frame_is_main_frame(self.to_glib_none().0)) }
-    }
-}
-
-impl fmt::Display for Frame {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("Frame")
     }
 }

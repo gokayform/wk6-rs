@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::translate::*;
-use std::fmt;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -106,65 +105,6 @@ pub enum ContextMenuAction {
     Custom,
     #[doc(hidden)]
     __Unknown(i32),
-}
-
-impl fmt::Display for ContextMenuAction {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "ContextMenuAction::{}",
-            match *self {
-                Self::NoAction => "NoAction",
-                Self::OpenLink => "OpenLink",
-                Self::OpenLinkInNewWindow => "OpenLinkInNewWindow",
-                Self::DownloadLinkToDisk => "DownloadLinkToDisk",
-                Self::CopyLinkToClipboard => "CopyLinkToClipboard",
-                Self::OpenImageInNewWindow => "OpenImageInNewWindow",
-                Self::DownloadImageToDisk => "DownloadImageToDisk",
-                Self::CopyImageToClipboard => "CopyImageToClipboard",
-                Self::CopyImageUrlToClipboard => "CopyImageUrlToClipboard",
-                Self::OpenFrameInNewWindow => "OpenFrameInNewWindow",
-                Self::GoBack => "GoBack",
-                Self::GoForward => "GoForward",
-                Self::Stop => "Stop",
-                Self::Reload => "Reload",
-                Self::Copy => "Copy",
-                Self::Cut => "Cut",
-                Self::Paste => "Paste",
-                Self::Delete => "Delete",
-                Self::SelectAll => "SelectAll",
-                Self::InputMethods => "InputMethods",
-                Self::Unicode => "Unicode",
-                Self::SpellingGuess => "SpellingGuess",
-                Self::NoGuessesFound => "NoGuessesFound",
-                Self::IgnoreSpelling => "IgnoreSpelling",
-                Self::LearnSpelling => "LearnSpelling",
-                Self::IgnoreGrammar => "IgnoreGrammar",
-                Self::FontMenu => "FontMenu",
-                Self::Bold => "Bold",
-                Self::Italic => "Italic",
-                Self::Underline => "Underline",
-                Self::Outline => "Outline",
-                Self::InspectElement => "InspectElement",
-                Self::OpenVideoInNewWindow => "OpenVideoInNewWindow",
-                Self::OpenAudioInNewWindow => "OpenAudioInNewWindow",
-                Self::CopyVideoLinkToClipboard => "CopyVideoLinkToClipboard",
-                Self::CopyAudioLinkToClipboard => "CopyAudioLinkToClipboard",
-                Self::ToggleMediaControls => "ToggleMediaControls",
-                Self::ToggleMediaLoop => "ToggleMediaLoop",
-                Self::EnterVideoFullscreen => "EnterVideoFullscreen",
-                Self::MediaPlay => "MediaPlay",
-                Self::MediaPause => "MediaPause",
-                Self::MediaMute => "MediaMute",
-                Self::DownloadVideoToDisk => "DownloadVideoToDisk",
-                Self::DownloadAudioToDisk => "DownloadAudioToDisk",
-                Self::InsertEmoji => "InsertEmoji",
-                Self::PasteAsPlainText => "PasteAsPlainText",
-                Self::Custom => "Custom",
-                _ => "Unknown",
-            }
-        )
-    }
 }
 
 #[doc(hidden)]
@@ -303,19 +243,6 @@ pub enum UserMessageError {
     UserMessageUnhandledMessage,
     #[doc(hidden)]
     __Unknown(i32),
-}
-
-impl fmt::Display for UserMessageError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "UserMessageError::{}",
-            match *self {
-                Self::UserMessageUnhandledMessage => "UserMessageUnhandledMessage",
-                _ => "Unknown",
-            }
-        )
-    }
 }
 
 #[doc(hidden)]

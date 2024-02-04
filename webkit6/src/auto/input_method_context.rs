@@ -9,7 +9,7 @@ use glib::{
     signal::{connect_raw, SignalHandlerId},
     translate::*,
 };
-use std::{boxed::Box as Box_, fmt, mem::transmute};
+use std::boxed::Box as Box_;
 
 glib::wrapper! {
     #[doc(alias = "WebKitInputMethodContext")]
@@ -165,7 +165,7 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"committed\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     committed_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -199,7 +199,7 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"delete-surrounding\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     delete_surrounding_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -224,7 +224,7 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"preedit-changed\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     preedit_changed_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -249,7 +249,7 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"preedit-finished\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     preedit_finished_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -274,7 +274,7 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"preedit-started\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     preedit_started_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -300,7 +300,7 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::input-hints\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_input_hints_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -326,7 +326,7 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::input-purpose\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_input_purpose_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -336,9 +336,3 @@ pub trait InputMethodContextExt: IsA<InputMethodContext> + sealed::Sealed + 'sta
 }
 
 impl<O: IsA<InputMethodContext>> InputMethodContextExt for O {}
-
-impl fmt::Display for InputMethodContext {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("InputMethodContext")
-    }
-}

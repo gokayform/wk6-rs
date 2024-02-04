@@ -278,7 +278,7 @@ pub use self::flags::InputHints;
 pub use self::flags::SnapshotOptions;
 pub use self::flags::WebsiteDataTypes;
 
-pub mod functions;
+pub(crate) mod functions;
 
 mod constants;
 pub use self::constants::EDITING_COMMAND_COPY;
@@ -291,15 +291,13 @@ pub use self::constants::EDITING_COMMAND_REDO;
 pub use self::constants::EDITING_COMMAND_SELECT_ALL;
 pub use self::constants::EDITING_COMMAND_UNDO;
 
-#[doc(hidden)]
-pub mod traits {
+pub(crate) mod traits {
     pub use super::input_method_context::InputMethodContextExt;
     pub use super::permission_request::PermissionRequestExt;
     pub use super::policy_decision::PolicyDecisionExt;
     pub use super::web_view::WebViewExt;
 }
-#[doc(hidden)]
-pub mod builders {
+pub(crate) mod builders {
     pub use super::network_session::NetworkSessionBuilder;
     pub use super::print_operation::PrintOperationBuilder;
     pub use super::settings::SettingsBuilder;

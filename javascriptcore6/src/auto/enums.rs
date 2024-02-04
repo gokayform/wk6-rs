@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::translate::*;
-use std::fmt;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -16,20 +15,6 @@ pub enum CheckSyntaxMode {
     Module,
     #[doc(hidden)]
     __Unknown(i32),
-}
-
-impl fmt::Display for CheckSyntaxMode {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "CheckSyntaxMode::{}",
-            match *self {
-                Self::Script => "Script",
-                Self::Module => "Module",
-                _ => "Unknown",
-            }
-        )
-    }
 }
 
 #[doc(hidden)]
@@ -78,24 +63,6 @@ pub enum CheckSyntaxResult {
     StackOverflowError,
     #[doc(hidden)]
     __Unknown(i32),
-}
-
-impl fmt::Display for CheckSyntaxResult {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "CheckSyntaxResult::{}",
-            match *self {
-                Self::Success => "Success",
-                Self::RecoverableError => "RecoverableError",
-                Self::IrrecoverableError => "IrrecoverableError",
-                Self::UnterminatedLiteralError => "UnterminatedLiteralError",
-                Self::OutOfMemoryError => "OutOfMemoryError",
-                Self::StackOverflowError => "StackOverflowError",
-                _ => "Unknown",
-            }
-        )
-    }
 }
 
 #[doc(hidden)]
@@ -158,25 +125,6 @@ pub enum OptionType {
     RangeString,
     #[doc(hidden)]
     __Unknown(i32),
-}
-
-impl fmt::Display for OptionType {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "OptionType::{}",
-            match *self {
-                Self::Boolean => "Boolean",
-                Self::Int => "Int",
-                Self::Uint => "Uint",
-                Self::Size => "Size",
-                Self::Double => "Double",
-                Self::String => "String",
-                Self::RangeString => "RangeString",
-                _ => "Unknown",
-            }
-        )
-    }
 }
 
 #[doc(hidden)]
@@ -247,30 +195,6 @@ pub enum TypedArrayType {
     Float64,
     #[doc(hidden)]
     __Unknown(i32),
-}
-
-impl fmt::Display for TypedArrayType {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "TypedArrayType::{}",
-            match *self {
-                Self::None => "None",
-                Self::Int8 => "Int8",
-                Self::Int16 => "Int16",
-                Self::Int32 => "Int32",
-                Self::Int64 => "Int64",
-                Self::Uint8 => "Uint8",
-                Self::Uint8Clamped => "Uint8Clamped",
-                Self::Uint16 => "Uint16",
-                Self::Uint32 => "Uint32",
-                Self::Uint64 => "Uint64",
-                Self::Float32 => "Float32",
-                Self::Float64 => "Float64",
-                _ => "Unknown",
-            }
-        )
-    }
 }
 
 #[doc(hidden)]

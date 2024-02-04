@@ -5,7 +5,6 @@
 
 use crate::AutoplayPolicy;
 use glib::{prelude::*, translate::*};
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitWebsitePolicies")]
@@ -85,11 +84,5 @@ impl WebsitePoliciesBuilder {
     #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
     pub fn build(self) -> WebsitePolicies {
         self.builder.build()
-    }
-}
-
-impl fmt::Display for WebsitePolicies {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("WebsitePolicies")
     }
 }

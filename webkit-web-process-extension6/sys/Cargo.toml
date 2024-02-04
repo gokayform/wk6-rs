@@ -14,6 +14,8 @@ exclude = ["gir-files/*", "webkit-gir-files"]
 
 [package.metadata.docs.rs]
 features = []
+rustc-args = ["--cfg", "docsrs"]
+rustdoc-args = ["--cfg", "docsrs", "--generate-link-to-definition"]
 
 [package.metadata.system-deps.webkitgtk_web_process_extension_6_0]
 name = "webkitgtk-web-process-extension-6.0"

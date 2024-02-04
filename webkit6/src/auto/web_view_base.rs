@@ -3,8 +3,6 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use std::fmt;
-
 glib::wrapper! {
     #[doc(alias = "WebKitWebViewBase")]
     pub struct WebViewBase(Object<ffi::WebKitWebViewBase, ffi::WebKitWebViewBaseClass>) @extends gtk::Widget, @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
@@ -16,10 +14,4 @@ glib::wrapper! {
 
 impl WebViewBase {
     pub const NONE: Option<&'static WebViewBase> = None;
-}
-
-impl fmt::Display for WebViewBase {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("WebViewBase")
-    }
 }

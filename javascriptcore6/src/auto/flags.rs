@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::{bitflags::bitflags, translate::*};
-use std::fmt;
 
 bitflags! {
     #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -16,12 +15,6 @@ bitflags! {
         const ENUMERABLE = ffi::JSC_VALUE_PROPERTY_ENUMERABLE as _;
         #[doc(alias = "JSC_VALUE_PROPERTY_WRITABLE")]
         const WRITABLE = ffi::JSC_VALUE_PROPERTY_WRITABLE as _;
-    }
-}
-
-impl fmt::Display for ValuePropertyFlags {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        <Self as fmt::Debug>::fmt(self, f)
     }
 }
 

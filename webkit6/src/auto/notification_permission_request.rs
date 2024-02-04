@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use crate::PermissionRequest;
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitNotificationPermissionRequest")]
@@ -16,9 +15,3 @@ glib::wrapper! {
 }
 
 impl NotificationPermissionRequest {}
-
-impl fmt::Display for NotificationPermissionRequest {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("NotificationPermissionRequest")
-    }
-}

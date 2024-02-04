@@ -13,7 +13,7 @@ use glib::{
     signal::{connect_raw, SignalHandlerId},
     translate::*,
 };
-use std::{boxed::Box as Box_, fmt, mem::transmute};
+use std::boxed::Box as Box_;
 
 glib::wrapper! {
     #[doc(alias = "WebKitSettings")]
@@ -1202,7 +1202,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::allow-file-access-from-file-urls\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_allow_file_access_from_file_urls_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1228,7 +1228,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::allow-modal-dialogs\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_allow_modal_dialogs_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1256,7 +1256,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::allow-top-navigation-to-data-urls\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_allow_top_navigation_to_data_urls_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1284,7 +1284,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::allow-universal-access-from-file-urls\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_allow_universal_access_from_file_urls_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1307,7 +1307,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::auto-load-images\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_auto_load_images_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1333,7 +1333,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::cursive-font-family\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_cursive_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1356,7 +1356,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::default-charset\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_default_charset_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1382,7 +1382,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::default-font-family\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_default_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1408,7 +1408,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::default-font-size\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_default_font_size_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1436,7 +1436,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::default-monospace-font-size\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_default_monospace_font_size_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1462,7 +1462,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::disable-web-security\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_disable_web_security_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1490,7 +1490,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::draw-compositing-indicators\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_draw_compositing_indicators_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1518,7 +1518,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-back-forward-navigation-gestures\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_back_forward_navigation_gestures_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1544,7 +1544,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-caret-browsing\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_caret_browsing_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1572,7 +1572,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-developer-extras\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_developer_extras_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1600,7 +1600,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-dns-prefetching\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_dns_prefetching_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1628,7 +1628,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-encrypted-media\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_encrypted_media_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1654,7 +1654,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-fullscreen\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_fullscreen_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1680,7 +1680,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-html5-database\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_html5_database_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1708,7 +1708,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-html5-local-storage\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_html5_local_storage_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1736,7 +1736,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-hyperlink-auditing\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_hyperlink_auditing_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1762,7 +1762,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-javascript\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_javascript_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1790,7 +1790,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-javascript-markup\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_javascript_markup_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1813,7 +1813,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-media\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_media_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1841,7 +1841,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-media-capabilities\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_media_capabilities_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1867,7 +1867,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-media-stream\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_media_stream_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1893,7 +1893,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-mediasource\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_mediasource_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1921,7 +1921,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-mock-capture-devices\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_mock_capture_devices_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1949,7 +1949,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-offline-web-application-cache\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_offline_web_application_cache_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1975,7 +1975,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-page-cache\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_page_cache_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2003,7 +2003,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-resizable-text-areas\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_resizable_text_areas_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2031,7 +2031,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-site-specific-quirks\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_site_specific_quirks_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2059,7 +2059,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-smooth-scrolling\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_smooth_scrolling_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2087,7 +2087,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-spatial-navigation\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_spatial_navigation_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2113,7 +2113,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-tabs-to-links\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_tabs_to_links_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2136,7 +2136,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-webaudio\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_webaudio_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2159,7 +2159,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-webgl\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_webgl_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2182,7 +2182,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-webrtc\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_webrtc_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2210,7 +2210,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-write-console-messages-to-stdout\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_enable_write_console_messages_to_stdout_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2236,7 +2236,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::fantasy-font-family\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_fantasy_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2264,7 +2264,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::hardware-acceleration-policy\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_hardware_acceleration_policy_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2292,7 +2292,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::javascript-can-access-clipboard\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_javascript_can_access_clipboard_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2320,7 +2320,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::javascript-can-open-windows-automatically\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_javascript_can_open_windows_automatically_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2349,7 +2349,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::load-icons-ignoring-image-load-setting\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_load_icons_ignoring_image_load_setting_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2377,7 +2377,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::media-content-types-requiring-hardware-support\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_media_content_types_requiring_hardware_support_trampoline::<F>
                         as *const (),
                 )),
@@ -2406,7 +2406,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::media-playback-allows-inline\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_media_playback_allows_inline_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2434,7 +2434,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::media-playback-requires-user-gesture\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_media_playback_requires_user_gesture_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2460,7 +2460,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::minimum-font-size\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_minimum_font_size_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2486,7 +2486,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::monospace-font-family\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_monospace_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2514,7 +2514,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::pictograph-font-family\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_pictograph_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2540,7 +2540,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::print-backgrounds\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_print_backgrounds_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2568,7 +2568,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::sans-serif-font-family\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_sans_serif_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2594,7 +2594,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::serif-font-family\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_serif_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2617,7 +2617,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::user-agent\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_user_agent_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2640,7 +2640,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::zoom-text-only\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_zoom_text_only_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -3144,11 +3144,5 @@ impl SettingsBuilder {
     #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
     pub fn build(self) -> Settings {
         self.builder.build()
-    }
-}
-
-impl fmt::Display for Settings {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("Settings")
     }
 }

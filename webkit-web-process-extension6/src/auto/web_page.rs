@@ -12,7 +12,7 @@ use glib::{
     signal::{connect_raw, SignalHandlerId},
     translate::*,
 };
-use std::{boxed::Box as Box_, fmt, mem::transmute, pin::Pin, ptr};
+use std::{boxed::Box as Box_, pin::Pin};
 
 glib::wrapper! {
     #[doc(alias = "WebKitWebPage")]
@@ -85,7 +85,7 @@ impl WebPage {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_web_page_send_message_to_view_finish(
                 _source_object as *mut _,
                 res,
@@ -152,7 +152,7 @@ impl WebPage {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"context-menu\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     context_menu_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -174,7 +174,7 @@ impl WebPage {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"document-loaded\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     document_loaded_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -208,7 +208,7 @@ impl WebPage {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"send-request\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     send_request_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -236,7 +236,7 @@ impl WebPage {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"user-message-received\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     user_message_received_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -259,17 +259,11 @@ impl WebPage {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::uri\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_uri_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
             )
         }
-    }
-}
-
-impl fmt::Display for WebPage {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("WebPage")
     }
 }

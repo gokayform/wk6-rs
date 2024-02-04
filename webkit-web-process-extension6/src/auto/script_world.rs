@@ -9,7 +9,7 @@ use glib::{
     signal::{connect_raw, SignalHandlerId},
     translate::*,
 };
-use std::{boxed::Box as Box_, fmt, mem::transmute};
+use std::boxed::Box as Box_;
 
 glib::wrapper! {
     #[doc(alias = "WebKitScriptWorld")]
@@ -77,7 +77,7 @@ impl ScriptWorld {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"window-object-cleared\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     window_object_cleared_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -89,11 +89,5 @@ impl ScriptWorld {
 impl Default for ScriptWorld {
     fn default() -> Self {
         Self::new()
-    }
-}
-
-impl fmt::Display for ScriptWorld {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("ScriptWorld")
     }
 }

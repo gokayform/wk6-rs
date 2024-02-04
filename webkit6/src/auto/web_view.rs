@@ -19,7 +19,7 @@ use glib::{
     signal::{connect_raw, SignalHandlerId},
     translate::*,
 };
-use std::{boxed::Box as Box_, fmt, mem, mem::transmute, pin::Pin, ptr};
+use std::{boxed::Box as Box_, pin::Pin};
 
 glib::wrapper! {
     #[doc(alias = "WebKitWebView")]
@@ -412,7 +412,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_web_view_call_async_javascript_function_finish(
                 _source_object as *mut _,
                 res,
@@ -499,7 +499,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let _ = ffi::webkit_web_view_can_execute_editing_command_finish(
                 _source_object as *mut _,
                 res,
@@ -607,7 +607,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_web_view_evaluate_javascript_finish(
                 _source_object as *mut _,
                 res,
@@ -928,7 +928,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret =
                 ffi::webkit_web_view_get_snapshot_finish(_source_object as *mut _, res, &mut error);
             let result = if error.is_null() {
@@ -981,8 +981,8 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
     #[doc(alias = "get_tls_info")]
     fn tls_info(&self) -> Option<(gio::TlsCertificate, gio::TlsCertificateFlags)> {
         unsafe {
-            let mut certificate = ptr::null_mut();
-            let mut errors = mem::MaybeUninit::uninit();
+            let mut certificate = std::ptr::null_mut();
+            let mut errors = std::mem::MaybeUninit::uninit();
             let ret = from_glib(ffi::webkit_web_view_get_tls_info(
                 self.as_ref().to_glib_none().0,
                 &mut certificate,
@@ -1227,7 +1227,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_web_view_save_finish(_source_object as *mut _, res, &mut error);
             let result = if error.is_null() {
                 Ok(from_glib_full(ret))
@@ -1290,7 +1290,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let _ =
                 ffi::webkit_web_view_save_to_file_finish(_source_object as *mut _, res, &mut error);
             let result = if error.is_null() {
@@ -1355,7 +1355,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_web_view_send_message_to_page_finish(
                 _source_object as *mut _,
                 res,
@@ -1548,7 +1548,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"authenticate\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     authenticate_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1570,7 +1570,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"close\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     close_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1605,7 +1605,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"context-menu\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     context_menu_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1630,7 +1630,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"context-menu-dismissed\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     context_menu_dismissed_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1663,7 +1663,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"create\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     create_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1700,7 +1700,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"decide-policy\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     decide_policy_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1725,7 +1725,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"enter-fullscreen\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     enter_fullscreen_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1757,7 +1757,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"insecure-content-detected\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     insecure_content_detected_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1782,7 +1782,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"leave-fullscreen\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     leave_fullscreen_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1811,7 +1811,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"load-changed\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     load_changed_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1848,7 +1848,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"load-failed\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     load_failed_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1887,7 +1887,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"load-failed-with-tls-errors\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     load_failed_with_tls_errors_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1921,7 +1921,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"mouse-target-changed\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     mouse_target_changed_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1954,7 +1954,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"permission-request\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     permission_request_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1987,7 +1987,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"print\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     print_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2020,7 +2020,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"query-permission-state\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     query_permission_state_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2042,7 +2042,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"ready-to-show\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     ready_to_show_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2076,7 +2076,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"resource-load-started\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     resource_load_started_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2098,7 +2098,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"run-as-modal\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     run_as_modal_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2131,7 +2131,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"run-color-chooser\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     run_color_chooser_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2164,7 +2164,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"run-file-chooser\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     run_file_chooser_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2197,7 +2197,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"script-dialog\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     script_dialog_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2230,7 +2230,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"show-notification\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     show_notification_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2265,7 +2265,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"show-option-menu\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     show_option_menu_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2297,7 +2297,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"submit-form\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     submit_form_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2330,7 +2330,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"user-message-received\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     user_message_received_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2362,7 +2362,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"web-process-terminated\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     web_process_terminated_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2388,7 +2388,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::camera-capture-state\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_camera_capture_state_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2417,7 +2417,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::display-capture-state\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_display_capture_state_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2440,7 +2440,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::editable\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_editable_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2469,7 +2469,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::estimated-load-progress\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_estimated_load_progress_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2492,7 +2492,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::favicon\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_favicon_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2515,7 +2515,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::is-loading\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_is_loading_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2538,7 +2538,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::is-muted\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_is_muted_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2564,7 +2564,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::is-playing-audio\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_is_playing_audio_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2593,7 +2593,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::is-web-process-responsive\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_is_web_process_responsive_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2622,7 +2622,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::microphone-capture-state\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_microphone_capture_state_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2645,7 +2645,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::page-id\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_page_id_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2668,7 +2668,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::settings\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_settings_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2691,7 +2691,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::title\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_title_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2714,7 +2714,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::uri\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_uri_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2737,7 +2737,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::zoom-level\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_zoom_level_trampoline::<Self, F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2747,9 +2747,3 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
 }
 
 impl<O: IsA<WebView>> WebViewExt for O {}
-
-impl fmt::Display for WebView {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("WebView")
-    }
-}

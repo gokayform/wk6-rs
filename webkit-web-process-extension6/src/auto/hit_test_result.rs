@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::translate::*;
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitHitTestResult")]
@@ -124,11 +123,5 @@ impl HitTestResult {
                 self.to_glib_none().0,
             ))
         }
-    }
-}
-
-impl fmt::Display for HitTestResult {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("HitTestResult")
     }
 }

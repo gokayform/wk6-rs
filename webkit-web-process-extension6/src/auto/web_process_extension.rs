@@ -9,7 +9,7 @@ use glib::{
     signal::{connect_raw, SignalHandlerId},
     translate::*,
 };
-use std::{boxed::Box as Box_, fmt, mem::transmute, pin::Pin, ptr};
+use std::{boxed::Box as Box_, pin::Pin};
 
 glib::wrapper! {
     #[doc(alias = "WebKitWebProcessExtension")]
@@ -58,7 +58,7 @@ impl WebProcessExtension {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_web_process_extension_send_message_to_context_finish(
                 _source_object as *mut _,
                 res,
@@ -116,7 +116,7 @@ impl WebProcessExtension {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"page-created\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     page_created_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -144,17 +144,11 @@ impl WebProcessExtension {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"user-message-received\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     user_message_received_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
             )
         }
-    }
-}
-
-impl fmt::Display for WebProcessExtension {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("WebProcessExtension")
     }
 }

@@ -5,7 +5,6 @@
 
 use crate::{URISchemeResponse, WebView};
 use glib::{prelude::*, translate::*};
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitURISchemeRequest")]
@@ -122,11 +121,5 @@ impl URISchemeRequest {
                 self.to_glib_none().0,
             ))
         }
-    }
-}
-
-impl fmt::Display for URISchemeRequest {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("URISchemeRequest")
     }
 }

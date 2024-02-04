@@ -8,7 +8,7 @@ use glib::{
     signal::{connect_raw, SignalHandlerId},
     translate::*,
 };
-use std::{boxed::Box as Box_, fmt, mem::transmute};
+use std::boxed::Box as Box_;
 
 glib::wrapper! {
     #[doc(alias = "WebKitURIResponse")]
@@ -83,7 +83,7 @@ impl URIResponse {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::content-length\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_content_length_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -106,7 +106,7 @@ impl URIResponse {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::http-headers\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_http_headers_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -129,7 +129,7 @@ impl URIResponse {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::mime-type\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_mime_type_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -152,7 +152,7 @@ impl URIResponse {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::status-code\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_status_code_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -178,7 +178,7 @@ impl URIResponse {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::suggested-filename\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_suggested_filename_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -201,17 +201,11 @@ impl URIResponse {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::uri\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     notify_uri_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
             )
         }
-    }
-}
-
-impl fmt::Display for URIResponse {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("URIResponse")
     }
 }

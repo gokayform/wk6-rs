@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::{prelude::*, translate::*};
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitPermissionRequest")]
@@ -41,9 +40,3 @@ pub trait PermissionRequestExt: IsA<PermissionRequest> + sealed::Sealed + 'stati
 }
 
 impl<O: IsA<PermissionRequest>> PermissionRequestExt for O {}
-
-impl fmt::Display for PermissionRequest {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("PermissionRequest")
-    }
-}

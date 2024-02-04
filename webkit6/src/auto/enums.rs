@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::{prelude::*, translate::*};
-use std::fmt;
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
@@ -32,28 +31,6 @@ pub enum AuthenticationScheme {
     Unknown,
     #[doc(hidden)]
     __Unknown(i32),
-}
-
-impl fmt::Display for AuthenticationScheme {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "AuthenticationScheme::{}",
-            match *self {
-                Self::Default => "Default",
-                Self::HttpBasic => "HttpBasic",
-                Self::HttpDigest => "HttpDigest",
-                Self::HtmlForm => "HtmlForm",
-                Self::Ntlm => "Ntlm",
-                Self::Negotiate => "Negotiate",
-                Self::ClientCertificateRequested => "ClientCertificateRequested",
-                Self::ServerTrustEvaluationRequested => "ServerTrustEvaluationRequested",
-                Self::ClientCertificatePinRequested => "ClientCertificatePinRequested",
-                Self::Unknown => "Unknown",
-                _ => "Unknown",
-            }
-        )
-    }
 }
 
 #[doc(hidden)]
@@ -114,6 +91,7 @@ impl FromGlib<ffi::WebKitAuthenticationScheme> for AuthenticationScheme {
 
 impl StaticType for AuthenticationScheme {
     #[inline]
+    #[doc(alias = "webkit_authentication_scheme_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_authentication_scheme_get_type()) }
     }
@@ -125,7 +103,7 @@ impl glib::HasParamSpec for AuthenticationScheme {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -179,20 +157,6 @@ pub enum AutomationBrowsingContextPresentation {
     __Unknown(i32),
 }
 
-impl fmt::Display for AutomationBrowsingContextPresentation {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "AutomationBrowsingContextPresentation::{}",
-            match *self {
-                Self::Window => "Window",
-                Self::Tab => "Tab",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for AutomationBrowsingContextPresentation {
     type GlibType = ffi::WebKitAutomationBrowsingContextPresentation;
@@ -225,6 +189,7 @@ impl FromGlib<ffi::WebKitAutomationBrowsingContextPresentation>
 
 impl StaticType for AutomationBrowsingContextPresentation {
     #[inline]
+    #[doc(alias = "webkit_automation_browsing_context_presentation_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_automation_browsing_context_presentation_get_type()) }
     }
@@ -236,7 +201,7 @@ impl glib::HasParamSpec for AutomationBrowsingContextPresentation {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -292,21 +257,6 @@ pub enum AutoplayPolicy {
     __Unknown(i32),
 }
 
-impl fmt::Display for AutoplayPolicy {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "AutoplayPolicy::{}",
-            match *self {
-                Self::Allow => "Allow",
-                Self::AllowWithoutSound => "AllowWithoutSound",
-                Self::Deny => "Deny",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for AutoplayPolicy {
     type GlibType = ffi::WebKitAutoplayPolicy;
@@ -339,6 +289,7 @@ impl FromGlib<ffi::WebKitAutoplayPolicy> for AutoplayPolicy {
 
 impl StaticType for AutoplayPolicy {
     #[inline]
+    #[doc(alias = "webkit_autoplay_policy_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_autoplay_policy_get_type()) }
     }
@@ -350,7 +301,7 @@ impl glib::HasParamSpec for AutoplayPolicy {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -406,21 +357,6 @@ pub enum CacheModel {
     __Unknown(i32),
 }
 
-impl fmt::Display for CacheModel {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "CacheModel::{}",
-            match *self {
-                Self::DocumentViewer => "DocumentViewer",
-                Self::WebBrowser => "WebBrowser",
-                Self::DocumentBrowser => "DocumentBrowser",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for CacheModel {
     type GlibType = ffi::WebKitCacheModel;
@@ -453,6 +389,7 @@ impl FromGlib<ffi::WebKitCacheModel> for CacheModel {
 
 impl StaticType for CacheModel {
     #[inline]
+    #[doc(alias = "webkit_cache_model_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_cache_model_get_type()) }
     }
@@ -464,7 +401,7 @@ impl glib::HasParamSpec for CacheModel {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -608,65 +545,6 @@ pub enum ContextMenuAction {
     __Unknown(i32),
 }
 
-impl fmt::Display for ContextMenuAction {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "ContextMenuAction::{}",
-            match *self {
-                Self::NoAction => "NoAction",
-                Self::OpenLink => "OpenLink",
-                Self::OpenLinkInNewWindow => "OpenLinkInNewWindow",
-                Self::DownloadLinkToDisk => "DownloadLinkToDisk",
-                Self::CopyLinkToClipboard => "CopyLinkToClipboard",
-                Self::OpenImageInNewWindow => "OpenImageInNewWindow",
-                Self::DownloadImageToDisk => "DownloadImageToDisk",
-                Self::CopyImageToClipboard => "CopyImageToClipboard",
-                Self::CopyImageUrlToClipboard => "CopyImageUrlToClipboard",
-                Self::OpenFrameInNewWindow => "OpenFrameInNewWindow",
-                Self::GoBack => "GoBack",
-                Self::GoForward => "GoForward",
-                Self::Stop => "Stop",
-                Self::Reload => "Reload",
-                Self::Copy => "Copy",
-                Self::Cut => "Cut",
-                Self::Paste => "Paste",
-                Self::Delete => "Delete",
-                Self::SelectAll => "SelectAll",
-                Self::InputMethods => "InputMethods",
-                Self::Unicode => "Unicode",
-                Self::SpellingGuess => "SpellingGuess",
-                Self::NoGuessesFound => "NoGuessesFound",
-                Self::IgnoreSpelling => "IgnoreSpelling",
-                Self::LearnSpelling => "LearnSpelling",
-                Self::IgnoreGrammar => "IgnoreGrammar",
-                Self::FontMenu => "FontMenu",
-                Self::Bold => "Bold",
-                Self::Italic => "Italic",
-                Self::Underline => "Underline",
-                Self::Outline => "Outline",
-                Self::InspectElement => "InspectElement",
-                Self::OpenVideoInNewWindow => "OpenVideoInNewWindow",
-                Self::OpenAudioInNewWindow => "OpenAudioInNewWindow",
-                Self::CopyVideoLinkToClipboard => "CopyVideoLinkToClipboard",
-                Self::CopyAudioLinkToClipboard => "CopyAudioLinkToClipboard",
-                Self::ToggleMediaControls => "ToggleMediaControls",
-                Self::ToggleMediaLoop => "ToggleMediaLoop",
-                Self::EnterVideoFullscreen => "EnterVideoFullscreen",
-                Self::MediaPlay => "MediaPlay",
-                Self::MediaPause => "MediaPause",
-                Self::MediaMute => "MediaMute",
-                Self::DownloadVideoToDisk => "DownloadVideoToDisk",
-                Self::DownloadAudioToDisk => "DownloadAudioToDisk",
-                Self::InsertEmoji => "InsertEmoji",
-                Self::PasteAsPlainText => "PasteAsPlainText",
-                Self::Custom => "Custom",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for ContextMenuAction {
     type GlibType = ffi::WebKitContextMenuAction;
@@ -797,6 +675,7 @@ impl FromGlib<ffi::WebKitContextMenuAction> for ContextMenuAction {
 
 impl StaticType for ContextMenuAction {
     #[inline]
+    #[doc(alias = "webkit_context_menu_action_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_context_menu_action_get_type()) }
     }
@@ -808,7 +687,7 @@ impl glib::HasParamSpec for ContextMenuAction {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -864,21 +743,6 @@ pub enum CookieAcceptPolicy {
     __Unknown(i32),
 }
 
-impl fmt::Display for CookieAcceptPolicy {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "CookieAcceptPolicy::{}",
-            match *self {
-                Self::Always => "Always",
-                Self::Never => "Never",
-                Self::NoThirdParty => "NoThirdParty",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for CookieAcceptPolicy {
     type GlibType = ffi::WebKitCookieAcceptPolicy;
@@ -911,6 +775,7 @@ impl FromGlib<ffi::WebKitCookieAcceptPolicy> for CookieAcceptPolicy {
 
 impl StaticType for CookieAcceptPolicy {
     #[inline]
+    #[doc(alias = "webkit_cookie_accept_policy_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_cookie_accept_policy_get_type()) }
     }
@@ -922,7 +787,7 @@ impl glib::HasParamSpec for CookieAcceptPolicy {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -976,20 +841,6 @@ pub enum CookiePersistentStorage {
     __Unknown(i32),
 }
 
-impl fmt::Display for CookiePersistentStorage {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "CookiePersistentStorage::{}",
-            match *self {
-                Self::Text => "Text",
-                Self::Sqlite => "Sqlite",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for CookiePersistentStorage {
     type GlibType = ffi::WebKitCookiePersistentStorage;
@@ -1020,6 +871,7 @@ impl FromGlib<ffi::WebKitCookiePersistentStorage> for CookiePersistentStorage {
 
 impl StaticType for CookiePersistentStorage {
     #[inline]
+    #[doc(alias = "webkit_cookie_persistent_storage_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_cookie_persistent_storage_get_type()) }
     }
@@ -1031,7 +883,7 @@ impl glib::HasParamSpec for CookiePersistentStorage {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -1087,21 +939,6 @@ pub enum CredentialPersistence {
     __Unknown(i32),
 }
 
-impl fmt::Display for CredentialPersistence {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "CredentialPersistence::{}",
-            match *self {
-                Self::None => "None",
-                Self::ForSession => "ForSession",
-                Self::Permanent => "Permanent",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for CredentialPersistence {
     type GlibType = ffi::WebKitCredentialPersistence;
@@ -1134,6 +971,7 @@ impl FromGlib<ffi::WebKitCredentialPersistence> for CredentialPersistence {
 
 impl StaticType for CredentialPersistence {
     #[inline]
+    #[doc(alias = "webkit_credential_persistence_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_credential_persistence_get_type()) }
     }
@@ -1145,7 +983,7 @@ impl glib::HasParamSpec for CredentialPersistence {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -1209,21 +1047,6 @@ impl DownloadError {
     }
 }
 
-impl fmt::Display for DownloadError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "DownloadError::{}",
-            match *self {
-                Self::Network => "Network",
-                Self::CancelledByUser => "CancelledByUser",
-                Self::Destination => "Destination",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for DownloadError {
     type GlibType = ffi::WebKitDownloadError;
@@ -1259,11 +1082,11 @@ impl glib::error::ErrorDomain for DownloadError {
     fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
-        static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
-            once_cell::sync::Lazy::new(|| unsafe {
-                glib::ffi::g_quark_from_static_string(b"WebKitDownloadError\0".as_ptr() as *const _)
-            });
-        unsafe { from_glib(*QUARK) }
+        static QUARK: ::std::sync::OnceLock<glib::ffi::GQuark> = ::std::sync::OnceLock::new();
+        let quark = *QUARK.get_or_init(|| unsafe {
+            glib::ffi::g_quark_from_static_string(b"WebKitDownloadError\0".as_ptr() as *const _)
+        });
+        unsafe { from_glib(quark) }
     }
 
     #[inline]
@@ -1283,6 +1106,7 @@ impl glib::error::ErrorDomain for DownloadError {
 
 impl StaticType for DownloadError {
     #[inline]
+    #[doc(alias = "webkit_download_error_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_download_error_get_type()) }
     }
@@ -1294,7 +1118,7 @@ impl glib::HasParamSpec for DownloadError {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -1358,21 +1182,6 @@ impl FaviconDatabaseError {
     }
 }
 
-impl fmt::Display for FaviconDatabaseError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "FaviconDatabaseError::{}",
-            match *self {
-                Self::NotInitialized => "NotInitialized",
-                Self::FaviconNotFound => "FaviconNotFound",
-                Self::FaviconUnknown => "FaviconUnknown",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for FaviconDatabaseError {
     type GlibType = ffi::WebKitFaviconDatabaseError;
@@ -1408,13 +1217,13 @@ impl glib::error::ErrorDomain for FaviconDatabaseError {
     fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
-        static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
-            once_cell::sync::Lazy::new(|| unsafe {
-                glib::ffi::g_quark_from_static_string(
-                    b"WebKitFaviconDatabaseError\0".as_ptr() as *const _
-                )
-            });
-        unsafe { from_glib(*QUARK) }
+        static QUARK: ::std::sync::OnceLock<glib::ffi::GQuark> = ::std::sync::OnceLock::new();
+        let quark = *QUARK.get_or_init(|| unsafe {
+            glib::ffi::g_quark_from_static_string(
+                b"WebKitFaviconDatabaseError\0".as_ptr() as *const _
+            )
+        });
+        unsafe { from_glib(quark) }
     }
 
     #[inline]
@@ -1434,6 +1243,7 @@ impl glib::error::ErrorDomain for FaviconDatabaseError {
 
 impl StaticType for FaviconDatabaseError {
     #[inline]
+    #[doc(alias = "webkit_favicon_database_error_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_favicon_database_error_get_type()) }
     }
@@ -1445,7 +1255,7 @@ impl glib::HasParamSpec for FaviconDatabaseError {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -1515,28 +1325,6 @@ pub enum FeatureStatus {
 
 #[cfg(feature = "v2_42")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
-impl fmt::Display for FeatureStatus {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "FeatureStatus::{}",
-            match *self {
-                Self::Embedder => "Embedder",
-                Self::Unstable => "Unstable",
-                Self::Internal => "Internal",
-                Self::Developer => "Developer",
-                Self::Testable => "Testable",
-                Self::Preview => "Preview",
-                Self::Stable => "Stable",
-                Self::Mature => "Mature",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
-#[cfg(feature = "v2_42")]
-#[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
 #[doc(hidden)]
 impl IntoGlib for FeatureStatus {
     type GlibType = ffi::WebKitFeatureStatus;
@@ -1583,6 +1371,7 @@ impl FromGlib<ffi::WebKitFeatureStatus> for FeatureStatus {
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
 impl StaticType for FeatureStatus {
     #[inline]
+    #[doc(alias = "webkit_feature_status_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_feature_status_get_type()) }
     }
@@ -1596,7 +1385,7 @@ impl glib::HasParamSpec for FeatureStatus {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -1658,20 +1447,6 @@ pub enum HardwareAccelerationPolicy {
     __Unknown(i32),
 }
 
-impl fmt::Display for HardwareAccelerationPolicy {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "HardwareAccelerationPolicy::{}",
-            match *self {
-                Self::Always => "Always",
-                Self::Never => "Never",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for HardwareAccelerationPolicy {
     type GlibType = ffi::WebKitHardwareAccelerationPolicy;
@@ -1702,6 +1477,7 @@ impl FromGlib<ffi::WebKitHardwareAccelerationPolicy> for HardwareAccelerationPol
 
 impl StaticType for HardwareAccelerationPolicy {
     #[inline]
+    #[doc(alias = "webkit_hardware_acceleration_policy_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_hardware_acceleration_policy_get_type()) }
     }
@@ -1713,7 +1489,7 @@ impl glib::HasParamSpec for HardwareAccelerationPolicy {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -1777,25 +1553,6 @@ pub enum InputPurpose {
     __Unknown(i32),
 }
 
-impl fmt::Display for InputPurpose {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "InputPurpose::{}",
-            match *self {
-                Self::FreeForm => "FreeForm",
-                Self::Digits => "Digits",
-                Self::Number => "Number",
-                Self::Phone => "Phone",
-                Self::Url => "Url",
-                Self::Email => "Email",
-                Self::Password => "Password",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for InputPurpose {
     type GlibType = ffi::WebKitInputPurpose;
@@ -1836,6 +1593,7 @@ impl FromGlib<ffi::WebKitInputPurpose> for InputPurpose {
 
 impl StaticType for InputPurpose {
     #[inline]
+    #[doc(alias = "webkit_input_purpose_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_input_purpose_get_type()) }
     }
@@ -1847,7 +1605,7 @@ impl glib::HasParamSpec for InputPurpose {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -1901,20 +1659,6 @@ pub enum InsecureContentEvent {
     __Unknown(i32),
 }
 
-impl fmt::Display for InsecureContentEvent {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "InsecureContentEvent::{}",
-            match *self {
-                Self::Run => "Run",
-                Self::Displayed => "Displayed",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for InsecureContentEvent {
     type GlibType = ffi::WebKitInsecureContentEvent;
@@ -1945,6 +1689,7 @@ impl FromGlib<ffi::WebKitInsecureContentEvent> for InsecureContentEvent {
 
 impl StaticType for InsecureContentEvent {
     #[inline]
+    #[doc(alias = "webkit_insecure_content_event_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_insecure_content_event_get_type()) }
     }
@@ -1956,7 +1701,7 @@ impl glib::HasParamSpec for InsecureContentEvent {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -2020,21 +1765,6 @@ impl JavascriptError {
     }
 }
 
-impl fmt::Display for JavascriptError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "JavascriptError::{}",
-            match *self {
-                Self::ScriptFailed => "ScriptFailed",
-                Self::InvalidParameter => "InvalidParameter",
-                Self::InvalidResult => "InvalidResult",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for JavascriptError {
     type GlibType = ffi::WebKitJavascriptError;
@@ -2070,13 +1800,11 @@ impl glib::error::ErrorDomain for JavascriptError {
     fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
-        static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
-            once_cell::sync::Lazy::new(|| unsafe {
-                glib::ffi::g_quark_from_static_string(
-                    b"WebKitJavascriptError\0".as_ptr() as *const _
-                )
-            });
-        unsafe { from_glib(*QUARK) }
+        static QUARK: ::std::sync::OnceLock<glib::ffi::GQuark> = ::std::sync::OnceLock::new();
+        let quark = *QUARK.get_or_init(|| unsafe {
+            glib::ffi::g_quark_from_static_string(b"WebKitJavascriptError\0".as_ptr() as *const _)
+        });
+        unsafe { from_glib(quark) }
     }
 
     #[inline]
@@ -2096,6 +1824,7 @@ impl glib::error::ErrorDomain for JavascriptError {
 
 impl StaticType for JavascriptError {
     #[inline]
+    #[doc(alias = "webkit_javascript_error_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_javascript_error_get_type()) }
     }
@@ -2107,7 +1836,7 @@ impl glib::HasParamSpec for JavascriptError {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -2165,22 +1894,6 @@ pub enum LoadEvent {
     __Unknown(i32),
 }
 
-impl fmt::Display for LoadEvent {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "LoadEvent::{}",
-            match *self {
-                Self::Started => "Started",
-                Self::Redirected => "Redirected",
-                Self::Committed => "Committed",
-                Self::Finished => "Finished",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for LoadEvent {
     type GlibType = ffi::WebKitLoadEvent;
@@ -2215,6 +1928,7 @@ impl FromGlib<ffi::WebKitLoadEvent> for LoadEvent {
 
 impl StaticType for LoadEvent {
     #[inline]
+    #[doc(alias = "webkit_load_event_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_load_event_get_type()) }
     }
@@ -2226,7 +1940,7 @@ impl glib::HasParamSpec for LoadEvent {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -2282,21 +1996,6 @@ pub enum MediaCaptureState {
     __Unknown(i32),
 }
 
-impl fmt::Display for MediaCaptureState {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "MediaCaptureState::{}",
-            match *self {
-                Self::None => "None",
-                Self::Active => "Active",
-                Self::Muted => "Muted",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for MediaCaptureState {
     type GlibType = ffi::WebKitMediaCaptureState;
@@ -2329,6 +2028,7 @@ impl FromGlib<ffi::WebKitMediaCaptureState> for MediaCaptureState {
 
 impl StaticType for MediaCaptureState {
     #[inline]
+    #[doc(alias = "webkit_media_capture_state_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_media_capture_state_get_type()) }
     }
@@ -2340,7 +2040,7 @@ impl glib::HasParamSpec for MediaCaptureState {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -2400,19 +2100,6 @@ impl MediaError {
     }
 }
 
-impl fmt::Display for MediaError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "MediaError::{}",
-            match *self {
-                Self::Load => "Load",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for MediaError {
     type GlibType = ffi::WebKitMediaError;
@@ -2444,11 +2131,11 @@ impl glib::error::ErrorDomain for MediaError {
     fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
-        static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
-            once_cell::sync::Lazy::new(|| unsafe {
-                glib::ffi::g_quark_from_static_string(b"WebKitMediaError\0".as_ptr() as *const _)
-            });
-        unsafe { from_glib(*QUARK) }
+        static QUARK: ::std::sync::OnceLock<glib::ffi::GQuark> = ::std::sync::OnceLock::new();
+        let quark = *QUARK.get_or_init(|| unsafe {
+            glib::ffi::g_quark_from_static_string(b"WebKitMediaError\0".as_ptr() as *const _)
+        });
+        unsafe { from_glib(quark) }
     }
 
     #[inline]
@@ -2468,6 +2155,7 @@ impl glib::error::ErrorDomain for MediaError {
 
 impl StaticType for MediaError {
     #[inline]
+    #[doc(alias = "webkit_media_error_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_media_error_get_type()) }
     }
@@ -2479,7 +2167,7 @@ impl glib::HasParamSpec for MediaError {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -2541,24 +2229,6 @@ pub enum NavigationType {
     __Unknown(i32),
 }
 
-impl fmt::Display for NavigationType {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "NavigationType::{}",
-            match *self {
-                Self::LinkClicked => "LinkClicked",
-                Self::FormSubmitted => "FormSubmitted",
-                Self::BackForward => "BackForward",
-                Self::Reload => "Reload",
-                Self::FormResubmitted => "FormResubmitted",
-                Self::Other => "Other",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for NavigationType {
     type GlibType = ffi::WebKitNavigationType;
@@ -2597,6 +2267,7 @@ impl FromGlib<ffi::WebKitNavigationType> for NavigationType {
 
 impl StaticType for NavigationType {
     #[inline]
+    #[doc(alias = "webkit_navigation_type_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_navigation_type_get_type()) }
     }
@@ -2608,7 +2279,7 @@ impl glib::HasParamSpec for NavigationType {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -2676,23 +2347,6 @@ impl NetworkError {
     }
 }
 
-impl fmt::Display for NetworkError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "NetworkError::{}",
-            match *self {
-                Self::Failed => "Failed",
-                Self::Transport => "Transport",
-                Self::UnknownProtocol => "UnknownProtocol",
-                Self::Cancelled => "Cancelled",
-                Self::FileDoesNotExist => "FileDoesNotExist",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for NetworkError {
     type GlibType = ffi::WebKitNetworkError;
@@ -2732,11 +2386,11 @@ impl glib::error::ErrorDomain for NetworkError {
     fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
-        static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
-            once_cell::sync::Lazy::new(|| unsafe {
-                glib::ffi::g_quark_from_static_string(b"WebKitNetworkError\0".as_ptr() as *const _)
-            });
-        unsafe { from_glib(*QUARK) }
+        static QUARK: ::std::sync::OnceLock<glib::ffi::GQuark> = ::std::sync::OnceLock::new();
+        let quark = *QUARK.get_or_init(|| unsafe {
+            glib::ffi::g_quark_from_static_string(b"WebKitNetworkError\0".as_ptr() as *const _)
+        });
+        unsafe { from_glib(quark) }
     }
 
     #[inline]
@@ -2757,6 +2411,7 @@ impl glib::error::ErrorDomain for NetworkError {
 
 impl StaticType for NetworkError {
     #[inline]
+    #[doc(alias = "webkit_network_error_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_network_error_get_type()) }
     }
@@ -2768,7 +2423,7 @@ impl glib::HasParamSpec for NetworkError {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -2824,21 +2479,6 @@ pub enum NetworkProxyMode {
     __Unknown(i32),
 }
 
-impl fmt::Display for NetworkProxyMode {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "NetworkProxyMode::{}",
-            match *self {
-                Self::Default => "Default",
-                Self::NoProxy => "NoProxy",
-                Self::Custom => "Custom",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for NetworkProxyMode {
     type GlibType = ffi::WebKitNetworkProxyMode;
@@ -2871,6 +2511,7 @@ impl FromGlib<ffi::WebKitNetworkProxyMode> for NetworkProxyMode {
 
 impl StaticType for NetworkProxyMode {
     #[inline]
+    #[doc(alias = "webkit_network_proxy_mode_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_network_proxy_mode_get_type()) }
     }
@@ -2882,7 +2523,7 @@ impl glib::HasParamSpec for NetworkProxyMode {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -2938,21 +2579,6 @@ pub enum PermissionState {
     __Unknown(i32),
 }
 
-impl fmt::Display for PermissionState {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "PermissionState::{}",
-            match *self {
-                Self::Granted => "Granted",
-                Self::Denied => "Denied",
-                Self::Prompt => "Prompt",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for PermissionState {
     type GlibType = ffi::WebKitPermissionState;
@@ -2985,6 +2611,7 @@ impl FromGlib<ffi::WebKitPermissionState> for PermissionState {
 
 impl StaticType for PermissionState {
     #[inline]
+    #[doc(alias = "webkit_permission_state_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_permission_state_get_type()) }
     }
@@ -2996,7 +2623,7 @@ impl glib::HasParamSpec for PermissionState {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -3052,21 +2679,6 @@ pub enum PolicyDecisionType {
     __Unknown(i32),
 }
 
-impl fmt::Display for PolicyDecisionType {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "PolicyDecisionType::{}",
-            match *self {
-                Self::NavigationAction => "NavigationAction",
-                Self::NewWindowAction => "NewWindowAction",
-                Self::Response => "Response",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for PolicyDecisionType {
     type GlibType = ffi::WebKitPolicyDecisionType;
@@ -3099,6 +2711,7 @@ impl FromGlib<ffi::WebKitPolicyDecisionType> for PolicyDecisionType {
 
 impl StaticType for PolicyDecisionType {
     #[inline]
+    #[doc(alias = "webkit_policy_decision_type_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_policy_decision_type_get_type()) }
     }
@@ -3110,7 +2723,7 @@ impl glib::HasParamSpec for PolicyDecisionType {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -3178,23 +2791,6 @@ impl PolicyError {
     }
 }
 
-impl fmt::Display for PolicyError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "PolicyError::{}",
-            match *self {
-                Self::Failed => "Failed",
-                Self::CannotShowMimeType => "CannotShowMimeType",
-                Self::CannotShowUri => "CannotShowUri",
-                Self::FrameLoadInterruptedByPolicyChange => "FrameLoadInterruptedByPolicyChange",
-                Self::CannotUseRestrictedPort => "CannotUseRestrictedPort",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for PolicyError {
     type GlibType = ffi::WebKitPolicyError;
@@ -3238,11 +2834,11 @@ impl glib::error::ErrorDomain for PolicyError {
     fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
-        static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
-            once_cell::sync::Lazy::new(|| unsafe {
-                glib::ffi::g_quark_from_static_string(b"WebKitPolicyError\0".as_ptr() as *const _)
-            });
-        unsafe { from_glib(*QUARK) }
+        static QUARK: ::std::sync::OnceLock<glib::ffi::GQuark> = ::std::sync::OnceLock::new();
+        let quark = *QUARK.get_or_init(|| unsafe {
+            glib::ffi::g_quark_from_static_string(b"WebKitPolicyError\0".as_ptr() as *const _)
+        });
+        unsafe { from_glib(quark) }
     }
 
     #[inline]
@@ -3263,6 +2859,7 @@ impl glib::error::ErrorDomain for PolicyError {
 
 impl StaticType for PolicyError {
     #[inline]
+    #[doc(alias = "webkit_policy_error_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_policy_error_get_type()) }
     }
@@ -3274,7 +2871,7 @@ impl glib::HasParamSpec for PolicyError {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -3338,21 +2935,6 @@ impl PrintError {
     }
 }
 
-impl fmt::Display for PrintError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "PrintError::{}",
-            match *self {
-                Self::General => "General",
-                Self::PrinterNotFound => "PrinterNotFound",
-                Self::InvalidPageRange => "InvalidPageRange",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for PrintError {
     type GlibType = ffi::WebKitPrintError;
@@ -3388,11 +2970,11 @@ impl glib::error::ErrorDomain for PrintError {
     fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
-        static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
-            once_cell::sync::Lazy::new(|| unsafe {
-                glib::ffi::g_quark_from_static_string(b"WebKitPrintError\0".as_ptr() as *const _)
-            });
-        unsafe { from_glib(*QUARK) }
+        static QUARK: ::std::sync::OnceLock<glib::ffi::GQuark> = ::std::sync::OnceLock::new();
+        let quark = *QUARK.get_or_init(|| unsafe {
+            glib::ffi::g_quark_from_static_string(b"WebKitPrintError\0".as_ptr() as *const _)
+        });
+        unsafe { from_glib(quark) }
     }
 
     #[inline]
@@ -3412,6 +2994,7 @@ impl glib::error::ErrorDomain for PrintError {
 
 impl StaticType for PrintError {
     #[inline]
+    #[doc(alias = "webkit_print_error_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_print_error_get_type()) }
     }
@@ -3423,7 +3006,7 @@ impl glib::HasParamSpec for PrintError {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -3477,20 +3060,6 @@ pub enum PrintOperationResponse {
     __Unknown(i32),
 }
 
-impl fmt::Display for PrintOperationResponse {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "PrintOperationResponse::{}",
-            match *self {
-                Self::Print => "Print",
-                Self::Cancel => "Cancel",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for PrintOperationResponse {
     type GlibType = ffi::WebKitPrintOperationResponse;
@@ -3521,6 +3090,7 @@ impl FromGlib<ffi::WebKitPrintOperationResponse> for PrintOperationResponse {
 
 impl StaticType for PrintOperationResponse {
     #[inline]
+    #[doc(alias = "webkit_print_operation_response_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_print_operation_response_get_type()) }
     }
@@ -3532,7 +3102,7 @@ impl glib::HasParamSpec for PrintOperationResponse {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -3584,19 +3154,6 @@ pub enum SaveMode {
     __Unknown(i32),
 }
 
-impl fmt::Display for SaveMode {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "SaveMode::{}",
-            match *self {
-                Self::Mhtml => "Mhtml",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for SaveMode {
     type GlibType = ffi::WebKitSaveMode;
@@ -3625,6 +3182,7 @@ impl FromGlib<ffi::WebKitSaveMode> for SaveMode {
 
 impl StaticType for SaveMode {
     #[inline]
+    #[doc(alias = "webkit_save_mode_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_save_mode_get_type()) }
     }
@@ -3636,7 +3194,7 @@ impl glib::HasParamSpec for SaveMode {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -3694,22 +3252,6 @@ pub enum ScriptDialogType {
     __Unknown(i32),
 }
 
-impl fmt::Display for ScriptDialogType {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "ScriptDialogType::{}",
-            match *self {
-                Self::Alert => "Alert",
-                Self::Confirm => "Confirm",
-                Self::Prompt => "Prompt",
-                Self::BeforeUnloadConfirm => "BeforeUnloadConfirm",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for ScriptDialogType {
     type GlibType = ffi::WebKitScriptDialogType;
@@ -3744,6 +3286,7 @@ impl FromGlib<ffi::WebKitScriptDialogType> for ScriptDialogType {
 
 impl StaticType for ScriptDialogType {
     #[inline]
+    #[doc(alias = "webkit_script_dialog_type_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_script_dialog_type_get_type()) }
     }
@@ -3755,7 +3298,7 @@ impl glib::HasParamSpec for ScriptDialogType {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -3815,19 +3358,6 @@ impl SnapshotError {
     }
 }
 
-impl fmt::Display for SnapshotError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "SnapshotError::{}",
-            match *self {
-                Self::Create => "Create",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for SnapshotError {
     type GlibType = ffi::WebKitSnapshotError;
@@ -3859,11 +3389,11 @@ impl glib::error::ErrorDomain for SnapshotError {
     fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
-        static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
-            once_cell::sync::Lazy::new(|| unsafe {
-                glib::ffi::g_quark_from_static_string(b"WebKitSnapshotError\0".as_ptr() as *const _)
-            });
-        unsafe { from_glib(*QUARK) }
+        static QUARK: ::std::sync::OnceLock<glib::ffi::GQuark> = ::std::sync::OnceLock::new();
+        let quark = *QUARK.get_or_init(|| unsafe {
+            glib::ffi::g_quark_from_static_string(b"WebKitSnapshotError\0".as_ptr() as *const _)
+        });
+        unsafe { from_glib(quark) }
     }
 
     #[inline]
@@ -3883,6 +3413,7 @@ impl glib::error::ErrorDomain for SnapshotError {
 
 impl StaticType for SnapshotError {
     #[inline]
+    #[doc(alias = "webkit_snapshot_error_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_snapshot_error_get_type()) }
     }
@@ -3894,7 +3425,7 @@ impl glib::HasParamSpec for SnapshotError {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -3948,20 +3479,6 @@ pub enum SnapshotRegion {
     __Unknown(i32),
 }
 
-impl fmt::Display for SnapshotRegion {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "SnapshotRegion::{}",
-            match *self {
-                Self::Visible => "Visible",
-                Self::FullDocument => "FullDocument",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for SnapshotRegion {
     type GlibType = ffi::WebKitSnapshotRegion;
@@ -3992,6 +3509,7 @@ impl FromGlib<ffi::WebKitSnapshotRegion> for SnapshotRegion {
 
 impl StaticType for SnapshotRegion {
     #[inline]
+    #[doc(alias = "webkit_snapshot_region_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_snapshot_region_get_type()) }
     }
@@ -4003,7 +3521,7 @@ impl glib::HasParamSpec for SnapshotRegion {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -4057,20 +3575,6 @@ pub enum TLSErrorsPolicy {
     __Unknown(i32),
 }
 
-impl fmt::Display for TLSErrorsPolicy {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "TLSErrorsPolicy::{}",
-            match *self {
-                Self::Ignore => "Ignore",
-                Self::Fail => "Fail",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for TLSErrorsPolicy {
     type GlibType = ffi::WebKitTLSErrorsPolicy;
@@ -4101,6 +3605,7 @@ impl FromGlib<ffi::WebKitTLSErrorsPolicy> for TLSErrorsPolicy {
 
 impl StaticType for TLSErrorsPolicy {
     #[inline]
+    #[doc(alias = "webkit_tls_errors_policy_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_tls_errors_policy_get_type()) }
     }
@@ -4112,7 +3617,7 @@ impl glib::HasParamSpec for TLSErrorsPolicy {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -4174,20 +3679,6 @@ impl UserContentFilterError {
     }
 }
 
-impl fmt::Display for UserContentFilterError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "UserContentFilterError::{}",
-            match *self {
-                Self::InvalidSource => "InvalidSource",
-                Self::NotFound => "NotFound",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for UserContentFilterError {
     type GlibType = ffi::WebKitUserContentFilterError;
@@ -4221,13 +3712,13 @@ impl glib::error::ErrorDomain for UserContentFilterError {
     fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
-        static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
-            once_cell::sync::Lazy::new(|| unsafe {
-                glib::ffi::g_quark_from_static_string(
-                    b"WebKitUserContentFilterError\0".as_ptr() as *const _
-                )
-            });
-        unsafe { from_glib(*QUARK) }
+        static QUARK: ::std::sync::OnceLock<glib::ffi::GQuark> = ::std::sync::OnceLock::new();
+        let quark = *QUARK.get_or_init(|| unsafe {
+            glib::ffi::g_quark_from_static_string(
+                b"WebKitUserContentFilterError\0".as_ptr() as *const _
+            )
+        });
+        unsafe { from_glib(quark) }
     }
 
     #[inline]
@@ -4247,6 +3738,7 @@ impl glib::error::ErrorDomain for UserContentFilterError {
 
 impl StaticType for UserContentFilterError {
     #[inline]
+    #[doc(alias = "webkit_user_content_filter_error_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_user_content_filter_error_get_type()) }
     }
@@ -4258,7 +3750,7 @@ impl glib::HasParamSpec for UserContentFilterError {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -4312,20 +3804,6 @@ pub enum UserContentInjectedFrames {
     __Unknown(i32),
 }
 
-impl fmt::Display for UserContentInjectedFrames {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "UserContentInjectedFrames::{}",
-            match *self {
-                Self::AllFrames => "AllFrames",
-                Self::TopFrame => "TopFrame",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for UserContentInjectedFrames {
     type GlibType = ffi::WebKitUserContentInjectedFrames;
@@ -4356,6 +3834,7 @@ impl FromGlib<ffi::WebKitUserContentInjectedFrames> for UserContentInjectedFrame
 
 impl StaticType for UserContentInjectedFrames {
     #[inline]
+    #[doc(alias = "webkit_user_content_injected_frames_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_user_content_injected_frames_get_type()) }
     }
@@ -4367,7 +3846,7 @@ impl glib::HasParamSpec for UserContentInjectedFrames {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -4427,19 +3906,6 @@ impl UserMessageError {
     }
 }
 
-impl fmt::Display for UserMessageError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "UserMessageError::{}",
-            match *self {
-                Self::Message => "Message",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for UserMessageError {
     type GlibType = ffi::WebKitUserMessageError;
@@ -4471,13 +3937,11 @@ impl glib::error::ErrorDomain for UserMessageError {
     fn domain() -> glib::Quark {
         skip_assert_initialized!();
 
-        static QUARK: once_cell::sync::Lazy<glib::ffi::GQuark> =
-            once_cell::sync::Lazy::new(|| unsafe {
-                glib::ffi::g_quark_from_static_string(
-                    b"WebKitUserMessageError\0".as_ptr() as *const _
-                )
-            });
-        unsafe { from_glib(*QUARK) }
+        static QUARK: ::std::sync::OnceLock<glib::ffi::GQuark> = ::std::sync::OnceLock::new();
+        let quark = *QUARK.get_or_init(|| unsafe {
+            glib::ffi::g_quark_from_static_string(b"WebKitUserMessageError\0".as_ptr() as *const _)
+        });
+        unsafe { from_glib(quark) }
     }
 
     #[inline]
@@ -4497,6 +3961,7 @@ impl glib::error::ErrorDomain for UserMessageError {
 
 impl StaticType for UserMessageError {
     #[inline]
+    #[doc(alias = "webkit_user_message_error_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_user_message_error_get_type()) }
     }
@@ -4508,7 +3973,7 @@ impl glib::HasParamSpec for UserMessageError {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -4562,20 +4027,6 @@ pub enum UserScriptInjectionTime {
     __Unknown(i32),
 }
 
-impl fmt::Display for UserScriptInjectionTime {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "UserScriptInjectionTime::{}",
-            match *self {
-                Self::Start => "Start",
-                Self::End => "End",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for UserScriptInjectionTime {
     type GlibType = ffi::WebKitUserScriptInjectionTime;
@@ -4606,6 +4057,7 @@ impl FromGlib<ffi::WebKitUserScriptInjectionTime> for UserScriptInjectionTime {
 
 impl StaticType for UserScriptInjectionTime {
     #[inline]
+    #[doc(alias = "webkit_user_script_injection_time_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_user_script_injection_time_get_type()) }
     }
@@ -4617,7 +4069,7 @@ impl glib::HasParamSpec for UserScriptInjectionTime {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -4671,20 +4123,6 @@ pub enum UserStyleLevel {
     __Unknown(i32),
 }
 
-impl fmt::Display for UserStyleLevel {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "UserStyleLevel::{}",
-            match *self {
-                Self::User => "User",
-                Self::Author => "Author",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for UserStyleLevel {
     type GlibType = ffi::WebKitUserStyleLevel;
@@ -4715,6 +4153,7 @@ impl FromGlib<ffi::WebKitUserStyleLevel> for UserStyleLevel {
 
 impl StaticType for UserStyleLevel {
     #[inline]
+    #[doc(alias = "webkit_user_style_level_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_user_style_level_get_type()) }
     }
@@ -4726,7 +4165,7 @@ impl glib::HasParamSpec for UserStyleLevel {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -4782,21 +4221,6 @@ pub enum WebExtensionMode {
     __Unknown(i32),
 }
 
-impl fmt::Display for WebExtensionMode {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "WebExtensionMode::{}",
-            match *self {
-                Self::None => "None",
-                Self::Manifestv2 => "Manifestv2",
-                Self::Manifestv3 => "Manifestv3",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for WebExtensionMode {
     type GlibType = ffi::WebKitWebExtensionMode;
@@ -4829,6 +4253,7 @@ impl FromGlib<ffi::WebKitWebExtensionMode> for WebExtensionMode {
 
 impl StaticType for WebExtensionMode {
     #[inline]
+    #[doc(alias = "webkit_web_extension_mode_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_web_extension_mode_get_type()) }
     }
@@ -4840,7 +4265,7 @@ impl glib::HasParamSpec for WebExtensionMode {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 
@@ -4896,21 +4321,6 @@ pub enum WebProcessTerminationReason {
     __Unknown(i32),
 }
 
-impl fmt::Display for WebProcessTerminationReason {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "WebProcessTerminationReason::{}",
-            match *self {
-                Self::Crashed => "Crashed",
-                Self::ExceededMemoryLimit => "ExceededMemoryLimit",
-                Self::TerminatedByApi => "TerminatedByApi",
-                _ => "Unknown",
-            }
-        )
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for WebProcessTerminationReason {
     type GlibType = ffi::WebKitWebProcessTerminationReason;
@@ -4943,6 +4353,7 @@ impl FromGlib<ffi::WebKitWebProcessTerminationReason> for WebProcessTerminationR
 
 impl StaticType for WebProcessTerminationReason {
     #[inline]
+    #[doc(alias = "webkit_web_process_termination_reason_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_web_process_termination_reason_get_type()) }
     }
@@ -4954,7 +4365,7 @@ impl glib::HasParamSpec for WebProcessTerminationReason {
     type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name, default_value| Self::ParamSpec::builder_with_default(name, default_value)
+        Self::ParamSpec::builder_with_default
     }
 }
 

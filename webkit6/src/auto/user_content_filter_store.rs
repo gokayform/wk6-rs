@@ -5,7 +5,7 @@
 
 use crate::UserContentFilter;
 use glib::{prelude::*, translate::*};
-use std::{boxed::Box as Box_, fmt, pin::Pin, ptr};
+use std::{boxed::Box as Box_, pin::Pin};
 
 glib::wrapper! {
     #[doc(alias = "WebKitUserContentFilterStore")]
@@ -63,7 +63,7 @@ impl UserContentFilterStore {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_user_content_filter_store_load_finish(
                 _source_object as *mut _,
                 res,
@@ -128,7 +128,7 @@ impl UserContentFilterStore {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let _ = ffi::webkit_user_content_filter_store_remove_finish(
                 _source_object as *mut _,
                 res,
@@ -195,7 +195,7 @@ impl UserContentFilterStore {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_user_content_filter_store_save_finish(
                 _source_object as *mut _,
                 res,
@@ -266,7 +266,7 @@ impl UserContentFilterStore {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_user_content_filter_store_save_from_file_finish(
                 _source_object as *mut _,
                 res,
@@ -308,11 +308,5 @@ impl UserContentFilterStore {
                 send.resolve(res);
             });
         }))
-    }
-}
-
-impl fmt::Display for UserContentFilterStore {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("UserContentFilterStore")
     }
 }

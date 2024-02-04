@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::{bitflags::bitflags, prelude::*, translate::*};
-use std::fmt;
 
 bitflags! {
     #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
@@ -20,12 +19,6 @@ bitflags! {
         const UNDERLINE = ffi::WEBKIT_EDITOR_TYPING_ATTRIBUTE_UNDERLINE as _;
         #[doc(alias = "WEBKIT_EDITOR_TYPING_ATTRIBUTE_STRIKETHROUGH")]
         const STRIKETHROUGH = ffi::WEBKIT_EDITOR_TYPING_ATTRIBUTE_STRIKETHROUGH as _;
-    }
-}
-
-impl fmt::Display for EditorTypingAttributes {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        <Self as fmt::Debug>::fmt(self, f)
     }
 }
 
@@ -50,6 +43,7 @@ impl FromGlib<ffi::WebKitEditorTypingAttributes> for EditorTypingAttributes {
 
 impl StaticType for EditorTypingAttributes {
     #[inline]
+    #[doc(alias = "webkit_editor_typing_attributes_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_editor_typing_attributes_get_type()) }
     }
@@ -61,7 +55,7 @@ impl glib::HasParamSpec for EditorTypingAttributes {
     type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name| Self::ParamSpec::builder(name)
+        Self::ParamSpec::builder
     }
 }
 
@@ -122,12 +116,6 @@ bitflags! {
     }
 }
 
-impl fmt::Display for FindOptions {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        <Self as fmt::Debug>::fmt(self, f)
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for FindOptions {
     type GlibType = ffi::WebKitFindOptions;
@@ -149,6 +137,7 @@ impl FromGlib<ffi::WebKitFindOptions> for FindOptions {
 
 impl StaticType for FindOptions {
     #[inline]
+    #[doc(alias = "webkit_find_options_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_find_options_get_type()) }
     }
@@ -160,7 +149,7 @@ impl glib::HasParamSpec for FindOptions {
     type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name| Self::ParamSpec::builder(name)
+        Self::ParamSpec::builder
     }
 }
 
@@ -223,12 +212,6 @@ bitflags! {
     }
 }
 
-impl fmt::Display for HitTestResultContext {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        <Self as fmt::Debug>::fmt(self, f)
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for HitTestResultContext {
     type GlibType = ffi::WebKitHitTestResultContext;
@@ -250,6 +233,7 @@ impl FromGlib<ffi::WebKitHitTestResultContext> for HitTestResultContext {
 
 impl StaticType for HitTestResultContext {
     #[inline]
+    #[doc(alias = "webkit_hit_test_result_context_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_hit_test_result_context_get_type()) }
     }
@@ -261,7 +245,7 @@ impl glib::HasParamSpec for HitTestResultContext {
     type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name| Self::ParamSpec::builder(name)
+        Self::ParamSpec::builder
     }
 }
 
@@ -324,12 +308,6 @@ bitflags! {
     }
 }
 
-impl fmt::Display for InputHints {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        <Self as fmt::Debug>::fmt(self, f)
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for InputHints {
     type GlibType = ffi::WebKitInputHints;
@@ -351,6 +329,7 @@ impl FromGlib<ffi::WebKitInputHints> for InputHints {
 
 impl StaticType for InputHints {
     #[inline]
+    #[doc(alias = "webkit_input_hints_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_input_hints_get_type()) }
     }
@@ -362,7 +341,7 @@ impl glib::HasParamSpec for InputHints {
     type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name| Self::ParamSpec::builder(name)
+        Self::ParamSpec::builder
     }
 }
 
@@ -417,12 +396,6 @@ bitflags! {
     }
 }
 
-impl fmt::Display for SnapshotOptions {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        <Self as fmt::Debug>::fmt(self, f)
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for SnapshotOptions {
     type GlibType = ffi::WebKitSnapshotOptions;
@@ -444,6 +417,7 @@ impl FromGlib<ffi::WebKitSnapshotOptions> for SnapshotOptions {
 
 impl StaticType for SnapshotOptions {
     #[inline]
+    #[doc(alias = "webkit_snapshot_options_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_snapshot_options_get_type()) }
     }
@@ -455,7 +429,7 @@ impl glib::HasParamSpec for SnapshotOptions {
     type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name| Self::ParamSpec::builder(name)
+        Self::ParamSpec::builder
     }
 }
 
@@ -530,12 +504,6 @@ bitflags! {
     }
 }
 
-impl fmt::Display for WebsiteDataTypes {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        <Self as fmt::Debug>::fmt(self, f)
-    }
-}
-
 #[doc(hidden)]
 impl IntoGlib for WebsiteDataTypes {
     type GlibType = ffi::WebKitWebsiteDataTypes;
@@ -557,6 +525,7 @@ impl FromGlib<ffi::WebKitWebsiteDataTypes> for WebsiteDataTypes {
 
 impl StaticType for WebsiteDataTypes {
     #[inline]
+    #[doc(alias = "webkit_website_data_types_get_type")]
     fn static_type() -> glib::Type {
         unsafe { from_glib(ffi::webkit_website_data_types_get_type()) }
     }
@@ -568,7 +537,7 @@ impl glib::HasParamSpec for WebsiteDataTypes {
     type BuilderFn = fn(&str) -> glib::ParamSpecFlagsBuilder<Self>;
 
     fn param_spec_builder() -> Self::BuilderFn {
-        |name| Self::ParamSpec::builder(name)
+        Self::ParamSpec::builder
     }
 }
 

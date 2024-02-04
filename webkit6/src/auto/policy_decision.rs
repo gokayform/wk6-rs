@@ -5,7 +5,6 @@
 
 use crate::WebsitePolicies;
 use glib::{prelude::*, translate::*};
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitPolicyDecision")]
@@ -60,9 +59,3 @@ pub trait PolicyDecisionExt: IsA<PolicyDecision> + sealed::Sealed + 'static {
 }
 
 impl<O: IsA<PolicyDecision>> PolicyDecisionExt for O {}
-
-impl fmt::Display for PolicyDecision {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("PolicyDecision")
-    }
-}

@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::{prelude::*, translate::*};
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitURISchemeResponse")]
@@ -56,11 +55,5 @@ impl URISchemeResponse {
                 reason_phrase.to_glib_none().0,
             );
         }
-    }
-}
-
-impl fmt::Display for URISchemeResponse {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("URISchemeResponse")
     }
 }

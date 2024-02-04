@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::translate::*;
-use std::{mem, ptr};
 
 #[doc(alias = "jsc_get_major_version")]
 #[doc(alias = "get_major_version")]
@@ -31,7 +30,7 @@ pub fn minor_version() -> u32 {
 pub fn options_get_boolean(option: &str) -> Option<bool> {
     assert_initialized_main_thread!();
     unsafe {
-        let mut value = mem::MaybeUninit::uninit();
+        let mut value = std::mem::MaybeUninit::uninit();
         let ret = from_glib(ffi::jsc_options_get_boolean(
             option.to_glib_none().0,
             value.as_mut_ptr(),
@@ -48,7 +47,7 @@ pub fn options_get_boolean(option: &str) -> Option<bool> {
 pub fn options_get_double(option: &str) -> Option<f64> {
     assert_initialized_main_thread!();
     unsafe {
-        let mut value = mem::MaybeUninit::uninit();
+        let mut value = std::mem::MaybeUninit::uninit();
         let ret = from_glib(ffi::jsc_options_get_double(
             option.to_glib_none().0,
             value.as_mut_ptr(),
@@ -65,7 +64,7 @@ pub fn options_get_double(option: &str) -> Option<f64> {
 pub fn options_get_int(option: &str) -> Option<i32> {
     assert_initialized_main_thread!();
     unsafe {
-        let mut value = mem::MaybeUninit::uninit();
+        let mut value = std::mem::MaybeUninit::uninit();
         let ret = from_glib(ffi::jsc_options_get_int(
             option.to_glib_none().0,
             value.as_mut_ptr(),
@@ -87,7 +86,7 @@ pub fn options_get_int(option: &str) -> Option<i32> {
 pub fn options_get_range_string(option: &str) -> Option<glib::GString> {
     assert_initialized_main_thread!();
     unsafe {
-        let mut value = ptr::null_mut();
+        let mut value = std::ptr::null_mut();
         let ret = from_glib(ffi::jsc_options_get_range_string(
             option.to_glib_none().0,
             &mut value,
@@ -104,7 +103,7 @@ pub fn options_get_range_string(option: &str) -> Option<glib::GString> {
 pub fn options_get_size(option: &str) -> Option<usize> {
     assert_initialized_main_thread!();
     unsafe {
-        let mut value = mem::MaybeUninit::uninit();
+        let mut value = std::mem::MaybeUninit::uninit();
         let ret = from_glib(ffi::jsc_options_get_size(
             option.to_glib_none().0,
             value.as_mut_ptr(),
@@ -121,7 +120,7 @@ pub fn options_get_size(option: &str) -> Option<usize> {
 pub fn options_get_string(option: &str) -> Option<glib::GString> {
     assert_initialized_main_thread!();
     unsafe {
-        let mut value = ptr::null_mut();
+        let mut value = std::ptr::null_mut();
         let ret = from_glib(ffi::jsc_options_get_string(
             option.to_glib_none().0,
             &mut value,
@@ -138,7 +137,7 @@ pub fn options_get_string(option: &str) -> Option<glib::GString> {
 pub fn options_get_uint(option: &str) -> Option<u32> {
     assert_initialized_main_thread!();
     unsafe {
-        let mut value = mem::MaybeUninit::uninit();
+        let mut value = std::mem::MaybeUninit::uninit();
         let ret = from_glib(ffi::jsc_options_get_uint(
             option.to_glib_none().0,
             value.as_mut_ptr(),

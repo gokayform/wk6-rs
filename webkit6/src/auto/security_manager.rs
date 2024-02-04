@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use glib::translate::*;
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitSecurityManager")]
@@ -134,11 +133,5 @@ impl SecurityManager {
                 scheme.to_glib_none().0,
             ))
         }
-    }
-}
-
-impl fmt::Display for SecurityManager {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("SecurityManager")
     }
 }

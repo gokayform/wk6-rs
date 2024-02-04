@@ -5,7 +5,6 @@
 
 use crate::{Context, TypedArrayType, ValuePropertyFlags};
 use glib::translate::*;
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "JSCValue")]
@@ -459,9 +458,9 @@ impl Value {
     }
 }
 
-impl fmt::Display for Value {
+impl std::fmt::Display for Value {
     #[inline]
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         f.write_str(&self.to_str())
     }
 }

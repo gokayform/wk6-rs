@@ -9,7 +9,7 @@ use glib::{
     signal::{connect_raw, SignalHandlerId},
     translate::*,
 };
-use std::{boxed::Box as Box_, fmt, mem::transmute, pin::Pin, ptr};
+use std::{boxed::Box as Box_, pin::Pin};
 
 glib::wrapper! {
     #[doc(alias = "WebKitCookieManager")]
@@ -45,7 +45,7 @@ impl CookieManager {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let _ = ffi::webkit_cookie_manager_add_cookie_finish(
                 _source_object as *mut _,
                 res,
@@ -111,7 +111,7 @@ impl CookieManager {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let _ = ffi::webkit_cookie_manager_delete_cookie_finish(
                 _source_object as *mut _,
                 res,
@@ -177,7 +177,7 @@ impl CookieManager {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_cookie_manager_get_accept_policy_finish(
                 _source_object as *mut _,
                 res,
@@ -244,7 +244,7 @@ impl CookieManager {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_cookie_manager_get_all_cookies_finish(
                 _source_object as *mut _,
                 res,
@@ -311,7 +311,7 @@ impl CookieManager {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_cookie_manager_get_cookies_finish(
                 _source_object as *mut _,
                 res,
@@ -384,17 +384,11 @@ impl CookieManager {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"changed\0".as_ptr() as *const _,
-                Some(transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
                     changed_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
             )
         }
-    }
-}
-
-impl fmt::Display for CookieManager {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("CookieManager")
     }
 }

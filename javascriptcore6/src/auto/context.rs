@@ -5,7 +5,7 @@
 
 use crate::{CheckSyntaxMode, CheckSyntaxResult, Exception, Value, VirtualMachine};
 use glib::translate::*;
-use std::{boxed::Box as Box_, fmt, ptr};
+use std::boxed::Box as Box_;
 
 glib::wrapper! {
     #[doc(alias = "JSCContext")]
@@ -44,7 +44,7 @@ impl Context {
     ) -> (CheckSyntaxResult, Exception) {
         let length = code.len() as _;
         unsafe {
-            let mut exception = ptr::null_mut();
+            let mut exception = std::ptr::null_mut();
             let ret = from_glib(ffi::jsc_context_check_syntax(
                 self.to_glib_none().0,
                 code.to_glib_none().0,
@@ -147,14 +147,14 @@ impl Context {
         ) {
             let context = from_glib_borrow(context);
             let exception = from_glib_borrow(exception);
-            let callback: &P = &*(user_data as *mut _);
+            let callback = &*(user_data as *mut P);
             (*callback)(&context, &exception)
         }
         let handler = Some(handler_func::<P> as _);
         unsafe extern "C" fn destroy_notify_func<P: Fn(&Context, &Exception) + 'static>(
             data: glib::ffi::gpointer,
         ) {
-            let _callback: Box_<P> = Box_::from_raw(data as *mut _);
+            let _callback = Box_::from_raw(data as *mut P);
         }
         let destroy_call3 = Some(destroy_notify_func::<P> as _);
         let super_callback0: Box_<P> = handler_data;
@@ -230,11 +230,5 @@ impl Context {
 impl Default for Context {
     fn default() -> Self {
         Self::new()
-    }
-}
-
-impl fmt::Display for Context {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("Context")
     }
 }

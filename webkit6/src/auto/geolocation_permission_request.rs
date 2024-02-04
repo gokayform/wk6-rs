@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use crate::PermissionRequest;
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitGeolocationPermissionRequest")]
@@ -16,9 +15,3 @@ glib::wrapper! {
 }
 
 impl GeolocationPermissionRequest {}
-
-impl fmt::Display for GeolocationPermissionRequest {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("GeolocationPermissionRequest")
-    }
-}

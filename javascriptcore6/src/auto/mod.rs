@@ -30,7 +30,7 @@ pub use self::enums::TypedArrayType;
 mod flags;
 pub use self::flags::ValuePropertyFlags;
 
-pub mod functions;
+pub(crate) mod functions;
 
 mod constants;
 pub use self::constants::OPTIONS_USE_DFG;

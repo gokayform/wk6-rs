@@ -49,7 +49,6 @@ pub use self::enums::UserMessageError;
 mod flags;
 pub use self::flags::HitTestResultContext;
 
-#[doc(hidden)]
-pub mod traits {
+pub(crate) mod traits {
     pub use super::web_form_manager::WebFormManagerExt;
 }

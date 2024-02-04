@@ -4,7 +4,6 @@
 // DO NOT EDIT
 
 use crate::PermissionRequest;
-use std::fmt;
 
 glib::wrapper! {
     #[doc(alias = "WebKitMediaKeySystemPermissionRequest")]
@@ -16,9 +15,3 @@ glib::wrapper! {
 }
 
 impl MediaKeySystemPermissionRequest {}
-
-impl fmt::Display for MediaKeySystemPermissionRequest {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("MediaKeySystemPermissionRequest")
-    }
-}

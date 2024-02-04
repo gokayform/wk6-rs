@@ -5,7 +5,7 @@
 
 use crate::{FaviconDatabase, ITPThirdParty, WebsiteData, WebsiteDataTypes};
 use glib::{prelude::*, translate::*};
-use std::{boxed::Box as Box_, fmt, pin::Pin, ptr};
+use std::{boxed::Box as Box_, pin::Pin};
 
 glib::wrapper! {
     #[doc(alias = "WebKitWebsiteDataManager")]
@@ -51,7 +51,7 @@ impl WebsiteDataManager {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_website_data_manager_fetch_finish(
                 _source_object as *mut _,
                 res,
@@ -157,7 +157,7 @@ impl WebsiteDataManager {
             res: *mut gio::ffi::GAsyncResult,
             user_data: glib::ffi::gpointer,
         ) {
-            let mut error = ptr::null_mut();
+            let mut error = std::ptr::null_mut();
             let ret = ffi::webkit_website_data_manager_get_itp_summary_finish(
                 _source_object as *mut _,
                 res,
@@ -279,11 +279,5 @@ impl WebsiteDataManagerBuilder {
     #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
     pub fn build(self) -> WebsiteDataManager {
         self.builder.build()
-    }
-}
-
-impl fmt::Display for WebsiteDataManager {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        f.write_str("WebsiteDataManager")
     }
 }
