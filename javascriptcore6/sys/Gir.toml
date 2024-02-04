@@ -12,3 +12,8 @@ external_libraries = [
     "GObject",
 ]
 
+ignore = [
+    "JavaScriptCore.MAJOR_VERSION",
+    "JavaScriptCore.MICRO_VERSION",
+    "JavaScriptCore.MINOR_VERSION",
+]
