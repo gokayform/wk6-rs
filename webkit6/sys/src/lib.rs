@@ -12,13 +12,13 @@
 )]
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
-use gdk4_sys as gdk;
+use gdk_sys as gdk;
 use gio_sys as gio;
 use glib_sys as glib;
 use gobject_sys as gobject;
-use gtk4_sys as gtk;
-use javascriptcore6_rs_sys as javascriptcore;
-use soup3_rs_sys as soup;
+use gtk_sys as gtk;
+use javascriptcore_sys as javascriptcore;
+use soup_sys as soup;
 
 #[allow(unused_imports)]
 use libc::{

@@ -11,3 +11,32 @@ members = [
 ]
 
 exclude = ["gir"]
+
+[workspace.package]
+version = "0.2.0"
+edition = "2021"
+authors = ["Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>"]
+categories = ["api-bindings", "gui"]
+repository = "https://gitlab.gnome.org/World/Rust/webkit6-rs"
+license = "MIT"
+keywords = ["webkit", "gtk-rs", "gnome", "GUI"]
+exclude = [
+    "gir-files/*",
+    "webkit-gir-files",
+]
+
+[workspace.dependencies]
+gtk-sys = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gtk4-sys", branch = "master", version = "0.9"}
+gtk = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gtk4", branch = "master", version = "0.9"}
+gdk-sys = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gdk4-sys", branch = "master", version = "0.9"}
+gdk = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gdk4", branch = "master", version = "0.9"}
+gobject-sys = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.20"}
+glib-sys = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.20"}
+glib = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.20"}
+gio-sys = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.20"}
+gio = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.20"}
+soup-sys = {git = "https://gitlab.gnome.org/World/Rust/soup3-rs", package = "soup3-sys", branch = "main", version = "0.7"}
+soup = {git = "https://gitlab.gnome.org/World/Rust/soup3-rs", package = "soup3", branch = "main", version = "0.7"}
+javascriptcore-sys = { package = "javascriptcore6-sys", path = "javascriptcore6/sys", version = "0.2" }
+javascriptcore = { package = "javascriptcore6", path = "javascriptcore6", version = "0.2" }
+

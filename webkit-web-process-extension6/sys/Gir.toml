@@ -14,9 +14,7 @@ external_libraries = [
     "GLib",
     "GObject",
     "Gio",
+    "Gdk",
+    "Soup",
+    "JavaScriptCore",
 ]
-
-[external_libraries]
-javascriptcore6_rs = "JavaScriptCore"
-gdk4 = "Gdk"
-soup3 = "Soup"

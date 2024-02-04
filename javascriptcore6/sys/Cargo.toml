@@ -1,16 +1,32 @@
 [package]
 name = "javascriptcore6-sys"
-version = "0.2.0"
-edition = "2021"
 build = "build.rs"
-authors = ["Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>"]
-categories = ["api-bindings", "gui"]
 description = "FFI bindings for JavaScriptCore 6"
-repository = "https://gitlab.gnome.org/World/Rust/webkit6-rs"
-license = "MIT"
 documentation = "https://world.pages.gitlab.gnome.org/Rust/webkit6-rs/stable/latest/docs/javascriptcore6_sys"
-keywords = ["webkit", "gtk-rs", "gnome", "GUI"]
-exclude = ["gir-files/*", "webkit-gir-files"]
+
+[package.version]
+workspace = true
+
+[package.edition]
+workspace = true
+
+[package.authors]
+workspace = true
+
+[package.categories]
+workspace = true
+
+[package.repository]
+workspace = true
+
+[package.license]
+workspace = true
+
+[package.keywords]
+workspace = true
+
+[package.exclude]
+workspace = true
 
 [package.metadata.system-deps.javascriptcoregtk_6_0]
 name = "javascriptcoregtk-6.0"
@@ -25,14 +41,10 @@ rustdoc-args = ["--cfg", "docsrs", "--generate-link-to-definition"]
 libc = "0.2"
 
 [dependencies.glib-sys]
-git = "https://github.com/gtk-rs/gtk-rs-core"
-version = "0.20"
-branch = "master"
+workspace = true
 
 [dependencies.gobject-sys]
-git = "https://github.com/gtk-rs/gtk-rs-core"
-version = "0.20"
-branch = "master"
+workspace = true
 
 [build-dependencies]
 system-deps = "6"

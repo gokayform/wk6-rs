@@ -14,6 +14,10 @@ external_libraries = [
     "GLib",
     "GObject",
     "Gio",
+    "Gdk",
+    "Gtk",
+    "Soup",
+    "JavaScriptCore",
 ]
 
 ignore = [
@@ -21,9 +25,3 @@ ignore = [
     "WebKit.MAJOR_VERSION",
     "WebKit.MINOR_VERSION"
 ]
-
-[external_libraries]
-javascriptcore6_rs = "JavaScriptCore"
-soup3_rs = "Soup"
-gdk4 = "Gdk"
-gtk4 = "Gtk"
