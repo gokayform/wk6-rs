@@ -19,5 +19,5 @@ rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
 libc = "^0.2"
-ffi = { package = "javascriptcore6-sys", path = "sys", version = "0.2" }
+ffi = { package = "javascriptcore6-sys", path = "sys", version = "0.4" }
 glib.workspace = true
