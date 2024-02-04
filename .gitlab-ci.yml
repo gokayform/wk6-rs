@@ -4,8 +4,7 @@ variables:
   # latest release must be at the top
   # (only relevant on main branch)
   RELEASES: |
-    v0.2=0.2
-    v0.1=0.1
+    v0.3=0.3
 
 image: "fedora:latest"
 
