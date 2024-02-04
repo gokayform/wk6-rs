@@ -317,6 +317,8 @@ impl Settings {
         }
     }
 
+    #[cfg_attr(feature = "v2_44", deprecated = "Since 2.44")]
+    #[allow(deprecated)]
     #[doc(alias = "webkit_settings_get_enable_offline_web_application_cache")]
     #[doc(alias = "get_enable_offline_web_application_cache")]
     pub fn enables_offline_web_application_cache(&self) -> bool {
@@ -861,6 +863,8 @@ impl Settings {
         }
     }
 
+    #[cfg_attr(feature = "v2_44", deprecated = "Since 2.44")]
+    #[allow(deprecated)]
     #[doc(alias = "webkit_settings_set_enable_offline_web_application_cache")]
     pub fn set_enable_offline_web_application_cache(&self, enabled: bool) {
         unsafe {
@@ -1929,6 +1933,7 @@ impl Settings {
         }
     }
 
+    #[cfg_attr(feature = "v2_44", deprecated = "Since 2.44")]
     #[doc(alias = "enable-offline-web-application-cache")]
     pub fn connect_enable_offline_web_application_cache_notify<F: Fn(&Self) + 'static>(
         &self,
@@ -2904,6 +2909,7 @@ impl SettingsBuilder {
         }
     }
 
+    #[cfg_attr(feature = "v2_44", deprecated = "Since 2.44")]
     pub fn enable_offline_web_application_cache(
         self,
         enable_offline_web_application_cache: bool,

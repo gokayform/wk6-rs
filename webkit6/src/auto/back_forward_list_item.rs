@@ -2,6 +2,7 @@
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // from webkit-gir-files
 // DO NOT EDIT
+#![allow(deprecated)]
 
 use glib::translate::*;
 
@@ -25,6 +26,8 @@ impl BackForwardListItem {
         }
     }
 
+    #[cfg_attr(feature = "v2_44", deprecated = "Since 2.44")]
+    #[allow(deprecated)]
     #[doc(alias = "webkit_back_forward_list_item_get_title")]
     #[doc(alias = "get_title")]
     pub fn title(&self) -> Option<glib::GString> {
