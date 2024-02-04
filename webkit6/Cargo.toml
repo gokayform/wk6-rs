@@ -20,7 +20,6 @@ rustc-args = ["--cfg", "docsrs"]
 rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
-once_cell = "1.8"
 libc = "^0.2"
 ffi = { package = "webkit6-sys", path = "sys", version = "0.2" }
 javascriptcore = { package = "javascriptcore6", path = "../javascriptcore6", version = "0.2" }
