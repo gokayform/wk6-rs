@@ -3,7 +3,7 @@
 //! Upstream webkit2gtk project has a document to help with the migration to the GTK4 api:
 //! <https://webkitgtk.org/reference/webkit2gtk/unstable/migrating-to-webkitgtk-6.0.html>
 
-#![cfg_attr(feature = "dox", feature(doc_cfg))]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 macro_rules! assert_initialized_main_thread {
     () => {};
