@@ -3,6 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
+use crate::ffi;
 use glib::translate::*;
 
 glib::wrapper! {
@@ -77,6 +78,7 @@ impl HitTestResult {
 
     #[doc(alias = "webkit_hit_test_result_get_image_uri")]
     #[doc(alias = "get_image_uri")]
+    #[doc(alias = "image-uri")]
     pub fn image_uri(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_hit_test_result_get_image_uri(
@@ -87,6 +89,7 @@ impl HitTestResult {
 
     #[doc(alias = "webkit_hit_test_result_get_link_label")]
     #[doc(alias = "get_link_label")]
+    #[doc(alias = "link-label")]
     pub fn link_label(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_hit_test_result_get_link_label(
@@ -97,6 +100,7 @@ impl HitTestResult {
 
     #[doc(alias = "webkit_hit_test_result_get_link_title")]
     #[doc(alias = "get_link_title")]
+    #[doc(alias = "link-title")]
     pub fn link_title(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_hit_test_result_get_link_title(
@@ -107,6 +111,7 @@ impl HitTestResult {
 
     #[doc(alias = "webkit_hit_test_result_get_link_uri")]
     #[doc(alias = "get_link_uri")]
+    #[doc(alias = "link-uri")]
     pub fn link_uri(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_hit_test_result_get_link_uri(
@@ -117,6 +122,7 @@ impl HitTestResult {
 
     #[doc(alias = "webkit_hit_test_result_get_media_uri")]
     #[doc(alias = "get_media_uri")]
+    #[doc(alias = "media-uri")]
     pub fn media_uri(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_hit_test_result_get_media_uri(

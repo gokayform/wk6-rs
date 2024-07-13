@@ -4,7 +4,7 @@
 // DO NOT EDIT
 #![allow(deprecated)]
 
-use crate::HardwareAccelerationPolicy;
+use crate::{ffi, HardwareAccelerationPolicy};
 #[cfg(feature = "v2_42")]
 #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
 use crate::{Feature, FeatureList};
@@ -47,6 +47,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_allow_file_access_from_file_urls")]
     #[doc(alias = "get_allow_file_access_from_file_urls")]
+    #[doc(alias = "allow-file-access-from-file-urls")]
     pub fn allows_file_access_from_file_urls(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_allow_file_access_from_file_urls(
@@ -57,6 +58,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_allow_modal_dialogs")]
     #[doc(alias = "get_allow_modal_dialogs")]
+    #[doc(alias = "allow-modal-dialogs")]
     pub fn allows_modal_dialogs(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_allow_modal_dialogs(
@@ -67,6 +69,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_allow_top_navigation_to_data_urls")]
     #[doc(alias = "get_allow_top_navigation_to_data_urls")]
+    #[doc(alias = "allow-top-navigation-to-data-urls")]
     pub fn allows_top_navigation_to_data_urls(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_allow_top_navigation_to_data_urls(
@@ -77,6 +80,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_allow_universal_access_from_file_urls")]
     #[doc(alias = "get_allow_universal_access_from_file_urls")]
+    #[doc(alias = "allow-universal-access-from-file-urls")]
     pub fn allows_universal_access_from_file_urls(&self) -> bool {
         unsafe {
             from_glib(
@@ -89,6 +93,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_auto_load_images")]
     #[doc(alias = "get_auto_load_images")]
+    #[doc(alias = "auto-load-images")]
     pub fn is_auto_load_images(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_auto_load_images(
@@ -99,6 +104,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_cursive_font_family")]
     #[doc(alias = "get_cursive_font_family")]
+    #[doc(alias = "cursive-font-family")]
     pub fn cursive_font_family(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_settings_get_cursive_font_family(
@@ -109,6 +115,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_default_charset")]
     #[doc(alias = "get_default_charset")]
+    #[doc(alias = "default-charset")]
     pub fn default_charset(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_settings_get_default_charset(
@@ -119,6 +126,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_default_font_family")]
     #[doc(alias = "get_default_font_family")]
+    #[doc(alias = "default-font-family")]
     pub fn default_font_family(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_settings_get_default_font_family(
@@ -129,18 +137,21 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_default_font_size")]
     #[doc(alias = "get_default_font_size")]
+    #[doc(alias = "default-font-size")]
     pub fn default_font_size(&self) -> u32 {
         unsafe { ffi::webkit_settings_get_default_font_size(self.to_glib_none().0) }
     }
 
     #[doc(alias = "webkit_settings_get_default_monospace_font_size")]
     #[doc(alias = "get_default_monospace_font_size")]
+    #[doc(alias = "default-monospace-font-size")]
     pub fn default_monospace_font_size(&self) -> u32 {
         unsafe { ffi::webkit_settings_get_default_monospace_font_size(self.to_glib_none().0) }
     }
 
     #[doc(alias = "webkit_settings_get_disable_web_security")]
     #[doc(alias = "get_disable_web_security")]
+    #[doc(alias = "disable-web-security")]
     pub fn is_disable_web_security(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_disable_web_security(
@@ -151,6 +162,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_draw_compositing_indicators")]
     #[doc(alias = "get_draw_compositing_indicators")]
+    #[doc(alias = "draw-compositing-indicators")]
     pub fn draws_compositing_indicators(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_draw_compositing_indicators(
@@ -161,6 +173,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_back_forward_navigation_gestures")]
     #[doc(alias = "get_enable_back_forward_navigation_gestures")]
+    #[doc(alias = "enable-back-forward-navigation-gestures")]
     pub fn enables_back_forward_navigation_gestures(&self) -> bool {
         unsafe {
             from_glib(
@@ -173,6 +186,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_caret_browsing")]
     #[doc(alias = "get_enable_caret_browsing")]
+    #[doc(alias = "enable-caret-browsing")]
     pub fn enables_caret_browsing(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_caret_browsing(
@@ -183,6 +197,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_developer_extras")]
     #[doc(alias = "get_enable_developer_extras")]
+    #[doc(alias = "enable-developer-extras")]
     pub fn enables_developer_extras(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_developer_extras(
@@ -193,6 +208,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_dns_prefetching")]
     #[doc(alias = "get_enable_dns_prefetching")]
+    #[doc(alias = "enable-dns-prefetching")]
     pub fn enables_dns_prefetching(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_dns_prefetching(
@@ -203,6 +219,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_encrypted_media")]
     #[doc(alias = "get_enable_encrypted_media")]
+    #[doc(alias = "enable-encrypted-media")]
     pub fn enables_encrypted_media(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_encrypted_media(
@@ -213,6 +230,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_fullscreen")]
     #[doc(alias = "get_enable_fullscreen")]
+    #[doc(alias = "enable-fullscreen")]
     pub fn enables_fullscreen(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_fullscreen(
@@ -223,6 +241,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_html5_database")]
     #[doc(alias = "get_enable_html5_database")]
+    #[doc(alias = "enable-html5-database")]
     pub fn enables_html5_database(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_html5_database(
@@ -233,6 +252,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_html5_local_storage")]
     #[doc(alias = "get_enable_html5_local_storage")]
+    #[doc(alias = "enable-html5-local-storage")]
     pub fn enables_html5_local_storage(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_html5_local_storage(
@@ -243,6 +263,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_hyperlink_auditing")]
     #[doc(alias = "get_enable_hyperlink_auditing")]
+    #[doc(alias = "enable-hyperlink-auditing")]
     pub fn enables_hyperlink_auditing(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_hyperlink_auditing(
@@ -253,6 +274,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_javascript")]
     #[doc(alias = "get_enable_javascript")]
+    #[doc(alias = "enable-javascript")]
     pub fn enables_javascript(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_javascript(
@@ -263,6 +285,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_javascript_markup")]
     #[doc(alias = "get_enable_javascript_markup")]
+    #[doc(alias = "enable-javascript-markup")]
     pub fn enables_javascript_markup(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_javascript_markup(
@@ -273,12 +296,14 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_media")]
     #[doc(alias = "get_enable_media")]
+    #[doc(alias = "enable-media")]
     pub fn enables_media(&self) -> bool {
         unsafe { from_glib(ffi::webkit_settings_get_enable_media(self.to_glib_none().0)) }
     }
 
     #[doc(alias = "webkit_settings_get_enable_media_capabilities")]
     #[doc(alias = "get_enable_media_capabilities")]
+    #[doc(alias = "enable-media-capabilities")]
     pub fn enables_media_capabilities(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_media_capabilities(
@@ -289,6 +314,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_media_stream")]
     #[doc(alias = "get_enable_media_stream")]
+    #[doc(alias = "enable-media-stream")]
     pub fn enables_media_stream(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_media_stream(
@@ -299,6 +325,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_mediasource")]
     #[doc(alias = "get_enable_mediasource")]
+    #[doc(alias = "enable-mediasource")]
     pub fn enables_mediasource(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_mediasource(
@@ -309,6 +336,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_mock_capture_devices")]
     #[doc(alias = "get_enable_mock_capture_devices")]
+    #[doc(alias = "enable-mock-capture-devices")]
     pub fn enables_mock_capture_devices(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_mock_capture_devices(
@@ -321,6 +349,7 @@ impl Settings {
     #[allow(deprecated)]
     #[doc(alias = "webkit_settings_get_enable_offline_web_application_cache")]
     #[doc(alias = "get_enable_offline_web_application_cache")]
+    #[doc(alias = "enable-offline-web-application-cache")]
     pub fn enables_offline_web_application_cache(&self) -> bool {
         unsafe {
             from_glib(
@@ -333,6 +362,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_page_cache")]
     #[doc(alias = "get_enable_page_cache")]
+    #[doc(alias = "enable-page-cache")]
     pub fn enables_page_cache(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_page_cache(
@@ -343,6 +373,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_resizable_text_areas")]
     #[doc(alias = "get_enable_resizable_text_areas")]
+    #[doc(alias = "enable-resizable-text-areas")]
     pub fn enables_resizable_text_areas(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_resizable_text_areas(
@@ -353,6 +384,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_site_specific_quirks")]
     #[doc(alias = "get_enable_site_specific_quirks")]
+    #[doc(alias = "enable-site-specific-quirks")]
     pub fn enables_site_specific_quirks(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_site_specific_quirks(
@@ -363,6 +395,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_smooth_scrolling")]
     #[doc(alias = "get_enable_smooth_scrolling")]
+    #[doc(alias = "enable-smooth-scrolling")]
     pub fn enables_smooth_scrolling(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_smooth_scrolling(
@@ -373,6 +406,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_spatial_navigation")]
     #[doc(alias = "get_enable_spatial_navigation")]
+    #[doc(alias = "enable-spatial-navigation")]
     pub fn enables_spatial_navigation(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_spatial_navigation(
@@ -383,6 +417,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_tabs_to_links")]
     #[doc(alias = "get_enable_tabs_to_links")]
+    #[doc(alias = "enable-tabs-to-links")]
     pub fn enables_tabs_to_links(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_tabs_to_links(
@@ -393,6 +428,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_webaudio")]
     #[doc(alias = "get_enable_webaudio")]
+    #[doc(alias = "enable-webaudio")]
     pub fn enables_webaudio(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_webaudio(
@@ -403,12 +439,14 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_webgl")]
     #[doc(alias = "get_enable_webgl")]
+    #[doc(alias = "enable-webgl")]
     pub fn enables_webgl(&self) -> bool {
         unsafe { from_glib(ffi::webkit_settings_get_enable_webgl(self.to_glib_none().0)) }
     }
 
     #[doc(alias = "webkit_settings_get_enable_webrtc")]
     #[doc(alias = "get_enable_webrtc")]
+    #[doc(alias = "enable-webrtc")]
     pub fn enables_webrtc(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_enable_webrtc(
@@ -419,6 +457,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_enable_write_console_messages_to_stdout")]
     #[doc(alias = "get_enable_write_console_messages_to_stdout")]
+    #[doc(alias = "enable-write-console-messages-to-stdout")]
     pub fn enables_write_console_messages_to_stdout(&self) -> bool {
         unsafe {
             from_glib(
@@ -431,6 +470,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_fantasy_font_family")]
     #[doc(alias = "get_fantasy_font_family")]
+    #[doc(alias = "fantasy-font-family")]
     pub fn fantasy_font_family(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_settings_get_fantasy_font_family(
@@ -454,6 +494,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_hardware_acceleration_policy")]
     #[doc(alias = "get_hardware_acceleration_policy")]
+    #[doc(alias = "hardware-acceleration-policy")]
     pub fn hardware_acceleration_policy(&self) -> HardwareAccelerationPolicy {
         unsafe {
             from_glib(ffi::webkit_settings_get_hardware_acceleration_policy(
@@ -464,6 +505,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_javascript_can_access_clipboard")]
     #[doc(alias = "get_javascript_can_access_clipboard")]
+    #[doc(alias = "javascript-can-access-clipboard")]
     pub fn is_javascript_can_access_clipboard(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_javascript_can_access_clipboard(
@@ -474,6 +516,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_javascript_can_open_windows_automatically")]
     #[doc(alias = "get_javascript_can_open_windows_automatically")]
+    #[doc(alias = "javascript-can-open-windows-automatically")]
     pub fn is_javascript_can_open_windows_automatically(&self) -> bool {
         unsafe {
             from_glib(
@@ -488,6 +531,7 @@ impl Settings {
     #[allow(deprecated)]
     #[doc(alias = "webkit_settings_get_load_icons_ignoring_image_load_setting")]
     #[doc(alias = "get_load_icons_ignoring_image_load_setting")]
+    #[doc(alias = "load-icons-ignoring-image-load-setting")]
     pub fn is_load_icons_ignoring_image_load_setting(&self) -> bool {
         unsafe {
             from_glib(
@@ -500,6 +544,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_media_content_types_requiring_hardware_support")]
     #[doc(alias = "get_media_content_types_requiring_hardware_support")]
+    #[doc(alias = "media-content-types-requiring-hardware-support")]
     pub fn media_content_types_requiring_hardware_support(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(
@@ -512,6 +557,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_media_playback_allows_inline")]
     #[doc(alias = "get_media_playback_allows_inline")]
+    #[doc(alias = "media-playback-allows-inline")]
     pub fn is_media_playback_allows_inline(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_media_playback_allows_inline(
@@ -522,6 +568,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_media_playback_requires_user_gesture")]
     #[doc(alias = "get_media_playback_requires_user_gesture")]
+    #[doc(alias = "media-playback-requires-user-gesture")]
     pub fn is_media_playback_requires_user_gesture(&self) -> bool {
         unsafe {
             from_glib(
@@ -534,12 +581,14 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_minimum_font_size")]
     #[doc(alias = "get_minimum_font_size")]
+    #[doc(alias = "minimum-font-size")]
     pub fn minimum_font_size(&self) -> u32 {
         unsafe { ffi::webkit_settings_get_minimum_font_size(self.to_glib_none().0) }
     }
 
     #[doc(alias = "webkit_settings_get_monospace_font_family")]
     #[doc(alias = "get_monospace_font_family")]
+    #[doc(alias = "monospace-font-family")]
     pub fn monospace_font_family(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_settings_get_monospace_font_family(
@@ -550,6 +599,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_pictograph_font_family")]
     #[doc(alias = "get_pictograph_font_family")]
+    #[doc(alias = "pictograph-font-family")]
     pub fn pictograph_font_family(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_settings_get_pictograph_font_family(
@@ -560,6 +610,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_print_backgrounds")]
     #[doc(alias = "get_print_backgrounds")]
+    #[doc(alias = "print-backgrounds")]
     pub fn is_print_backgrounds(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_print_backgrounds(
@@ -570,6 +621,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_sans_serif_font_family")]
     #[doc(alias = "get_sans_serif_font_family")]
+    #[doc(alias = "sans-serif-font-family")]
     pub fn sans_serif_font_family(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_settings_get_sans_serif_font_family(
@@ -580,6 +632,7 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_serif_font_family")]
     #[doc(alias = "get_serif_font_family")]
+    #[doc(alias = "serif-font-family")]
     pub fn serif_font_family(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_settings_get_serif_font_family(
@@ -590,12 +643,14 @@ impl Settings {
 
     #[doc(alias = "webkit_settings_get_user_agent")]
     #[doc(alias = "get_user_agent")]
+    #[doc(alias = "user-agent")]
     pub fn user_agent(&self) -> Option<glib::GString> {
         unsafe { from_glib_none(ffi::webkit_settings_get_user_agent(self.to_glib_none().0)) }
     }
 
     #[doc(alias = "webkit_settings_get_zoom_text_only")]
     #[doc(alias = "get_zoom_text_only")]
+    #[doc(alias = "zoom-text-only")]
     pub fn is_zoom_text_only(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_zoom_text_only(
@@ -605,6 +660,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_allow_file_access_from_file_urls")]
+    #[doc(alias = "allow-file-access-from-file-urls")]
     pub fn set_allow_file_access_from_file_urls(&self, allowed: bool) {
         unsafe {
             ffi::webkit_settings_set_allow_file_access_from_file_urls(
@@ -615,6 +671,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_allow_modal_dialogs")]
+    #[doc(alias = "allow-modal-dialogs")]
     pub fn set_allow_modal_dialogs(&self, allowed: bool) {
         unsafe {
             ffi::webkit_settings_set_allow_modal_dialogs(
@@ -625,6 +682,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_allow_top_navigation_to_data_urls")]
+    #[doc(alias = "allow-top-navigation-to-data-urls")]
     pub fn set_allow_top_navigation_to_data_urls(&self, allowed: bool) {
         unsafe {
             ffi::webkit_settings_set_allow_top_navigation_to_data_urls(
@@ -635,6 +693,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_allow_universal_access_from_file_urls")]
+    #[doc(alias = "allow-universal-access-from-file-urls")]
     pub fn set_allow_universal_access_from_file_urls(&self, allowed: bool) {
         unsafe {
             ffi::webkit_settings_set_allow_universal_access_from_file_urls(
@@ -645,6 +704,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_auto_load_images")]
+    #[doc(alias = "auto-load-images")]
     pub fn set_auto_load_images(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_auto_load_images(self.to_glib_none().0, enabled.into_glib());
@@ -652,6 +712,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_cursive_font_family")]
+    #[doc(alias = "cursive-font-family")]
     pub fn set_cursive_font_family(&self, cursive_font_family: &str) {
         unsafe {
             ffi::webkit_settings_set_cursive_font_family(
@@ -662,6 +723,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_default_charset")]
+    #[doc(alias = "default-charset")]
     pub fn set_default_charset(&self, default_charset: &str) {
         unsafe {
             ffi::webkit_settings_set_default_charset(
@@ -672,6 +734,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_default_font_family")]
+    #[doc(alias = "default-font-family")]
     pub fn set_default_font_family(&self, default_font_family: &str) {
         unsafe {
             ffi::webkit_settings_set_default_font_family(
@@ -682,6 +745,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_default_font_size")]
+    #[doc(alias = "default-font-size")]
     pub fn set_default_font_size(&self, font_size: u32) {
         unsafe {
             ffi::webkit_settings_set_default_font_size(self.to_glib_none().0, font_size);
@@ -689,6 +753,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_default_monospace_font_size")]
+    #[doc(alias = "default-monospace-font-size")]
     pub fn set_default_monospace_font_size(&self, font_size: u32) {
         unsafe {
             ffi::webkit_settings_set_default_monospace_font_size(self.to_glib_none().0, font_size);
@@ -696,6 +761,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_disable_web_security")]
+    #[doc(alias = "disable-web-security")]
     pub fn set_disable_web_security(&self, disabled: bool) {
         unsafe {
             ffi::webkit_settings_set_disable_web_security(
@@ -706,6 +772,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_draw_compositing_indicators")]
+    #[doc(alias = "draw-compositing-indicators")]
     pub fn set_draw_compositing_indicators(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_draw_compositing_indicators(
@@ -716,6 +783,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_back_forward_navigation_gestures")]
+    #[doc(alias = "enable-back-forward-navigation-gestures")]
     pub fn set_enable_back_forward_navigation_gestures(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_back_forward_navigation_gestures(
@@ -726,6 +794,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_caret_browsing")]
+    #[doc(alias = "enable-caret-browsing")]
     pub fn set_enable_caret_browsing(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_caret_browsing(
@@ -736,6 +805,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_developer_extras")]
+    #[doc(alias = "enable-developer-extras")]
     pub fn set_enable_developer_extras(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_developer_extras(
@@ -746,6 +816,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_dns_prefetching")]
+    #[doc(alias = "enable-dns-prefetching")]
     pub fn set_enable_dns_prefetching(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_dns_prefetching(
@@ -756,6 +827,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_encrypted_media")]
+    #[doc(alias = "enable-encrypted-media")]
     pub fn set_enable_encrypted_media(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_encrypted_media(
@@ -766,6 +838,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_fullscreen")]
+    #[doc(alias = "enable-fullscreen")]
     pub fn set_enable_fullscreen(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_fullscreen(self.to_glib_none().0, enabled.into_glib());
@@ -773,6 +846,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_html5_database")]
+    #[doc(alias = "enable-html5-database")]
     pub fn set_enable_html5_database(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_html5_database(
@@ -783,6 +857,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_html5_local_storage")]
+    #[doc(alias = "enable-html5-local-storage")]
     pub fn set_enable_html5_local_storage(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_html5_local_storage(
@@ -793,6 +868,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_hyperlink_auditing")]
+    #[doc(alias = "enable-hyperlink-auditing")]
     pub fn set_enable_hyperlink_auditing(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_hyperlink_auditing(
@@ -803,6 +879,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_javascript")]
+    #[doc(alias = "enable-javascript")]
     pub fn set_enable_javascript(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_javascript(self.to_glib_none().0, enabled.into_glib());
@@ -810,6 +887,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_javascript_markup")]
+    #[doc(alias = "enable-javascript-markup")]
     pub fn set_enable_javascript_markup(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_javascript_markup(
@@ -820,6 +898,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_media")]
+    #[doc(alias = "enable-media")]
     pub fn set_enable_media(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_media(self.to_glib_none().0, enabled.into_glib());
@@ -827,6 +906,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_media_capabilities")]
+    #[doc(alias = "enable-media-capabilities")]
     pub fn set_enable_media_capabilities(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_media_capabilities(
@@ -837,6 +917,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_media_stream")]
+    #[doc(alias = "enable-media-stream")]
     pub fn set_enable_media_stream(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_media_stream(
@@ -847,6 +928,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_mediasource")]
+    #[doc(alias = "enable-mediasource")]
     pub fn set_enable_mediasource(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_mediasource(self.to_glib_none().0, enabled.into_glib());
@@ -854,6 +936,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_mock_capture_devices")]
+    #[doc(alias = "enable-mock-capture-devices")]
     pub fn set_enable_mock_capture_devices(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_mock_capture_devices(
@@ -866,6 +949,7 @@ impl Settings {
     #[cfg_attr(feature = "v2_44", deprecated = "Since 2.44")]
     #[allow(deprecated)]
     #[doc(alias = "webkit_settings_set_enable_offline_web_application_cache")]
+    #[doc(alias = "enable-offline-web-application-cache")]
     pub fn set_enable_offline_web_application_cache(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_offline_web_application_cache(
@@ -876,6 +960,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_page_cache")]
+    #[doc(alias = "enable-page-cache")]
     pub fn set_enable_page_cache(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_page_cache(self.to_glib_none().0, enabled.into_glib());
@@ -883,6 +968,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_resizable_text_areas")]
+    #[doc(alias = "enable-resizable-text-areas")]
     pub fn set_enable_resizable_text_areas(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_resizable_text_areas(
@@ -893,6 +979,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_site_specific_quirks")]
+    #[doc(alias = "enable-site-specific-quirks")]
     pub fn set_enable_site_specific_quirks(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_site_specific_quirks(
@@ -903,6 +990,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_smooth_scrolling")]
+    #[doc(alias = "enable-smooth-scrolling")]
     pub fn set_enable_smooth_scrolling(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_smooth_scrolling(
@@ -913,6 +1001,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_spatial_navigation")]
+    #[doc(alias = "enable-spatial-navigation")]
     pub fn set_enable_spatial_navigation(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_spatial_navigation(
@@ -923,6 +1012,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_tabs_to_links")]
+    #[doc(alias = "enable-tabs-to-links")]
     pub fn set_enable_tabs_to_links(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_tabs_to_links(
@@ -933,6 +1023,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_webaudio")]
+    #[doc(alias = "enable-webaudio")]
     pub fn set_enable_webaudio(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_webaudio(self.to_glib_none().0, enabled.into_glib());
@@ -940,6 +1031,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_webgl")]
+    #[doc(alias = "enable-webgl")]
     pub fn set_enable_webgl(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_webgl(self.to_glib_none().0, enabled.into_glib());
@@ -947,6 +1039,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_webrtc")]
+    #[doc(alias = "enable-webrtc")]
     pub fn set_enable_webrtc(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_webrtc(self.to_glib_none().0, enabled.into_glib());
@@ -954,6 +1047,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_enable_write_console_messages_to_stdout")]
+    #[doc(alias = "enable-write-console-messages-to-stdout")]
     pub fn set_enable_write_console_messages_to_stdout(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_enable_write_console_messages_to_stdout(
@@ -964,6 +1058,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_fantasy_font_family")]
+    #[doc(alias = "fantasy-font-family")]
     pub fn set_fantasy_font_family(&self, fantasy_font_family: &str) {
         unsafe {
             ffi::webkit_settings_set_fantasy_font_family(
@@ -987,6 +1082,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_hardware_acceleration_policy")]
+    #[doc(alias = "hardware-acceleration-policy")]
     pub fn set_hardware_acceleration_policy(&self, policy: HardwareAccelerationPolicy) {
         unsafe {
             ffi::webkit_settings_set_hardware_acceleration_policy(
@@ -997,6 +1093,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_javascript_can_access_clipboard")]
+    #[doc(alias = "javascript-can-access-clipboard")]
     pub fn set_javascript_can_access_clipboard(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_javascript_can_access_clipboard(
@@ -1007,6 +1104,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_javascript_can_open_windows_automatically")]
+    #[doc(alias = "javascript-can-open-windows-automatically")]
     pub fn set_javascript_can_open_windows_automatically(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_javascript_can_open_windows_automatically(
@@ -1019,6 +1117,7 @@ impl Settings {
     #[cfg_attr(feature = "v2_42", deprecated = "Since 2.42")]
     #[allow(deprecated)]
     #[doc(alias = "webkit_settings_set_load_icons_ignoring_image_load_setting")]
+    #[doc(alias = "load-icons-ignoring-image-load-setting")]
     pub fn set_load_icons_ignoring_image_load_setting(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_load_icons_ignoring_image_load_setting(
@@ -1029,6 +1128,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_media_content_types_requiring_hardware_support")]
+    #[doc(alias = "media-content-types-requiring-hardware-support")]
     pub fn set_media_content_types_requiring_hardware_support(&self, content_types: Option<&str>) {
         unsafe {
             ffi::webkit_settings_set_media_content_types_requiring_hardware_support(
@@ -1039,6 +1139,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_media_playback_allows_inline")]
+    #[doc(alias = "media-playback-allows-inline")]
     pub fn set_media_playback_allows_inline(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_media_playback_allows_inline(
@@ -1049,6 +1150,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_media_playback_requires_user_gesture")]
+    #[doc(alias = "media-playback-requires-user-gesture")]
     pub fn set_media_playback_requires_user_gesture(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_media_playback_requires_user_gesture(
@@ -1059,6 +1161,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_minimum_font_size")]
+    #[doc(alias = "minimum-font-size")]
     pub fn set_minimum_font_size(&self, font_size: u32) {
         unsafe {
             ffi::webkit_settings_set_minimum_font_size(self.to_glib_none().0, font_size);
@@ -1066,6 +1169,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_monospace_font_family")]
+    #[doc(alias = "monospace-font-family")]
     pub fn set_monospace_font_family(&self, monospace_font_family: &str) {
         unsafe {
             ffi::webkit_settings_set_monospace_font_family(
@@ -1076,6 +1180,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_pictograph_font_family")]
+    #[doc(alias = "pictograph-font-family")]
     pub fn set_pictograph_font_family(&self, pictograph_font_family: &str) {
         unsafe {
             ffi::webkit_settings_set_pictograph_font_family(
@@ -1086,6 +1191,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_print_backgrounds")]
+    #[doc(alias = "print-backgrounds")]
     pub fn set_print_backgrounds(&self, print_backgrounds: bool) {
         unsafe {
             ffi::webkit_settings_set_print_backgrounds(
@@ -1096,6 +1202,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_sans_serif_font_family")]
+    #[doc(alias = "sans-serif-font-family")]
     pub fn set_sans_serif_font_family(&self, sans_serif_font_family: &str) {
         unsafe {
             ffi::webkit_settings_set_sans_serif_font_family(
@@ -1106,6 +1213,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_serif_font_family")]
+    #[doc(alias = "serif-font-family")]
     pub fn set_serif_font_family(&self, serif_font_family: &str) {
         unsafe {
             ffi::webkit_settings_set_serif_font_family(
@@ -1116,6 +1224,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_user_agent")]
+    #[doc(alias = "user-agent")]
     pub fn set_user_agent(&self, user_agent: Option<&str>) {
         unsafe {
             ffi::webkit_settings_set_user_agent(self.to_glib_none().0, user_agent.to_glib_none().0);
@@ -1138,6 +1247,7 @@ impl Settings {
     }
 
     #[doc(alias = "webkit_settings_set_zoom_text_only")]
+    #[doc(alias = "zoom-text-only")]
     pub fn set_zoom_text_only(&self, zoom_text_only: bool) {
         unsafe {
             ffi::webkit_settings_set_zoom_text_only(
@@ -1206,7 +1316,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::allow-file-access-from-file-urls\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_allow_file_access_from_file_urls_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1232,7 +1342,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::allow-modal-dialogs\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_allow_modal_dialogs_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1260,7 +1370,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::allow-top-navigation-to-data-urls\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_allow_top_navigation_to_data_urls_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1288,7 +1398,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::allow-universal-access-from-file-urls\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_allow_universal_access_from_file_urls_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1311,7 +1421,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::auto-load-images\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_auto_load_images_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1337,7 +1447,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::cursive-font-family\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_cursive_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1360,7 +1470,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::default-charset\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_default_charset_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1386,7 +1496,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::default-font-family\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_default_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1412,7 +1522,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::default-font-size\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_default_font_size_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1440,7 +1550,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::default-monospace-font-size\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_default_monospace_font_size_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1466,7 +1576,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::disable-web-security\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_disable_web_security_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1494,7 +1604,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::draw-compositing-indicators\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_draw_compositing_indicators_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1522,7 +1632,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-back-forward-navigation-gestures\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_back_forward_navigation_gestures_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1548,7 +1658,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-caret-browsing\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_caret_browsing_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1576,7 +1686,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-developer-extras\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_developer_extras_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1604,7 +1714,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-dns-prefetching\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_dns_prefetching_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1632,7 +1742,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-encrypted-media\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_encrypted_media_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1658,7 +1768,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-fullscreen\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_fullscreen_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1684,7 +1794,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-html5-database\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_html5_database_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1712,7 +1822,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-html5-local-storage\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_html5_local_storage_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1740,7 +1850,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-hyperlink-auditing\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_hyperlink_auditing_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1766,7 +1876,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-javascript\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_javascript_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1794,7 +1904,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-javascript-markup\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_javascript_markup_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1817,7 +1927,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-media\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_media_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1845,7 +1955,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-media-capabilities\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_media_capabilities_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1871,7 +1981,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-media-stream\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_media_stream_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1897,7 +2007,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-mediasource\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_mediasource_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1925,7 +2035,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-mock-capture-devices\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_mock_capture_devices_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1954,7 +2064,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-offline-web-application-cache\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_offline_web_application_cache_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -1980,7 +2090,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-page-cache\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_page_cache_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2008,7 +2118,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-resizable-text-areas\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_resizable_text_areas_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2036,7 +2146,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-site-specific-quirks\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_site_specific_quirks_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2064,7 +2174,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-smooth-scrolling\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_smooth_scrolling_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2092,7 +2202,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-spatial-navigation\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_spatial_navigation_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2118,7 +2228,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-tabs-to-links\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_tabs_to_links_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2141,7 +2251,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-webaudio\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_webaudio_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2164,7 +2274,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-webgl\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_webgl_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2187,7 +2297,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-webrtc\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_webrtc_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2215,7 +2325,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::enable-write-console-messages-to-stdout\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_enable_write_console_messages_to_stdout_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2241,7 +2351,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::fantasy-font-family\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_fantasy_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2269,7 +2379,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::hardware-acceleration-policy\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_hardware_acceleration_policy_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2297,7 +2407,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::javascript-can-access-clipboard\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_javascript_can_access_clipboard_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2325,7 +2435,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::javascript-can-open-windows-automatically\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_javascript_can_open_windows_automatically_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2354,7 +2464,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::load-icons-ignoring-image-load-setting\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_load_icons_ignoring_image_load_setting_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2382,7 +2492,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::media-content-types-requiring-hardware-support\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_media_content_types_requiring_hardware_support_trampoline::<F>
                         as *const (),
                 )),
@@ -2411,7 +2521,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::media-playback-allows-inline\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_media_playback_allows_inline_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2439,7 +2549,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::media-playback-requires-user-gesture\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_media_playback_requires_user_gesture_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2465,7 +2575,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::minimum-font-size\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_minimum_font_size_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2491,7 +2601,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::monospace-font-family\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_monospace_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2519,7 +2629,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::pictograph-font-family\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_pictograph_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2545,7 +2655,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::print-backgrounds\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_print_backgrounds_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2573,7 +2683,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::sans-serif-font-family\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_sans_serif_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2599,7 +2709,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::serif-font-family\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_serif_font_family_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2622,7 +2732,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::user-agent\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_user_agent_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -2645,7 +2755,7 @@ impl Settings {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::zoom-text-only\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_zoom_text_only_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

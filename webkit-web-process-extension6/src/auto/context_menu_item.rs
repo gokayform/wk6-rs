@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{ContextMenu, ContextMenuAction};
+use crate::{ffi, ContextMenu, ContextMenuAction};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

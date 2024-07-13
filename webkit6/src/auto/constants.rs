@@ -3,6 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
+use crate::ffi;
 use glib::GStr;
 
 #[doc(alias = "WEBKIT_EDITING_COMMAND_COPY")]

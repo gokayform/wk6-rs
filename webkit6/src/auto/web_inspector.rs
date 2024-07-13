@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::WebViewBase;
+use crate::{ffi, WebViewBase};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -44,12 +44,14 @@ impl WebInspector {
 
     #[doc(alias = "webkit_web_inspector_get_attached_height")]
     #[doc(alias = "get_attached_height")]
+    #[doc(alias = "attached-height")]
     pub fn attached_height(&self) -> u32 {
         unsafe { ffi::webkit_web_inspector_get_attached_height(self.to_glib_none().0) }
     }
 
     #[doc(alias = "webkit_web_inspector_get_can_attach")]
     #[doc(alias = "get_can_attach")]
+    #[doc(alias = "can-attach")]
     pub fn can_attach(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_inspector_get_can_attach(
@@ -60,6 +62,7 @@ impl WebInspector {
 
     #[doc(alias = "webkit_web_inspector_get_inspected_uri")]
     #[doc(alias = "get_inspected_uri")]
+    #[doc(alias = "inspected-uri")]
     pub fn inspected_uri(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_web_inspector_get_inspected_uri(
@@ -104,7 +107,7 @@ impl WebInspector {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"attach\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     attach_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -126,7 +129,7 @@ impl WebInspector {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"bring-to-front\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     bring_to_front_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -148,7 +151,7 @@ impl WebInspector {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"closed\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     closed_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -170,7 +173,7 @@ impl WebInspector {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"detach\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     detach_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -192,7 +195,7 @@ impl WebInspector {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"open-window\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     open_window_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -215,7 +218,7 @@ impl WebInspector {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::attached-height\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_attached_height_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -238,7 +241,7 @@ impl WebInspector {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::can-attach\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_can_attach_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -261,7 +264,7 @@ impl WebInspector {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::inspected-uri\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_inspected_uri_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

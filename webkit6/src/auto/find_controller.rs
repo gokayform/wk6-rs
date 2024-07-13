@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::WebView;
+use crate::{ffi, WebView};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -35,6 +35,7 @@ impl FindController {
 
     #[doc(alias = "webkit_find_controller_get_max_match_count")]
     #[doc(alias = "get_max_match_count")]
+    #[doc(alias = "max-match-count")]
     pub fn max_match_count(&self) -> u32 {
         unsafe { ffi::webkit_find_controller_get_max_match_count(self.to_glib_none().0) }
     }
@@ -57,6 +58,7 @@ impl FindController {
 
     #[doc(alias = "webkit_find_controller_get_web_view")]
     #[doc(alias = "get_web_view")]
+    #[doc(alias = "web-view")]
     pub fn web_view(&self) -> Option<WebView> {
         unsafe {
             from_glib_none(ffi::webkit_find_controller_get_web_view(
@@ -117,7 +119,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"counted-matches\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     counted_matches_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -139,7 +141,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"failed-to-find-text\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     failed_to_find_text_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -162,7 +164,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"found-text\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     found_text_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -185,7 +187,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::max-match-count\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_max_match_count_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -208,7 +210,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::options\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_options_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -231,7 +233,7 @@ impl FindController {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::text\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_text_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

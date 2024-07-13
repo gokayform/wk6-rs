@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::BackForwardListItem;
+use crate::{ffi, BackForwardListItem};
 use glib::translate::*;
 
 glib::wrapper! {

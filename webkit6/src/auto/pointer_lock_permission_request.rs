@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::PermissionRequest;
+use crate::{ffi, PermissionRequest};
 
 glib::wrapper! {
     #[doc(alias = "WebKitPointerLockPermissionRequest")]

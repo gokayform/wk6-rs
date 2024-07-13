@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::WebsiteDataTypes;
+use crate::{ffi, WebsiteDataTypes};
 use glib::translate::*;
 
 glib::wrapper! {

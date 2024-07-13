@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{URISchemeResponse, WebView};
+use crate::{ffi, URISchemeResponse, WebView};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

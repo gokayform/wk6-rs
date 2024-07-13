@@ -3,6 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
+use crate::ffi;
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -61,6 +62,7 @@ impl ColorChooserRequest {
     }
 
     #[doc(alias = "webkit_color_chooser_request_set_rgba")]
+    #[doc(alias = "rgba")]
     pub fn set_rgba(&self, rgba: &gdk::RGBA) {
         unsafe {
             ffi::webkit_color_chooser_request_set_rgba(
@@ -84,7 +86,7 @@ impl ColorChooserRequest {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"finished\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -107,7 +109,7 @@ impl ColorChooserRequest {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::rgba\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_rgba_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

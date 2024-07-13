@@ -3,6 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
+use crate::ffi;
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {
@@ -45,6 +46,7 @@ impl UserMessage {
 
     #[doc(alias = "webkit_user_message_get_fd_list")]
     #[doc(alias = "get_fd_list")]
+    #[doc(alias = "fd-list")]
     pub fn fd_list(&self) -> Option<gio::UnixFDList> {
         unsafe { from_glib_none(ffi::webkit_user_message_get_fd_list(self.to_glib_none().0)) }
     }

@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{Context, TypedArrayType, ValuePropertyFlags};
+use crate::{ffi, Context, TypedArrayType, ValuePropertyFlags};
 use glib::translate::*;
 
 glib::wrapper! {

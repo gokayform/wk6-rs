@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::PermissionRequest;
+use crate::{ffi, PermissionRequest};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -51,7 +51,7 @@ impl UserMediaPermissionRequest {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::is-for-audio-device\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_is_for_audio_device_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -79,7 +79,7 @@ impl UserMediaPermissionRequest {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::is-for-video-device\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_is_for_video_device_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

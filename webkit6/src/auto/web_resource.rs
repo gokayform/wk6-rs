@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{URIRequest, URIResponse};
+use crate::{ffi, URIRequest, URIResponse};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -114,7 +114,7 @@ impl WebResource {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"failed\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     failed_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -149,7 +149,7 @@ impl WebResource {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"failed-with-tls-errors\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     failed_with_tls_errors_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -171,7 +171,7 @@ impl WebResource {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"finished\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -204,7 +204,7 @@ impl WebResource {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"sent-request\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     sent_request_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -227,7 +227,7 @@ impl WebResource {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::response\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_response_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -250,7 +250,7 @@ impl WebResource {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::uri\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_uri_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

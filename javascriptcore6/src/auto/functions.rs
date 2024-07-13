@@ -3,6 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
+use crate::ffi;
 use glib::translate::*;
 
 #[doc(alias = "jsc_get_major_version")]

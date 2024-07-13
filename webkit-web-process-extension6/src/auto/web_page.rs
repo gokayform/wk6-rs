@@ -4,7 +4,7 @@
 // DO NOT EDIT
 
 use crate::{
-    ContextMenu, Frame, ScriptWorld, URIRequest, URIResponse, UserMessage, WebEditor,
+    ffi, ContextMenu, Frame, ScriptWorld, URIRequest, URIResponse, UserMessage, WebEditor,
     WebFormManager, WebHitTestResult,
 };
 use glib::{
@@ -152,7 +152,7 @@ impl WebPage {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"context-menu\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     context_menu_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -174,7 +174,7 @@ impl WebPage {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"document-loaded\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     document_loaded_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -208,7 +208,7 @@ impl WebPage {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"send-request\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     send_request_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -236,7 +236,7 @@ impl WebPage {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"user-message-received\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     user_message_received_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -259,7 +259,7 @@ impl WebPage {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::uri\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_uri_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

@@ -4,7 +4,7 @@
 // DO NOT EDIT
 
 use crate::{
-    CookieManager, Download, ITPThirdParty, MemoryPressureSettings, NetworkProxyMode,
+    ffi, CookieManager, Download, ITPThirdParty, MemoryPressureSettings, NetworkProxyMode,
     NetworkProxySettings, TLSErrorsPolicy, WebsiteDataManager,
 };
 use glib::{
@@ -288,7 +288,7 @@ impl NetworkSession {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"download-started\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     download_started_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

@@ -3,6 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
+use crate::ffi;
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -29,6 +30,7 @@ impl FileChooserRequest {
 
     #[doc(alias = "webkit_file_chooser_request_get_mime_types")]
     #[doc(alias = "get_mime_types")]
+    #[doc(alias = "mime-types")]
     pub fn mime_types(&self) -> Vec<glib::GString> {
         unsafe {
             FromGlibPtrContainer::from_glib_none(ffi::webkit_file_chooser_request_get_mime_types(
@@ -49,6 +51,7 @@ impl FileChooserRequest {
 
     #[doc(alias = "webkit_file_chooser_request_get_select_multiple")]
     #[doc(alias = "get_select_multiple")]
+    #[doc(alias = "select-multiple")]
     pub fn selects_multiple(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_file_chooser_request_get_select_multiple(
@@ -59,6 +62,7 @@ impl FileChooserRequest {
 
     #[doc(alias = "webkit_file_chooser_request_get_selected_files")]
     #[doc(alias = "get_selected_files")]
+    #[doc(alias = "selected-files")]
     pub fn selected_files(&self) -> Vec<glib::GString> {
         unsafe {
             FromGlibPtrContainer::from_glib_none(
@@ -96,7 +100,7 @@ impl FileChooserRequest {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::filter\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_filter_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -119,7 +123,7 @@ impl FileChooserRequest {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::mime-types\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_mime_types_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -144,7 +148,7 @@ impl FileChooserRequest {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::select-multiple\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_select_multiple_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -169,7 +173,7 @@ impl FileChooserRequest {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::selected-files\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_selected_files_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

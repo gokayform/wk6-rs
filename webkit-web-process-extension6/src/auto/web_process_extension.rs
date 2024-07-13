@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{UserMessage, WebPage};
+use crate::{ffi, UserMessage, WebPage};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -116,7 +116,7 @@ impl WebProcessExtension {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"page-created\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     page_created_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -144,7 +144,7 @@ impl WebProcessExtension {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"user-message-received\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     user_message_received_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

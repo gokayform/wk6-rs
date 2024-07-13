@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{CheckSyntaxMode, CheckSyntaxResult, Exception, Value, VirtualMachine};
+use crate::{ffi, CheckSyntaxMode, CheckSyntaxResult, Exception, Value, VirtualMachine};
 use glib::translate::*;
 use std::boxed::Box as Box_;
 
@@ -126,6 +126,7 @@ impl Context {
 
     #[doc(alias = "jsc_context_get_virtual_machine")]
     #[doc(alias = "get_virtual_machine")]
+    #[doc(alias = "virtual-machine")]
     pub fn virtual_machine(&self) -> Option<VirtualMachine> {
         unsafe { from_glib_none(ffi::jsc_context_get_virtual_machine(self.to_glib_none().0)) }
     }

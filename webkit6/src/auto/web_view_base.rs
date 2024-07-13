@@ -3,6 +3,8 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
+use crate::ffi;
+
 glib::wrapper! {
     #[doc(alias = "WebKitWebViewBase")]
     pub struct WebViewBase(Object<ffi::WebKitWebViewBase, ffi::WebKitWebViewBaseClass>) @extends gtk::Widget, @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;

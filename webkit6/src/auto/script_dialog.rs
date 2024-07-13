@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::ScriptDialogType;
+use crate::{ffi, ScriptDialogType};
 use glib::translate::*;
 
 glib::wrapper! {

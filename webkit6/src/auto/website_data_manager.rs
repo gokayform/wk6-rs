@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{FaviconDatabase, ITPThirdParty, WebsiteData, WebsiteDataTypes};
+use crate::{ffi, FaviconDatabase, ITPThirdParty, WebsiteData, WebsiteDataTypes};
 use glib::{prelude::*, translate::*};
 use std::{boxed::Box as Box_, pin::Pin};
 
@@ -93,6 +93,7 @@ impl WebsiteDataManager {
 
     #[doc(alias = "webkit_website_data_manager_get_base_cache_directory")]
     #[doc(alias = "get_base_cache_directory")]
+    #[doc(alias = "base-cache-directory")]
     pub fn base_cache_directory(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_website_data_manager_get_base_cache_directory(
@@ -103,6 +104,7 @@ impl WebsiteDataManager {
 
     #[doc(alias = "webkit_website_data_manager_get_base_data_directory")]
     #[doc(alias = "get_base_data_directory")]
+    #[doc(alias = "base-data-directory")]
     pub fn base_data_directory(&self) -> Option<glib::GString> {
         unsafe {
             from_glib_none(ffi::webkit_website_data_manager_get_base_data_directory(

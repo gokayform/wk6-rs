@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{MediaKeySystemPermissionRequest, UserMediaPermissionRequest};
+use crate::{ffi, MediaKeySystemPermissionRequest, UserMediaPermissionRequest};
 use glib::translate::*;
 
 #[doc(alias = "webkit_get_major_version")]

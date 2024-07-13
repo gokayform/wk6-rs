@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{Frame, WebPage};
+use crate::{ffi, Frame, WebPage};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -77,7 +77,7 @@ impl ScriptWorld {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"window-object-cleared\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     window_object_cleared_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

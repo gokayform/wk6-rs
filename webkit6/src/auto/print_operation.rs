@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{PrintOperationResponse, WebView};
+use crate::{ffi, PrintOperationResponse, WebView};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -41,6 +41,7 @@ impl PrintOperation {
 
     #[doc(alias = "webkit_print_operation_get_page_setup")]
     #[doc(alias = "get_page_setup")]
+    #[doc(alias = "page-setup")]
     pub fn page_setup(&self) -> Option<gtk::PageSetup> {
         unsafe {
             from_glib_none(ffi::webkit_print_operation_get_page_setup(
@@ -51,6 +52,7 @@ impl PrintOperation {
 
     #[doc(alias = "webkit_print_operation_get_print_settings")]
     #[doc(alias = "get_print_settings")]
+    #[doc(alias = "print-settings")]
     pub fn print_settings(&self) -> Option<gtk::PrintSettings> {
         unsafe {
             from_glib_none(ffi::webkit_print_operation_get_print_settings(
@@ -77,6 +79,7 @@ impl PrintOperation {
     }
 
     #[doc(alias = "webkit_print_operation_set_page_setup")]
+    #[doc(alias = "page-setup")]
     pub fn set_page_setup(&self, page_setup: &gtk::PageSetup) {
         unsafe {
             ffi::webkit_print_operation_set_page_setup(
@@ -87,6 +90,7 @@ impl PrintOperation {
     }
 
     #[doc(alias = "webkit_print_operation_set_print_settings")]
+    #[doc(alias = "print-settings")]
     pub fn set_print_settings(&self, print_settings: &gtk::PrintSettings) {
         unsafe {
             ffi::webkit_print_operation_set_print_settings(
@@ -116,7 +120,7 @@ impl PrintOperation {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"failed\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     failed_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -138,7 +142,7 @@ impl PrintOperation {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"finished\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -161,7 +165,7 @@ impl PrintOperation {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::page-setup\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_page_setup_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -184,7 +188,7 @@ impl PrintOperation {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::print-settings\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_print_settings_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

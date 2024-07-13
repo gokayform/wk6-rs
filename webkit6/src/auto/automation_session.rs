@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{ApplicationInfo, WebView};
+use crate::{ffi, ApplicationInfo, WebView};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -73,7 +73,7 @@ impl AutomationSession {
             connect_raw(
                 self.as_ptr() as *mut _,
                 signal_name.as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     create_web_view_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::PermissionRequest;
+use crate::{ffi, PermissionRequest};
 use glib::translate::*;
 
 glib::wrapper! {

@@ -4,6 +4,7 @@
 // DO NOT EDIT
 #![allow(deprecated)]
 
+use crate::ffi;
 use glib::translate::*;
 
 glib::wrapper! {

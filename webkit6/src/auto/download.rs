@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{URIRequest, URIResponse, WebView};
+use crate::{ffi, URIRequest, URIResponse, WebView};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -30,6 +30,7 @@ impl Download {
 
     #[doc(alias = "webkit_download_get_allow_overwrite")]
     #[doc(alias = "get_allow_overwrite")]
+    #[doc(alias = "allow-overwrite")]
     pub fn allows_overwrite(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_download_get_allow_overwrite(
@@ -52,6 +53,7 @@ impl Download {
 
     #[doc(alias = "webkit_download_get_estimated_progress")]
     #[doc(alias = "get_estimated_progress")]
+    #[doc(alias = "estimated-progress")]
     pub fn estimated_progress(&self) -> f64 {
         unsafe { ffi::webkit_download_get_estimated_progress(self.to_glib_none().0) }
     }
@@ -81,6 +83,7 @@ impl Download {
     }
 
     #[doc(alias = "webkit_download_set_allow_overwrite")]
+    #[doc(alias = "allow-overwrite")]
     pub fn set_allow_overwrite(&self, allowed: bool) {
         unsafe {
             ffi::webkit_download_set_allow_overwrite(self.to_glib_none().0, allowed.into_glib());
@@ -118,7 +121,7 @@ impl Download {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"created-destination\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     created_destination_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -150,7 +153,7 @@ impl Download {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"decide-destination\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     decide_destination_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -173,7 +176,7 @@ impl Download {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"failed\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     failed_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -195,7 +198,7 @@ impl Download {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"finished\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     finished_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -218,7 +221,7 @@ impl Download {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"received-data\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     received_data_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -241,7 +244,7 @@ impl Download {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::allow-overwrite\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_allow_overwrite_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -264,7 +267,7 @@ impl Download {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::destination\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_destination_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -290,7 +293,7 @@ impl Download {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::estimated-progress\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_estimated_progress_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -313,7 +316,7 @@ impl Download {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"notify::response\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_response_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

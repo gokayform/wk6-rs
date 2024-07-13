@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::CredentialPersistence;
+use crate::{ffi, CredentialPersistence};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

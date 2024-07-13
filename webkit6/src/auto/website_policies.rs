@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::AutoplayPolicy;
+use crate::{ffi, AutoplayPolicy};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

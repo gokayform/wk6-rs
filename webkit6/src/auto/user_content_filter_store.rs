@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::UserContentFilter;
+use crate::{ffi, UserContentFilter};
 use glib::{prelude::*, translate::*};
 use std::{boxed::Box as Box_, pin::Pin};
 

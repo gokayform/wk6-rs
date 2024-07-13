@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::WebsitePolicies;
+use crate::{ffi, WebsitePolicies};
 use glib::{prelude::*, translate::*};
 
 glib::wrapper! {

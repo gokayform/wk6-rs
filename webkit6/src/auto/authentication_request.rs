@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{AuthenticationScheme, Credential, SecurityOrigin};
+use crate::{ffi, AuthenticationScheme, Credential, SecurityOrigin};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -171,7 +171,7 @@ impl AuthenticationRequest {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"authenticated\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     authenticated_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -193,7 +193,7 @@ impl AuthenticationRequest {
             connect_raw(
                 self.as_ptr() as *mut _,
                 b"cancelled\0".as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     cancelled_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),

@@ -3,7 +3,7 @@
 // from webkit-gir-files
 // DO NOT EDIT
 
-use crate::{ScriptMessageReply, UserContentFilter, UserScript, UserStyleSheet};
+use crate::{ffi, ScriptMessageReply, UserContentFilter, UserScript, UserStyleSheet};
 use glib::{
     prelude::*,
     signal::{connect_raw, SignalHandlerId},
@@ -181,7 +181,7 @@ impl UserContentManager {
             connect_raw(
                 self.as_ptr() as *mut _,
                 signal_name.as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     script_message_received_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
@@ -225,7 +225,7 @@ impl UserContentManager {
             connect_raw(
                 self.as_ptr() as *mut _,
                 signal_name.as_ptr() as *const _,
-                Some(std::mem::transmute::<_, unsafe extern "C" fn()>(
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     script_message_with_reply_received_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
