@@ -203,6 +203,20 @@ fn get_c_output(name: &str) -> Result<String, Box<dyn Error>> {
 
 const RUST_LAYOUTS: &[(&str, Layout)] = &[
     (
+        "WebKitConsoleMessageLevel",
+        Layout {
+            size: size_of::<WebKitConsoleMessageLevel>(),
+            alignment: align_of::<WebKitConsoleMessageLevel>(),
+        },
+    ),
+    (
+        "WebKitConsoleMessageSource",
+        Layout {
+            size: size_of::<WebKitConsoleMessageSource>(),
+            alignment: align_of::<WebKitConsoleMessageSource>(),
+        },
+    ),
+    (
         "WebKitContextMenuAction",
         Layout {
             size: size_of::<WebKitContextMenuAction>(),
@@ -324,6 +338,16 @@ const RUST_LAYOUTS: &[(&str, Layout)] = &[
 ];
 
 const RUST_CONSTANTS: &[(&str, &str)] = &[
+    ("(gint) WEBKIT_CONSOLE_MESSAGE_LEVEL_DEBUG", "4"),
+    ("(gint) WEBKIT_CONSOLE_MESSAGE_LEVEL_ERROR", "3"),
+    ("(gint) WEBKIT_CONSOLE_MESSAGE_LEVEL_INFO", "0"),
+    ("(gint) WEBKIT_CONSOLE_MESSAGE_LEVEL_LOG", "1"),
+    ("(gint) WEBKIT_CONSOLE_MESSAGE_LEVEL_WARNING", "2"),
+    ("(gint) WEBKIT_CONSOLE_MESSAGE_SOURCE_CONSOLE_API", "2"),
+    ("(gint) WEBKIT_CONSOLE_MESSAGE_SOURCE_JAVASCRIPT", "0"),
+    ("(gint) WEBKIT_CONSOLE_MESSAGE_SOURCE_NETWORK", "1"),
+    ("(gint) WEBKIT_CONSOLE_MESSAGE_SOURCE_OTHER", "4"),
+    ("(gint) WEBKIT_CONSOLE_MESSAGE_SOURCE_SECURITY", "3"),
     ("(gint) WEBKIT_CONTEXT_MENU_ACTION_BOLD", "27"),
     ("(gint) WEBKIT_CONTEXT_MENU_ACTION_COPY", "14"),
     (

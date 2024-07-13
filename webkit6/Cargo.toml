@@ -29,3 +29,4 @@ soup.workspace = true
 [features]
 v2_42 = ["ffi/v2_42"]
 v2_44 = ["ffi/v2_44", "v2_42"]
+v2_46 = ["ffi/v2_46", "v2_44"]

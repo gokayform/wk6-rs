@@ -32,6 +32,20 @@ use libc::{dev_t, gid_t, pid_t, socklen_t, uid_t};
 use glib::{gboolean, gconstpointer, gpointer, GType};
 
 // Enums
+pub type WebKitConsoleMessageLevel = c_int;
+pub const WEBKIT_CONSOLE_MESSAGE_LEVEL_INFO: WebKitConsoleMessageLevel = 0;
+pub const WEBKIT_CONSOLE_MESSAGE_LEVEL_LOG: WebKitConsoleMessageLevel = 1;
+pub const WEBKIT_CONSOLE_MESSAGE_LEVEL_WARNING: WebKitConsoleMessageLevel = 2;
+pub const WEBKIT_CONSOLE_MESSAGE_LEVEL_ERROR: WebKitConsoleMessageLevel = 3;
+pub const WEBKIT_CONSOLE_MESSAGE_LEVEL_DEBUG: WebKitConsoleMessageLevel = 4;
+
+pub type WebKitConsoleMessageSource = c_int;
+pub const WEBKIT_CONSOLE_MESSAGE_SOURCE_JAVASCRIPT: WebKitConsoleMessageSource = 0;
+pub const WEBKIT_CONSOLE_MESSAGE_SOURCE_NETWORK: WebKitConsoleMessageSource = 1;
+pub const WEBKIT_CONSOLE_MESSAGE_SOURCE_CONSOLE_API: WebKitConsoleMessageSource = 2;
+pub const WEBKIT_CONSOLE_MESSAGE_SOURCE_SECURITY: WebKitConsoleMessageSource = 3;
+pub const WEBKIT_CONSOLE_MESSAGE_SOURCE_OTHER: WebKitConsoleMessageSource = 4;
+
 pub type WebKitContextMenuAction = c_int;
 pub const WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION: WebKitContextMenuAction = 0;
 pub const WEBKIT_CONTEXT_MENU_ACTION_OPEN_LINK: WebKitContextMenuAction = 1;
@@ -101,6 +115,19 @@ pub type WebKitWebProcessExtensionInitializeWithUserDataFunction =
     Option<unsafe extern "C" fn(*mut WebKitWebProcessExtension, *const glib::GVariant)>;
 
 // Records
+#[repr(C)]
+pub struct WebKitConsoleMessage {
+    _data: [u8; 0],
+    _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
+}
+
+impl ::std::fmt::Debug for WebKitConsoleMessage {
+    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
+        f.debug_struct(&format!("WebKitConsoleMessage @ {self:p}"))
+            .finish()
+    }
+}
+
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct WebKitContextMenuClass {
@@ -456,6 +483,38 @@ impl ::std::fmt::Debug for WebKitWebProcessExtension {
 #[link(name = "webkitgtk-6.0")]
 #[link(name = "javascriptcoregtk-6.0")]
 extern "C" {
+
+    //=========================================================================
+    // WebKitConsoleMessageLevel
+    //=========================================================================
+    pub fn webkit_console_message_level_get_type() -> GType;
+
+    //=========================================================================
+    // WebKitConsoleMessageSource
+    //=========================================================================
+    pub fn webkit_console_message_source_get_type() -> GType;
+
+    //=========================================================================
+    // WebKitConsoleMessage
+    //=========================================================================
+    pub fn webkit_console_message_get_type() -> GType;
+    pub fn webkit_console_message_copy(
+        console_message: *mut WebKitConsoleMessage,
+    ) -> *mut WebKitConsoleMessage;
+    pub fn webkit_console_message_free(console_message: *mut WebKitConsoleMessage);
+    pub fn webkit_console_message_get_level(
+        console_message: *mut WebKitConsoleMessage,
+    ) -> WebKitConsoleMessageLevel;
+    pub fn webkit_console_message_get_line(console_message: *mut WebKitConsoleMessage) -> c_uint;
+    pub fn webkit_console_message_get_source(
+        console_message: *mut WebKitConsoleMessage,
+    ) -> WebKitConsoleMessageSource;
+    pub fn webkit_console_message_get_source_id(
+        console_message: *mut WebKitConsoleMessage,
+    ) -> *const c_char;
+    pub fn webkit_console_message_get_text(
+        console_message: *mut WebKitConsoleMessage,
+    ) -> *const c_char;
 
     //=========================================================================
     // WebKitContextMenu

@@ -71,7 +71,11 @@ impl UserContentManager {
     }
 
     #[doc(alias = "webkit_user_content_manager_register_script_message_handler_with_reply")]
-    pub fn register_script_message_handler_with_reply(&self, name: &str, world_name: &str) -> bool {
+    pub fn register_script_message_handler_with_reply(
+        &self,
+        name: &str,
+        world_name: Option<&str>,
+    ) -> bool {
         unsafe {
             from_glib(
                 ffi::webkit_user_content_manager_register_script_message_handler_with_reply(

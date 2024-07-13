@@ -42,7 +42,12 @@ pub use self::web_page::WebPage;
 mod web_process_extension;
 pub use self::web_process_extension::WebProcessExtension;
 
+mod console_message;
+pub use self::console_message::ConsoleMessage;
+
 mod enums;
+pub use self::enums::ConsoleMessageLevel;
+pub use self::enums::ConsoleMessageSource;
 pub use self::enums::ContextMenuAction;
 pub use self::enums::UserMessageError;
 

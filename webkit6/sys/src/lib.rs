@@ -3789,6 +3789,14 @@ extern "C" {
     #[cfg(feature = "v2_42")]
     #[cfg_attr(docsrs, doc(cfg(feature = "v2_42")))]
     pub fn webkit_settings_get_experimental_features() -> *mut WebKitFeatureList;
+    #[cfg(feature = "v2_46")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_46")))]
+    pub fn webkit_settings_apply_from_key_file(
+        settings: *mut WebKitSettings,
+        key_file: *mut glib::GKeyFile,
+        group_name: *const c_char,
+        error: *mut *mut glib::GError,
+    ) -> gboolean;
     pub fn webkit_settings_get_allow_file_access_from_file_urls(
         settings: *mut WebKitSettings,
     ) -> gboolean;
@@ -3807,6 +3815,11 @@ extern "C" {
     pub fn webkit_settings_get_default_monospace_font_size(settings: *mut WebKitSettings) -> u32;
     pub fn webkit_settings_get_disable_web_security(settings: *mut WebKitSettings) -> gboolean;
     pub fn webkit_settings_get_draw_compositing_indicators(
+        settings: *mut WebKitSettings,
+    ) -> gboolean;
+    #[cfg(feature = "v2_46")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_46")))]
+    pub fn webkit_settings_get_enable_2d_canvas_acceleration(
         settings: *mut WebKitSettings,
     ) -> gboolean;
     pub fn webkit_settings_get_enable_back_forward_navigation_gestures(
@@ -3934,6 +3947,12 @@ extern "C" {
         disabled: gboolean,
     );
     pub fn webkit_settings_set_draw_compositing_indicators(
+        settings: *mut WebKitSettings,
+        enabled: gboolean,
+    );
+    #[cfg(feature = "v2_46")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_46")))]
+    pub fn webkit_settings_set_enable_2d_canvas_acceleration(
         settings: *mut WebKitSettings,
         enabled: gboolean,
     );

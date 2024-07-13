@@ -4,7 +4,223 @@
 // DO NOT EDIT
 
 use crate::ffi;
-use glib::translate::*;
+use glib::{prelude::*, translate::*};
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
+#[doc(alias = "WebKitConsoleMessageLevel")]
+pub enum ConsoleMessageLevel {
+    #[doc(alias = "WEBKIT_CONSOLE_MESSAGE_LEVEL_INFO")]
+    Info,
+    #[doc(alias = "WEBKIT_CONSOLE_MESSAGE_LEVEL_LOG")]
+    Log,
+    #[doc(alias = "WEBKIT_CONSOLE_MESSAGE_LEVEL_WARNING")]
+    Warning,
+    #[doc(alias = "WEBKIT_CONSOLE_MESSAGE_LEVEL_ERROR")]
+    Error,
+    #[doc(alias = "WEBKIT_CONSOLE_MESSAGE_LEVEL_DEBUG")]
+    Debug,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl IntoGlib for ConsoleMessageLevel {
+    type GlibType = ffi::WebKitConsoleMessageLevel;
+
+    #[inline]
+    fn into_glib(self) -> ffi::WebKitConsoleMessageLevel {
+        match self {
+            Self::Info => ffi::WEBKIT_CONSOLE_MESSAGE_LEVEL_INFO,
+            Self::Log => ffi::WEBKIT_CONSOLE_MESSAGE_LEVEL_LOG,
+            Self::Warning => ffi::WEBKIT_CONSOLE_MESSAGE_LEVEL_WARNING,
+            Self::Error => ffi::WEBKIT_CONSOLE_MESSAGE_LEVEL_ERROR,
+            Self::Debug => ffi::WEBKIT_CONSOLE_MESSAGE_LEVEL_DEBUG,
+            Self::__Unknown(value) => value,
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::WebKitConsoleMessageLevel> for ConsoleMessageLevel {
+    #[inline]
+    unsafe fn from_glib(value: ffi::WebKitConsoleMessageLevel) -> Self {
+        skip_assert_initialized!();
+
+        match value {
+            ffi::WEBKIT_CONSOLE_MESSAGE_LEVEL_INFO => Self::Info,
+            ffi::WEBKIT_CONSOLE_MESSAGE_LEVEL_LOG => Self::Log,
+            ffi::WEBKIT_CONSOLE_MESSAGE_LEVEL_WARNING => Self::Warning,
+            ffi::WEBKIT_CONSOLE_MESSAGE_LEVEL_ERROR => Self::Error,
+            ffi::WEBKIT_CONSOLE_MESSAGE_LEVEL_DEBUG => Self::Debug,
+            value => Self::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for ConsoleMessageLevel {
+    #[inline]
+    #[doc(alias = "webkit_console_message_level_get_type")]
+    fn static_type() -> glib::Type {
+        unsafe { from_glib(ffi::webkit_console_message_level_get_type()) }
+    }
+}
+
+impl glib::HasParamSpec for ConsoleMessageLevel {
+    type ParamSpec = glib::ParamSpecEnum;
+    type SetValue = Self;
+    type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
+    fn param_spec_builder() -> Self::BuilderFn {
+        Self::ParamSpec::builder_with_default
+    }
+}
+
+impl glib::value::ValueType for ConsoleMessageLevel {
+    type Type = Self;
+}
+
+unsafe impl<'a> glib::value::FromValue<'a> for ConsoleMessageLevel {
+    type Checker = glib::value::GenericValueTypeChecker<Self>;
+
+    #[inline]
+    unsafe fn from_value(value: &'a glib::Value) -> Self {
+        skip_assert_initialized!();
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl ToValue for ConsoleMessageLevel {
+    #[inline]
+    fn to_value(&self) -> glib::Value {
+        let mut value = glib::Value::for_value_type::<Self>();
+        unsafe {
+            glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
+        }
+        value
+    }
+
+    #[inline]
+    fn value_type(&self) -> glib::Type {
+        Self::static_type()
+    }
+}
+
+impl From<ConsoleMessageLevel> for glib::Value {
+    #[inline]
+    fn from(v: ConsoleMessageLevel) -> Self {
+        skip_assert_initialized!();
+        ToValue::to_value(&v)
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
+#[non_exhaustive]
+#[doc(alias = "WebKitConsoleMessageSource")]
+pub enum ConsoleMessageSource {
+    #[doc(alias = "WEBKIT_CONSOLE_MESSAGE_SOURCE_JAVASCRIPT")]
+    Javascript,
+    #[doc(alias = "WEBKIT_CONSOLE_MESSAGE_SOURCE_NETWORK")]
+    Network,
+    #[doc(alias = "WEBKIT_CONSOLE_MESSAGE_SOURCE_CONSOLE_API")]
+    ConsoleApi,
+    #[doc(alias = "WEBKIT_CONSOLE_MESSAGE_SOURCE_SECURITY")]
+    Security,
+    #[doc(alias = "WEBKIT_CONSOLE_MESSAGE_SOURCE_OTHER")]
+    Other,
+    #[doc(hidden)]
+    __Unknown(i32),
+}
+
+#[doc(hidden)]
+impl IntoGlib for ConsoleMessageSource {
+    type GlibType = ffi::WebKitConsoleMessageSource;
+
+    #[inline]
+    fn into_glib(self) -> ffi::WebKitConsoleMessageSource {
+        match self {
+            Self::Javascript => ffi::WEBKIT_CONSOLE_MESSAGE_SOURCE_JAVASCRIPT,
+            Self::Network => ffi::WEBKIT_CONSOLE_MESSAGE_SOURCE_NETWORK,
+            Self::ConsoleApi => ffi::WEBKIT_CONSOLE_MESSAGE_SOURCE_CONSOLE_API,
+            Self::Security => ffi::WEBKIT_CONSOLE_MESSAGE_SOURCE_SECURITY,
+            Self::Other => ffi::WEBKIT_CONSOLE_MESSAGE_SOURCE_OTHER,
+            Self::__Unknown(value) => value,
+        }
+    }
+}
+
+#[doc(hidden)]
+impl FromGlib<ffi::WebKitConsoleMessageSource> for ConsoleMessageSource {
+    #[inline]
+    unsafe fn from_glib(value: ffi::WebKitConsoleMessageSource) -> Self {
+        skip_assert_initialized!();
+
+        match value {
+            ffi::WEBKIT_CONSOLE_MESSAGE_SOURCE_JAVASCRIPT => Self::Javascript,
+            ffi::WEBKIT_CONSOLE_MESSAGE_SOURCE_NETWORK => Self::Network,
+            ffi::WEBKIT_CONSOLE_MESSAGE_SOURCE_CONSOLE_API => Self::ConsoleApi,
+            ffi::WEBKIT_CONSOLE_MESSAGE_SOURCE_SECURITY => Self::Security,
+            ffi::WEBKIT_CONSOLE_MESSAGE_SOURCE_OTHER => Self::Other,
+            value => Self::__Unknown(value),
+        }
+    }
+}
+
+impl StaticType for ConsoleMessageSource {
+    #[inline]
+    #[doc(alias = "webkit_console_message_source_get_type")]
+    fn static_type() -> glib::Type {
+        unsafe { from_glib(ffi::webkit_console_message_source_get_type()) }
+    }
+}
+
+impl glib::HasParamSpec for ConsoleMessageSource {
+    type ParamSpec = glib::ParamSpecEnum;
+    type SetValue = Self;
+    type BuilderFn = fn(&str, Self) -> glib::ParamSpecEnumBuilder<Self>;
+
+    fn param_spec_builder() -> Self::BuilderFn {
+        Self::ParamSpec::builder_with_default
+    }
+}
+
+impl glib::value::ValueType for ConsoleMessageSource {
+    type Type = Self;
+}
+
+unsafe impl<'a> glib::value::FromValue<'a> for ConsoleMessageSource {
+    type Checker = glib::value::GenericValueTypeChecker<Self>;
+
+    #[inline]
+    unsafe fn from_value(value: &'a glib::Value) -> Self {
+        skip_assert_initialized!();
+        from_glib(glib::gobject_ffi::g_value_get_enum(value.to_glib_none().0))
+    }
+}
+
+impl ToValue for ConsoleMessageSource {
+    #[inline]
+    fn to_value(&self) -> glib::Value {
+        let mut value = glib::Value::for_value_type::<Self>();
+        unsafe {
+            glib::gobject_ffi::g_value_set_enum(value.to_glib_none_mut().0, self.into_glib());
+        }
+        value
+    }
+
+    #[inline]
+    fn value_type(&self) -> glib::Type {
+        Self::static_type()
+    }
+}
+
+impl From<ConsoleMessageSource> for glib::Value {
+    #[inline]
+    fn from(v: ConsoleMessageSource) -> Self {
+        skip_assert_initialized!();
+        ToValue::to_value(&v)
+    }
+}
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]

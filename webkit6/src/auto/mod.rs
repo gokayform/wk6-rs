@@ -244,6 +244,7 @@ pub use self::enums::FaviconDatabaseError;
 pub use self::enums::FeatureStatus;
 pub use self::enums::HardwareAccelerationPolicy;
 pub use self::enums::InputPurpose;
+#[allow(deprecated)]
 pub use self::enums::InsecureContentEvent;
 pub use self::enums::JavascriptError;
 pub use self::enums::LoadEvent;

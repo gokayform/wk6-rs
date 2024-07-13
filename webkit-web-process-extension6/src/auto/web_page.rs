@@ -4,8 +4,8 @@
 // DO NOT EDIT
 
 use crate::{
-    ffi, ContextMenu, Frame, ScriptWorld, URIRequest, URIResponse, UserMessage, WebEditor,
-    WebFormManager, WebHitTestResult,
+    ffi, ConsoleMessage, ContextMenu, Frame, ScriptWorld, URIRequest, URIResponse, UserMessage,
+    WebEditor, WebFormManager, WebHitTestResult,
 };
 use glib::{
     prelude::*,
@@ -124,6 +124,34 @@ impl WebPage {
                 send.resolve(res);
             });
         }))
+    }
+
+    #[doc(alias = "console-message-sent")]
+    pub fn connect_console_message_sent<F: Fn(&Self, &ConsoleMessage) + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        unsafe extern "C" fn console_message_sent_trampoline<
+            F: Fn(&WebPage, &ConsoleMessage) + 'static,
+        >(
+            this: *mut ffi::WebKitWebPage,
+            console_message: *mut ffi::WebKitConsoleMessage,
+            f: glib::ffi::gpointer,
+        ) {
+            let f: &F = &*(f as *const F);
+            f(&from_glib_borrow(this), &from_glib_borrow(console_message))
+        }
+        unsafe {
+            let f: Box_<F> = Box_::new(f);
+            connect_raw(
+                self.as_ptr() as *mut _,
+                b"console-message-sent\0".as_ptr() as *const _,
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
+                    console_message_sent_trampoline::<F> as *const (),
+                )),
+                Box_::into_raw(f),
+            )
+        }
     }
 
     #[doc(alias = "context-menu")]

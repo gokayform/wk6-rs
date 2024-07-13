@@ -8,6 +8,8 @@
 #include <stdio.h>
 
 int main() {
+    printf("%s;%zu;%zu\n", "WebKitConsoleMessageLevel", sizeof(WebKitConsoleMessageLevel), alignof(WebKitConsoleMessageLevel));
+    printf("%s;%zu;%zu\n", "WebKitConsoleMessageSource", sizeof(WebKitConsoleMessageSource), alignof(WebKitConsoleMessageSource));
     printf("%s;%zu;%zu\n", "WebKitContextMenuAction", sizeof(WebKitContextMenuAction), alignof(WebKitContextMenuAction));
     printf("%s;%zu;%zu\n", "WebKitContextMenuClass", sizeof(WebKitContextMenuClass), alignof(WebKitContextMenuClass));
     printf("%s;%zu;%zu\n", "WebKitContextMenuItemClass", sizeof(WebKitContextMenuItemClass), alignof(WebKitContextMenuItemClass));

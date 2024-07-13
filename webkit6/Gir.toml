@@ -130,6 +130,7 @@ manual = [
   "GLib.Variant",
   "Gio.File",
   "GLib.Error",
+  "GLib.KeyFile",
   "GLib.Quark",
   "Gio.InputStream",
   "Gdk.RGBA",

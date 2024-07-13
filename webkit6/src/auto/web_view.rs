@@ -1096,6 +1096,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
     }
 
     #[doc(alias = "webkit_web_view_is_editable")]
+    #[doc(alias = "editable")]
     fn is_editable(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_web_view_is_editable(
@@ -1756,6 +1757,7 @@ pub trait WebViewExt: IsA<WebView> + sealed::Sealed + 'static {
         }
     }
 
+    #[cfg_attr(feature = "v2_46", deprecated = "Since 2.46")]
     #[doc(alias = "insecure-content-detected")]
     fn connect_insecure_content_detected<F: Fn(&Self, InsecureContentEvent) + 'static>(
         &self,

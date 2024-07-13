@@ -13,6 +13,9 @@ single_version_file = true
 use_gi_docgen = true
 
 generate = [
+    "WebKitWebProcessExtension.ConsoleMessage",
+    "WebKitWebProcessExtension.ConsoleMessageLevel",
+    "WebKitWebProcessExtension.ConsoleMessageSource",
     "WebKitWebProcessExtension.ContextMenu",
     "WebKitWebProcessExtension.ContextMenuItem",
     "WebKitWebProcessExtension.ContextMenuAction",

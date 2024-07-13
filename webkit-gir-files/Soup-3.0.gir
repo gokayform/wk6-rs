@@ -2311,7 +2311,7 @@ is the same as or newer than the passed-in version.</doc>
               c:type="SOUP_COOKIE_MAX_AGE_ONE_DAY">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="583">A constant corresponding to 1 day.
+           line="589">A constant corresponding to 1 day.
 
 For use with [ctor@Cookie.new] and [method@Cookie.set_max_age].</doc>
       <source-position filename="libsoup/cookies/soup-cookie.h" line="33"/>
@@ -2322,7 +2322,7 @@ For use with [ctor@Cookie.new] and [method@Cookie.set_max_age].</doc>
               c:type="SOUP_COOKIE_MAX_AGE_ONE_HOUR">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="576">A constant corresponding to 1 hour.
+           line="582">A constant corresponding to 1 hour.
 
 For use with [ctor@Cookie.new] and [method@Cookie.set_max_age].</doc>
       <source-position filename="libsoup/cookies/soup-cookie.h" line="32"/>
@@ -2333,7 +2333,7 @@ For use with [ctor@Cookie.new] and [method@Cookie.set_max_age].</doc>
               c:type="SOUP_COOKIE_MAX_AGE_ONE_WEEK">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="590">A constant corresponding to 1 week.
+           line="596">A constant corresponding to 1 week.
 
 For use with [ctor@Cookie.new] and [method@Cookie.set_max_age].</doc>
       <source-position filename="libsoup/cookies/soup-cookie.h" line="34"/>
@@ -2344,7 +2344,7 @@ For use with [ctor@Cookie.new] and [method@Cookie.set_max_age].</doc>
               c:type="SOUP_COOKIE_MAX_AGE_ONE_YEAR">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="597">A constant corresponding to 1 year.
+           line="603">A constant corresponding to 1 year.
 
 For use with [ctor@Cookie.new] and [method@Cookie.set_max_age].</doc>
       <source-position filename="libsoup/cookies/soup-cookie.h" line="35"/>
@@ -2839,7 +2839,7 @@ cross-site scripting attacks.</doc>
       <constructor name="new" c:identifier="soup_cookie_new">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="343">Creates a new #SoupCookie with the given attributes.
+             line="349">Creates a new #SoupCookie with the given attributes.
 
 Use [method@Cookie.set_secure] and [method@Cookie.set_http_only] if you
 need to set those attributes on the returned cookie.
@@ -2864,38 +2864,38 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="373">a new #SoupCookie.</doc>
+               line="379">a new #SoupCookie.</doc>
           <type name="Cookie" c:type="SoupCookie*"/>
         </return-value>
         <parameters>
           <parameter name="name" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="345">cookie name</doc>
+                 line="351">cookie name</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
           <parameter name="value" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="346">cookie value</doc>
+                 line="352">cookie value</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
           <parameter name="domain" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="347">cookie domain or hostname</doc>
+                 line="353">cookie domain or hostname</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
           <parameter name="path" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="348">cookie path, or %NULL</doc>
+                 line="354">cookie path, or %NULL</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
           <parameter name="max_age" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="349">max age of the cookie, or -1 for a session cookie</doc>
+                 line="355">max age of the cookie, or -1 for a session cookie</doc>
             <type name="gint" c:type="int"/>
           </parameter>
         </parameters>
@@ -2903,7 +2903,7 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
       <method name="applies_to_uri" c:identifier="soup_cookie_applies_to_uri">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="1030">Tests if @cookie should be sent to @uri.
+             line="1036">Tests if @cookie should be sent to @uri.
 
 (At the moment, this does not check that @cookie's domain matches
 @uri, because it assumes that the caller has already done that.
@@ -2912,20 +2912,20 @@ But don't rely on that; it may change in the future.)</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="1041">%TRUE if @cookie should be sent to @uri, %FALSE if not</doc>
+               line="1047">%TRUE if @cookie should be sent to @uri, %FALSE if not</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="1032">a #SoupCookie</doc>
+                 line="1038">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="uri" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="1033">a #GUri</doc>
+                 line="1039">a #GUri</doc>
             <type name="GLib.Uri" c:type="GUri*"/>
           </parameter>
         </parameters>
@@ -2982,7 +2982,7 @@ or that @cookie should be accepted when receiving a response from @host.</doc>
       <method name="equal" c:identifier="soup_cookie_equal">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="1074">Tests if @cookie1 and @cookie2 are equal.
+             line="1080">Tests if @cookie1 and @cookie2 are equal.
 
 Note that currently, this does not check that the cookie domains
 match. This may change in the future.</doc>
@@ -2990,20 +2990,20 @@ match. This may change in the future.</doc>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="1084">whether the cookies are equal.</doc>
+               line="1090">whether the cookies are equal.</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie1" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="1076">a #SoupCookie</doc>
+                 line="1082">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="cookie2" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="1077">a #SoupCookie</doc>
+                 line="1083">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </parameter>
         </parameters>
@@ -3011,7 +3011,7 @@ match. This may change in the future.</doc>
       <method name="free" c:identifier="soup_cookie_free">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="834">Frees @cookie.</doc>
+             line="840">Frees @cookie.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="107"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -3020,7 +3020,7 @@ match. This may change in the future.</doc>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="836">a #SoupCookie</doc>
+                 line="842">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3028,19 +3028,19 @@ match. This may change in the future.</doc>
       <method name="get_domain" c:identifier="soup_cookie_get_domain">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="483">Gets @cookie's domain.</doc>
+             line="489">Gets @cookie's domain.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="60"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="489">@cookie's domain</doc>
+               line="495">@cookie's domain</doc>
           <type name="utf8" c:type="const char*"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="485">a #SoupCookie</doc>
+                 line="491">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3048,12 +3048,12 @@ match. This may change in the future.</doc>
       <method name="get_expires" c:identifier="soup_cookie_get_expires">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="605">Gets @cookie's expiration time.</doc>
+             line="611">Gets @cookie's expiration time.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="73"/>
         <return-value transfer-ownership="none" nullable="1">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="611">@cookie's expiration time, which is
+               line="617">@cookie's expiration time, which is
   owned by @cookie and should not be modified or freed.</doc>
           <type name="GLib.DateTime" c:type="GDateTime*"/>
         </return-value>
@@ -3061,7 +3061,7 @@ match. This may change in the future.</doc>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="607">a #GDateTime</doc>
+                 line="613">a #GDateTime</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3069,19 +3069,19 @@ match. This may change in the future.</doc>
       <method name="get_http_only" c:identifier="soup_cookie_get_http_only">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="674">Gets @cookie's HttpOnly attribute.</doc>
+             line="680">Gets @cookie's HttpOnly attribute.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="83"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="680">@cookie's HttpOnly attribute</doc>
+               line="686">@cookie's HttpOnly attribute</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="676">a #SoupCookie</doc>
+                 line="682">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3089,19 +3089,19 @@ match. This may change in the future.</doc>
       <method name="get_name" c:identifier="soup_cookie_get_name">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="427">Gets @cookie's name.</doc>
+             line="433">Gets @cookie's name.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="50"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="433">@cookie's name</doc>
+               line="439">@cookie's name</doc>
           <type name="utf8" c:type="const char*"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="429">a #SoupCookie</doc>
+                 line="435">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3109,19 +3109,19 @@ match. This may change in the future.</doc>
       <method name="get_path" c:identifier="soup_cookie_get_path">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="511">Gets @cookie's path.</doc>
+             line="517">Gets @cookie's path.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="65"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="517">@cookie's path</doc>
+               line="523">@cookie's path</doc>
           <type name="utf8" c:type="const char*"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="513">a #SoupCookie</doc>
+                 line="519">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3130,19 +3130,19 @@ match. This may change in the future.</doc>
               c:identifier="soup_cookie_get_same_site_policy">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="783">Returns the same-site policy for this cookie.</doc>
+             line="789">Returns the same-site policy for this cookie.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="92"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="789">a #SoupSameSitePolicy</doc>
+               line="795">a #SoupSameSitePolicy</doc>
           <type name="SameSitePolicy" c:type="SoupSameSitePolicy"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="785">a #SoupCookie</doc>
+                 line="791">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3150,19 +3150,19 @@ match. This may change in the future.</doc>
       <method name="get_secure" c:identifier="soup_cookie_get_secure">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="644">Gets @cookie's secure attribute.</doc>
+             line="650">Gets @cookie's secure attribute.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="78"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="650">@cookie's secure attribute</doc>
+               line="656">@cookie's secure attribute</doc>
           <type name="gboolean" c:type="gboolean"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="646">a #SoupCookie</doc>
+                 line="652">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3170,19 +3170,19 @@ match. This may change in the future.</doc>
       <method name="get_value" c:identifier="soup_cookie_get_value">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="455">Gets @cookie's value.</doc>
+             line="461">Gets @cookie's value.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="55"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="461">@cookie's value</doc>
+               line="467">@cookie's value</doc>
           <type name="utf8" c:type="const char*"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="457">a #SoupCookie</doc>
+                 line="463">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3190,7 +3190,7 @@ match. This may change in the future.</doc>
       <method name="set_domain" c:identifier="soup_cookie_set_domain">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="497">Sets @cookie's domain to @domain.</doc>
+             line="503">Sets @cookie's domain to @domain.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="62"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -3199,13 +3199,13 @@ match. This may change in the future.</doc>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="499">a #SoupCookie</doc>
+                 line="505">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="domain" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="500">the new domain</doc>
+                 line="506">the new domain</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
         </parameters>
@@ -3213,7 +3213,7 @@ match. This may change in the future.</doc>
       <method name="set_expires" c:identifier="soup_cookie_set_expires">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="620">Sets @cookie's expiration time to @expires.
+             line="626">Sets @cookie's expiration time to @expires.
 
 If @expires is %NULL, @cookie will be a session cookie and will expire at the
 end of the client's session.
@@ -3227,13 +3227,13 @@ end of the client's session.
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="622">a #SoupCookie</doc>
+                 line="628">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="expires" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="623">the new expiration time, or %NULL</doc>
+                 line="629">the new expiration time, or %NULL</doc>
             <type name="GLib.DateTime" c:type="GDateTime*"/>
           </parameter>
         </parameters>
@@ -3241,7 +3241,7 @@ end of the client's session.
       <method name="set_http_only" c:identifier="soup_cookie_set_http_only">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="688">Sets @cookie's HttpOnly attribute to @http_only.
+             line="694">Sets @cookie's HttpOnly attribute to @http_only.
 
 If %TRUE, @cookie will be marked as "http only", meaning it should not be
 exposed to web page scripts or other untrusted code.</doc>
@@ -3253,13 +3253,13 @@ exposed to web page scripts or other untrusted code.</doc>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="690">a #SoupCookie</doc>
+                 line="696">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="http_only" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="691">the new value for the HttpOnly attribute</doc>
+                 line="697">the new value for the HttpOnly attribute</doc>
             <type name="gboolean" c:type="gboolean"/>
           </parameter>
         </parameters>
@@ -3267,7 +3267,7 @@ exposed to web page scripts or other untrusted code.</doc>
       <method name="set_max_age" c:identifier="soup_cookie_set_max_age">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="539">Sets @cookie's max age to @max_age.
+             line="545">Sets @cookie's max age to @max_age.
 
 If @max_age is -1, the cookie is a session cookie, and will expire at the end
 of the client's session. Otherwise, it is the number of seconds until the
@@ -3286,13 +3286,13 @@ This sets the same property as [method@Cookie.set_expires].</doc>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="541">a #SoupCookie</doc>
+                 line="547">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="max_age" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="542">the new max age</doc>
+                 line="548">the new max age</doc>
             <type name="gint" c:type="int"/>
           </parameter>
         </parameters>
@@ -3300,7 +3300,7 @@ This sets the same property as [method@Cookie.set_expires].</doc>
       <method name="set_name" c:identifier="soup_cookie_set_name">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="441">Sets @cookie's name to @name.</doc>
+             line="447">Sets @cookie's name to @name.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="52"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -3309,13 +3309,13 @@ This sets the same property as [method@Cookie.set_expires].</doc>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="443">a #SoupCookie</doc>
+                 line="449">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="name" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="444">the new name</doc>
+                 line="450">the new name</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
         </parameters>
@@ -3323,7 +3323,7 @@ This sets the same property as [method@Cookie.set_expires].</doc>
       <method name="set_path" c:identifier="soup_cookie_set_path">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="525">Sets @cookie's path to @path.</doc>
+             line="531">Sets @cookie's path to @path.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="67"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -3332,13 +3332,13 @@ This sets the same property as [method@Cookie.set_expires].</doc>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="527">a #SoupCookie</doc>
+                 line="533">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="path" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="528">the new path</doc>
+                 line="534">the new path</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
         </parameters>
@@ -3347,7 +3347,7 @@ This sets the same property as [method@Cookie.set_expires].</doc>
               c:identifier="soup_cookie_set_same_site_policy">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="759">When used in conjunction with
+             line="765">When used in conjunction with
 [method@CookieJar.get_cookie_list_with_same_site_info] this sets the policy
 of when this cookie should be exposed.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="89"/>
@@ -3358,13 +3358,13 @@ of when this cookie should be exposed.</doc>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="761">a #SoupCookie</doc>
+                 line="767">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="policy" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="762">a #SoupSameSitePolicy</doc>
+                 line="768">a #SoupSameSitePolicy</doc>
             <type name="SameSitePolicy" c:type="SoupSameSitePolicy"/>
           </parameter>
         </parameters>
@@ -3372,7 +3372,7 @@ of when this cookie should be exposed.</doc>
       <method name="set_secure" c:identifier="soup_cookie_set_secure">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="658">Sets @cookie's secure attribute to @secure.
+             line="664">Sets @cookie's secure attribute to @secure.
 
 If %TRUE, @cookie will only be transmitted from the client to the server over
 secure (https) connections.</doc>
@@ -3384,13 +3384,13 @@ secure (https) connections.</doc>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="660">a #SoupCookie</doc>
+                 line="666">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="secure" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="661">the new value for the secure attribute</doc>
+                 line="667">the new value for the secure attribute</doc>
             <type name="gboolean" c:type="gboolean"/>
           </parameter>
         </parameters>
@@ -3398,7 +3398,7 @@ secure (https) connections.</doc>
       <method name="set_value" c:identifier="soup_cookie_set_value">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="469">Sets @cookie's value to @value.</doc>
+             line="475">Sets @cookie's value to @value.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="57"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -3407,13 +3407,13 @@ secure (https) connections.</doc>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="471">a #SoupCookie</doc>
+                 line="477">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
           <parameter name="value" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="472">the new value</doc>
+                 line="478">the new value</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
         </parameters>
@@ -3422,20 +3422,20 @@ secure (https) connections.</doc>
               c:identifier="soup_cookie_to_cookie_header">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="816">Serializes @cookie in the format used by the Cookie header (ie, for
+             line="822">Serializes @cookie in the format used by the Cookie header (ie, for
 returning a cookie from a [class@Session] to a server).</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="97"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="823">the header</doc>
+               line="829">the header</doc>
           <type name="utf8" c:type="char*"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="818">a #SoupCookie</doc>
+                 line="824">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3444,21 +3444,21 @@ returning a cookie from a [class@Session] to a server).</doc>
               c:identifier="soup_cookie_to_set_cookie_header">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="797">Serializes @cookie in the format used by the Set-Cookie header.
+             line="803">Serializes @cookie in the format used by the Set-Cookie header.
 
 i.e. for sending a cookie from a [class@Server] to a client.</doc>
         <source-position filename="libsoup/cookies/soup-cookie.h" line="95"/>
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="805">the header</doc>
+               line="811">the header</doc>
           <type name="utf8" c:type="char*"/>
         </return-value>
         <parameters>
           <instance-parameter name="cookie" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="799">a #SoupCookie</doc>
+                 line="805">a #SoupCookie</doc>
             <type name="Cookie" c:type="SoupCookie*"/>
           </instance-parameter>
         </parameters>
@@ -3466,7 +3466,7 @@ i.e. for sending a cookie from a [class@Server] to a client.</doc>
       <function name="parse" c:identifier="soup_cookie_parse">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="395">Parses @header and returns a #SoupCookie.
+             line="401">Parses @header and returns a #SoupCookie.
 
 If @header contains multiple cookies, only the first one will be parsed.
 
@@ -3483,7 +3483,7 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
         <return-value transfer-ownership="full" nullable="1">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="414">a new #SoupCookie, or %NULL if it could
+               line="420">a new #SoupCookie, or %NULL if it could
   not be parsed, or contained an illegal "domain" attribute for a
   cookie originating from @origin.</doc>
           <type name="Cookie" c:type="SoupCookie*"/>
@@ -3492,7 +3492,7 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
           <parameter name="header" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="397">a cookie string (eg, the value of a Set-Cookie header)</doc>
+                 line="403">a cookie string (eg, the value of a Set-Cookie header)</doc>
             <type name="utf8" c:type="const char*"/>
           </parameter>
           <parameter name="origin"
@@ -3501,7 +3501,7 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libsoup/cookies/soup-cookie.c"
-                 line="398">origin of the cookie</doc>
+                 line="404">origin of the cookie</doc>
             <type name="GLib.Uri" c:type="GUri*"/>
           </parameter>
         </parameters>
@@ -4349,7 +4349,7 @@ session, and changes made to it will be lost when the jar is destroyed.)</doc>
                 default-value="NULL">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie-jar-db.c"
-             line="335">Cookie-storage filename.</doc>
+             line="340">Cookie-storage filename.</doc>
         <type name="utf8" c:type="gchar*"/>
       </property>
     </class>
@@ -5640,7 +5640,7 @@ signal.</doc>
       <constructor name="new" c:identifier="soup_logger_new">
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="370">Creates a new #SoupLogger with the given debug level.
+             line="373">Creates a new #SoupLogger with the given debug level.
 
 If you need finer control over what message parts are and aren't
 logged, use [method@Logger.set_request_filter] and
@@ -5649,14 +5649,14 @@ logged, use [method@Logger.set_request_filter] and
         <return-value transfer-ownership="full">
           <doc xml:space="preserve"
                filename="libsoup/soup-logger.c"
-               line="380">a new #SoupLogger</doc>
+               line="383">a new #SoupLogger</doc>
           <type name="Logger" c:type="SoupLogger*"/>
         </return-value>
         <parameters>
           <parameter name="level" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="372">the debug level</doc>
+                 line="375">the debug level</doc>
             <type name="LoggerLogLevel" c:type="SoupLoggerLogLevel"/>
           </parameter>
         </parameters>
@@ -5667,19 +5667,19 @@ logged, use [method@Logger.set_request_filter] and
         <attribute name="org.gtk.Method.get_property" value="max-body-size"/>
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="520">Get the maximum body size for @logger.</doc>
+             line="523">Get the maximum body size for @logger.</doc>
         <source-position filename="libsoup/soup-logger.h" line="59"/>
         <return-value transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-logger.c"
-               line="526">the maximum body size, or -1 if unlimited</doc>
+               line="529">the maximum body size, or -1 if unlimited</doc>
           <type name="gint" c:type="int"/>
         </return-value>
         <parameters>
           <instance-parameter name="logger" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="522">a #SoupLogger</doc>
+                 line="525">a #SoupLogger</doc>
             <type name="Logger" c:type="SoupLogger*"/>
           </instance-parameter>
         </parameters>
@@ -5690,7 +5690,7 @@ logged, use [method@Logger.set_request_filter] and
         <attribute name="org.gtk.Method.set_property" value="max-body-size"/>
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="505">Sets the maximum body size for @logger (-1 means no limit).</doc>
+             line="508">Sets the maximum body size for @logger (-1 means no limit).</doc>
         <source-position filename="libsoup/soup-logger.h" line="55"/>
         <return-value transfer-ownership="none">
           <type name="none" c:type="void"/>
@@ -5699,13 +5699,13 @@ logged, use [method@Logger.set_request_filter] and
           <instance-parameter name="logger" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="507">a #SoupLogger</doc>
+                 line="510">a #SoupLogger</doc>
             <type name="Logger" c:type="SoupLogger*"/>
           </instance-parameter>
           <parameter name="max_body_size" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="508">the maximum body size to log</doc>
+                 line="511">the maximum body size to log</doc>
             <type name="gint" c:type="int"/>
           </parameter>
         </parameters>
@@ -5713,7 +5713,7 @@ logged, use [method@Logger.set_request_filter] and
       <method name="set_printer" c:identifier="soup_logger_set_printer">
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="482">Sets up an alternate log printing routine, if you don't want
+             line="485">Sets up an alternate log printing routine, if you don't want
 the log to go to `stdout`.</doc>
         <source-position filename="libsoup/soup-logger.h" line="49"/>
         <return-value transfer-ownership="none">
@@ -5723,7 +5723,7 @@ the log to go to `stdout`.</doc>
           <instance-parameter name="logger" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="484">a #SoupLogger</doc>
+                 line="487">a #SoupLogger</doc>
             <type name="Logger" c:type="SoupLogger*"/>
           </instance-parameter>
           <parameter name="printer"
@@ -5733,7 +5733,7 @@ the log to go to `stdout`.</doc>
                      destroy="2">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="485">the callback for printing logging output</doc>
+                 line="488">the callback for printing logging output</doc>
             <type name="LoggerPrinter" c:type="SoupLoggerPrinter"/>
           </parameter>
           <parameter name="printer_data"
@@ -5742,13 +5742,13 @@ the log to go to `stdout`.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="486">data to pass to the callback</doc>
+                 line="489">data to pass to the callback</doc>
             <type name="gpointer" c:type="gpointer"/>
           </parameter>
           <parameter name="destroy" transfer-ownership="none" scope="async">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="487">a #GDestroyNotify to free @printer_data</doc>
+                 line="490">a #GDestroyNotify to free @printer_data</doc>
             <type name="GLib.DestroyNotify" c:type="GDestroyNotify"/>
           </parameter>
         </parameters>
@@ -5757,7 +5757,7 @@ the log to go to `stdout`.</doc>
               c:identifier="soup_logger_set_request_filter">
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="405">Sets up a filter to determine the log level for a given request.
+             line="408">Sets up a filter to determine the log level for a given request.
 
 For each HTTP request @logger will invoke @request_filter to
 determine how much (if any) of that request to log. (If you do not
@@ -5771,7 +5771,7 @@ level passed to [ctor@Logger.new].)</doc>
           <instance-parameter name="logger" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="407">a #SoupLogger</doc>
+                 line="410">a #SoupLogger</doc>
             <type name="Logger" c:type="SoupLogger*"/>
           </instance-parameter>
           <parameter name="request_filter"
@@ -5781,7 +5781,7 @@ level passed to [ctor@Logger.new].)</doc>
                      destroy="2">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="408">the callback for request debugging</doc>
+                 line="411">the callback for request debugging</doc>
             <type name="LoggerFilter" c:type="SoupLoggerFilter"/>
           </parameter>
           <parameter name="filter_data"
@@ -5790,13 +5790,13 @@ level passed to [ctor@Logger.new].)</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="409">data to pass to the callback</doc>
+                 line="412">data to pass to the callback</doc>
             <type name="gpointer" c:type="gpointer"/>
           </parameter>
           <parameter name="destroy" transfer-ownership="none" scope="async">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="410">a #GDestroyNotify to free @filter_data</doc>
+                 line="413">a #GDestroyNotify to free @filter_data</doc>
             <type name="GLib.DestroyNotify" c:type="GDestroyNotify"/>
           </parameter>
         </parameters>
@@ -5805,7 +5805,7 @@ level passed to [ctor@Logger.new].)</doc>
               c:identifier="soup_logger_set_response_filter">
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="432">Sets up a filter to determine the log level for a given response.
+             line="435">Sets up a filter to determine the log level for a given response.
 
 For each HTTP response @logger will invoke @response_filter to
 determine how much (if any) of that response to log. (If you do not
@@ -5819,7 +5819,7 @@ the level passed to [ctor@Logger.new].)</doc>
           <instance-parameter name="logger" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="434">a #SoupLogger</doc>
+                 line="437">a #SoupLogger</doc>
             <type name="Logger" c:type="SoupLogger*"/>
           </instance-parameter>
           <parameter name="response_filter"
@@ -5829,7 +5829,7 @@ the level passed to [ctor@Logger.new].)</doc>
                      destroy="2">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="435">the callback for response debugging</doc>
+                 line="438">the callback for response debugging</doc>
             <type name="LoggerFilter" c:type="SoupLoggerFilter"/>
           </parameter>
           <parameter name="filter_data"
@@ -5838,13 +5838,13 @@ the level passed to [ctor@Logger.new].)</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="436">data to pass to the callback</doc>
+                 line="439">data to pass to the callback</doc>
             <type name="gpointer" c:type="gpointer"/>
           </parameter>
           <parameter name="destroy" transfer-ownership="none" scope="async">
             <doc xml:space="preserve"
                  filename="libsoup/soup-logger.c"
-                 line="437">a #GDestroyNotify to free @filter_data</doc>
+                 line="440">a #GDestroyNotify to free @filter_data</doc>
             <type name="GLib.DestroyNotify" c:type="GDestroyNotify"/>
           </parameter>
         </parameters>
@@ -5855,7 +5855,7 @@ the level passed to [ctor@Logger.new].)</doc>
                 default-value="SOUP_LOGGER_LOG_MINIMAL">
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="325">The level of logging output.</doc>
+             line="328">The level of logging output.</doc>
         <type name="LoggerLogLevel"/>
       </property>
       <property name="max-body-size"
@@ -5871,7 +5871,7 @@ the level passed to [ctor@Logger.new].)</doc>
                    value="soup_logger_set_max_body_size"/>
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="338">If [property@Logger:level] is %SOUP_LOGGER_LOG_BODY, this gives
+             line="341">If [property@Logger:level] is %SOUP_LOGGER_LOG_BODY, this gives
 the maximum number of bytes of the body that will be logged.
 (-1 means "no limit".)</doc>
         <type name="gint" c:type="gint"/>
@@ -5888,7 +5888,7 @@ the maximum number of bytes of the body that will be logged.
     <callback name="LoggerFilter" c:type="SoupLoggerFilter">
       <doc xml:space="preserve"
            filename="libsoup/soup-logger.c"
-           line="388">The prototype for a logging filter.
+           line="391">The prototype for a logging filter.
 
 The filter callback will be invoked for each request or response, and should
 analyze it and return a [enum@LoggerLogLevel] value indicating how much of
@@ -5897,7 +5897,7 @@ the message to log.</doc>
       <return-value transfer-ownership="none">
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="401">a [enum@LoggerLogLevel] value indicating how much of the message to
+             line="404">a [enum@LoggerLogLevel] value indicating how much of the message to
   log</doc>
         <type name="LoggerLogLevel" c:type="SoupLoggerLogLevel"/>
       </return-value>
@@ -5905,13 +5905,13 @@ the message to log.</doc>
         <parameter name="logger" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-logger.c"
-               line="390">the #SoupLogger</doc>
+               line="393">the #SoupLogger</doc>
           <type name="Logger" c:type="SoupLogger*"/>
         </parameter>
         <parameter name="msg" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-logger.c"
-               line="391">the message being logged</doc>
+               line="394">the message being logged</doc>
           <type name="Message" c:type="SoupMessage*"/>
         </parameter>
         <parameter name="user_data"
@@ -5921,7 +5921,7 @@ the message to log.</doc>
                    closure="2">
           <doc xml:space="preserve"
                filename="libsoup/soup-logger.c"
-               line="392">the data passed to [method@Logger.set_request_filter]
+               line="395">the data passed to [method@Logger.set_request_filter]
   or [method@Logger.set_response_filter]</doc>
           <type name="gpointer" c:type="gpointer"/>
         </parameter>
@@ -5933,7 +5933,7 @@ the message to log.</doc>
                  c:type="SoupLoggerLogLevel">
       <doc xml:space="preserve"
            filename="libsoup/soup-logger.c"
-           line="359">Describes the level of logging output to provide.</doc>
+           line="362">Describes the level of logging output to provide.</doc>
       <member name="none"
               value="0"
               c:identifier="SOUP_LOGGER_LOG_NONE"
@@ -5941,7 +5941,7 @@ the message to log.</doc>
               glib:name="SOUP_LOGGER_LOG_NONE">
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="361">No logging</doc>
+             line="364">No logging</doc>
       </member>
       <member name="minimal"
               value="1"
@@ -5950,7 +5950,7 @@ the message to log.</doc>
               glib:name="SOUP_LOGGER_LOG_MINIMAL">
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="362">Log the Request-Line or Status-Line and
+             line="365">Log the Request-Line or Status-Line and
   the Soup-Debug pseudo-headers</doc>
       </member>
       <member name="headers"
@@ -5960,7 +5960,7 @@ the message to log.</doc>
               glib:name="SOUP_LOGGER_LOG_HEADERS">
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="364">Log the full request/response headers</doc>
+             line="367">Log the full request/response headers</doc>
       </member>
       <member name="body"
               value="3"
@@ -5969,13 +5969,13 @@ the message to log.</doc>
               glib:name="SOUP_LOGGER_LOG_BODY">
         <doc xml:space="preserve"
              filename="libsoup/soup-logger.c"
-             line="365">Log the full headers and request/response bodies</doc>
+             line="368">Log the full headers and request/response bodies</doc>
       </member>
     </enumeration>
     <callback name="LoggerPrinter" c:type="SoupLoggerPrinter">
       <doc xml:space="preserve"
            filename="libsoup/soup-logger.c"
-           line="459">The prototype for a custom printing callback.
+           line="462">The prototype for a custom printing callback.
 
 @level indicates what kind of information is being printed. Eg, it
 will be %SOUP_LOGGER_LOG_HEADERS if @data is header data.
@@ -5996,25 +5996,25 @@ printf ("%c %s\n", direction, data);
         <parameter name="logger" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-logger.c"
-               line="461">the #SoupLogger</doc>
+               line="464">the #SoupLogger</doc>
           <type name="Logger" c:type="SoupLogger*"/>
         </parameter>
         <parameter name="level" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-logger.c"
-               line="462">the level of the information being printed.</doc>
+               line="465">the level of the information being printed.</doc>
           <type name="LoggerLogLevel" c:type="SoupLoggerLogLevel"/>
         </parameter>
         <parameter name="direction" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-logger.c"
-               line="463">a single-character prefix to @data</doc>
+               line="466">a single-character prefix to @data</doc>
           <type name="gchar" c:type="char"/>
         </parameter>
         <parameter name="data" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-logger.c"
-               line="464">data to print</doc>
+               line="467">data to print</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="user_data"
@@ -6024,7 +6024,7 @@ printf ("%c %s\n", direction, data);
                    closure="4">
           <doc xml:space="preserve"
                filename="libsoup/soup-logger.c"
-               line="465">the data passed to [method@Logger.set_printer]</doc>
+               line="468">the data passed to [method@Logger.set_printer]</doc>
           <type name="gpointer" c:type="gpointer"/>
         </parameter>
       </parameters>
@@ -6038,7 +6038,7 @@ time.</doc>
       <source-position filename="libsoup/soup-version.h" line="14"/>
       <type name="gint" c:type="gint"/>
     </constant>
-    <constant name="MICRO_VERSION" value="0" c:type="SOUP_MICRO_VERSION">
+    <constant name="MICRO_VERSION" value="1" c:type="SOUP_MICRO_VERSION">
       <doc xml:space="preserve"
            filename="libsoup/soup-version.c"
            line="32">Like [func@get_micro_version], but from the headers used at
@@ -10577,7 +10577,7 @@ counterpart instead.</doc>
               c:identifier="soup_multipart_input_stream_get_headers">
         <doc xml:space="preserve"
              filename="libsoup/soup-multipart-input-stream.c"
-             line="577">Obtains the headers for the part currently being processed.
+             line="580">Obtains the headers for the part currently being processed.
 
 Note that the [struct@MessageHeaders] that are returned are owned by the
 #SoupMultipartInputStream and will be replaced when a call is made to
@@ -10591,7 +10591,7 @@ will be returned.</doc>
         <return-value transfer-ownership="none" nullable="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-multipart-input-stream.c"
-               line="591">a #SoupMessageHeaders
+               line="594">a #SoupMessageHeaders
   containing the headers for the part currently being processed or
   %NULL if the headers failed to parse.</doc>
           <type name="MessageHeaders" c:type="SoupMessageHeaders*"/>
@@ -10600,7 +10600,7 @@ will be returned.</doc>
           <instance-parameter name="multipart" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-multipart-input-stream.c"
-                 line="579">a #SoupMultipartInputStream.</doc>
+                 line="582">a #SoupMultipartInputStream.</doc>
             <type name="MultipartInputStream"
                   c:type="SoupMultipartInputStream*"/>
           </instance-parameter>
@@ -10608,7 +10608,8 @@ will be returned.</doc>
       </method>
       <method name="next_part"
               c:identifier="soup_multipart_input_stream_next_part"
-              throws="1">
+              throws="1"
+              glib:async-func="next_part_async">
         <doc xml:space="preserve"
              filename="libsoup/soup-multipart-input-stream.c"
              line="453">Obtains an input stream for the next part.
@@ -10621,13 +10622,16 @@ After calling this function,
 [method@MultipartInputStream.get_headers] can be used to obtain the
 headers for the first part. A read of 0 bytes indicates the end of
 the part; a new call to this function should be done at that point,
-to obtain the next part.</doc>
+to obtain the next part.
+
+@error will only be set if an error happens during a read, %NULL
+is a valid return value otherwise.</doc>
         <source-position filename="libsoup/soup-multipart-input-stream.h"
                          line="22"/>
         <return-value transfer-ownership="full" nullable="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-multipart-input-stream.c"
-               line="471">a new #GInputStream, or
+               line="474">a new #GInputStream, or
   %NULL if there are no more parts</doc>
           <type name="Gio.InputStream" c:type="GInputStream*"/>
         </return-value>
@@ -10651,10 +10655,12 @@ to obtain the next part.</doc>
         </parameters>
       </method>
       <method name="next_part_async"
-              c:identifier="soup_multipart_input_stream_next_part_async">
+              c:identifier="soup_multipart_input_stream_next_part_async"
+              glib:finish-func="next_part_finish"
+              glib:sync-func="next_part">
         <doc xml:space="preserve"
              filename="libsoup/soup-multipart-input-stream.c"
-             line="516">Obtains a [class@Gio.InputStream] for the next request.
+             line="519">Obtains a [class@Gio.InputStream] for the next request.
 
 See [method@MultipartInputStream.next_part] for details on the workflow.</doc>
         <source-position filename="libsoup/soup-multipart-input-stream.h"
@@ -10666,14 +10672,14 @@ See [method@MultipartInputStream.next_part] for details on the workflow.</doc>
           <instance-parameter name="multipart" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-multipart-input-stream.c"
-                 line="518">the #SoupMultipartInputStream.</doc>
+                 line="521">the #SoupMultipartInputStream.</doc>
             <type name="MultipartInputStream"
                   c:type="SoupMultipartInputStream*"/>
           </instance-parameter>
           <parameter name="io_priority" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-multipart-input-stream.c"
-                 line="519">the I/O priority for the request.</doc>
+                 line="522">the I/O priority for the request.</doc>
             <type name="gint" c:type="int"/>
           </parameter>
           <parameter name="cancellable"
@@ -10682,7 +10688,7 @@ See [method@MultipartInputStream.next_part] for details on the workflow.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libsoup/soup-multipart-input-stream.c"
-                 line="520">a #GCancellable.</doc>
+                 line="523">a #GCancellable.</doc>
             <type name="Gio.Cancellable" c:type="GCancellable*"/>
           </parameter>
           <parameter name="callback"
@@ -10693,7 +10699,7 @@ See [method@MultipartInputStream.next_part] for details on the workflow.</doc>
                      closure="3">
             <doc xml:space="preserve"
                  filename="libsoup/soup-multipart-input-stream.c"
-                 line="521">callback to call when request is satisfied.</doc>
+                 line="524">callback to call when request is satisfied.</doc>
             <type name="Gio.AsyncReadyCallback" c:type="GAsyncReadyCallback"/>
           </parameter>
           <parameter name="data"
@@ -10702,7 +10708,7 @@ See [method@MultipartInputStream.next_part] for details on the workflow.</doc>
                      allow-none="1">
             <doc xml:space="preserve"
                  filename="libsoup/soup-multipart-input-stream.c"
-                 line="522">data for @callback</doc>
+                 line="525">data for @callback</doc>
             <type name="gpointer" c:type="gpointer"/>
           </parameter>
         </parameters>
@@ -10712,13 +10718,13 @@ See [method@MultipartInputStream.next_part] for details on the workflow.</doc>
               throws="1">
         <doc xml:space="preserve"
              filename="libsoup/soup-multipart-input-stream.c"
-             line="555">Finishes an asynchronous request for the next part.</doc>
+             line="558">Finishes an asynchronous request for the next part.</doc>
         <source-position filename="libsoup/soup-multipart-input-stream.h"
                          line="34"/>
         <return-value transfer-ownership="full" nullable="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-multipart-input-stream.c"
-               line="563">a newly created
+               line="566">a newly created
   [class@Gio.InputStream] for reading the next part or %NULL if there are no
   more parts.</doc>
           <type name="Gio.InputStream" c:type="GInputStream*"/>
@@ -10727,14 +10733,14 @@ See [method@MultipartInputStream.next_part] for details on the workflow.</doc>
           <instance-parameter name="multipart" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-multipart-input-stream.c"
-                 line="557">a #SoupMultipartInputStream.</doc>
+                 line="560">a #SoupMultipartInputStream.</doc>
             <type name="MultipartInputStream"
                   c:type="SoupMultipartInputStream*"/>
           </instance-parameter>
           <parameter name="result" transfer-ownership="none">
             <doc xml:space="preserve"
                  filename="libsoup/soup-multipart-input-stream.c"
-                 line="558">a #GAsyncResult.</doc>
+                 line="561">a #GAsyncResult.</doc>
             <type name="Gio.AsyncResult" c:type="GAsyncResult*"/>
           </parameter>
         </parameters>
@@ -13878,7 +13884,8 @@ some class managed by another feature, such as [class@Auth]).</doc>
         </parameters>
       </method>
       <method name="preconnect_async"
-              c:identifier="soup_session_preconnect_async">
+              c:identifier="soup_session_preconnect_async"
+              glib:finish-func="preconnect_finish">
         <doc xml:space="preserve"
              filename="libsoup/soup-session.c"
              line="3843">Start a preconnection to @msg.
@@ -14022,7 +14029,10 @@ The operation finishes when the connection is done or an error occurred.</doc>
           </parameter>
         </parameters>
       </method>
-      <method name="send" c:identifier="soup_session_send" throws="1">
+      <method name="send"
+              c:identifier="soup_session_send"
+              throws="1"
+              glib:async-func="send_async">
         <doc xml:space="preserve"
              filename="libsoup/soup-session.c"
              line="3141">Synchronously sends @msg and waits for the beginning of a response.
@@ -14077,7 +14087,8 @@ received.</doc>
       </method>
       <method name="send_and_read"
               c:identifier="soup_session_send_and_read"
-              throws="1">
+              throws="1"
+              glib:async-func="send_and_read_async">
         <doc xml:space="preserve"
              filename="libsoup/soup-session.c"
              line="3373">Synchronously sends @msg and reads the response body.
@@ -14119,7 +14130,9 @@ See [method@Session.send] for more details on the general semantics.</doc>
         </parameters>
       </method>
       <method name="send_and_read_async"
-              c:identifier="soup_session_send_and_read_async">
+              c:identifier="soup_session_send_and_read_async"
+              glib:finish-func="send_and_read_finish"
+              glib:sync-func="send_and_read">
         <doc xml:space="preserve"
              filename="libsoup/soup-session.c"
              line="3302">Asynchronously sends @msg and reads the response body.
@@ -14218,7 +14231,8 @@ If successful, returns a [struct@GLib.Bytes] with the response body.</doc>
       <method name="send_and_splice"
               c:identifier="soup_session_send_and_splice"
               version="3.4"
-              throws="1">
+              throws="1"
+              glib:async-func="send_and_splice_async">
         <doc xml:space="preserve"
              filename="libsoup/soup-session.c"
              line="3544">Synchronously sends @msg and splices the response body stream into @out_stream.
@@ -14270,7 +14284,9 @@ See [method@Session.send] for more details on the general semantics.</doc>
       </method>
       <method name="send_and_splice_async"
               c:identifier="soup_session_send_and_splice_async"
-              version="3.4">
+              version="3.4"
+              glib:finish-func="send_and_splice_finish"
+              glib:sync-func="send_and_splice">
         <doc xml:space="preserve"
              filename="libsoup/soup-session.c"
              line="3472">Asynchronously sends @msg and splices the response body stream into @out_stream.
@@ -14374,7 +14390,10 @@ See [method@Session.send] for more details on the general semantics.</doc>
           </parameter>
         </parameters>
       </method>
-      <method name="send_async" c:identifier="soup_session_send_async">
+      <method name="send_async"
+              c:identifier="soup_session_send_async"
+              glib:finish-func="send_finish"
+              glib:sync-func="send">
         <doc xml:space="preserve"
              filename="libsoup/soup-session.c"
              line="3049">Asynchronously sends @msg and waits for the beginning of a response.
@@ -14721,7 +14740,8 @@ is %NULL then no "User-Agent" will be included in requests. See
         </parameters>
       </method>
       <method name="websocket_connect_async"
-              c:identifier="soup_session_websocket_connect_async">
+              c:identifier="soup_session_websocket_connect_async"
+              glib:finish-func="websocket_connect_finish">
         <doc xml:space="preserve"
              filename="libsoup/soup-session.c"
              line="3706">Asynchronously creates a [class@WebsocketConnection] to communicate with a
@@ -17968,7 +17988,7 @@ features from newer versions.</doc>
               moved-to="Cookie.parse">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="395">Parses @header and returns a #SoupCookie.
+           line="401">Parses @header and returns a #SoupCookie.
 
 If @header contains multiple cookies, only the first one will be parsed.
 
@@ -17985,7 +18005,7 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
       <return-value transfer-ownership="full" nullable="1">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="414">a new #SoupCookie, or %NULL if it could
+             line="420">a new #SoupCookie, or %NULL if it could
   not be parsed, or contained an illegal "domain" attribute for a
   cookie originating from @origin.</doc>
         <type name="Cookie" c:type="SoupCookie*"/>
@@ -17994,7 +18014,7 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
         <parameter name="header" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="397">a cookie string (eg, the value of a Set-Cookie header)</doc>
+               line="403">a cookie string (eg, the value of a Set-Cookie header)</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="origin"
@@ -18003,7 +18023,7 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="398">origin of the cookie</doc>
+               line="404">origin of the cookie</doc>
           <type name="GLib.Uri" c:type="GUri*"/>
         </parameter>
       </parameters>
@@ -18013,7 +18033,7 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
               introspectable="0">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="993">Frees @cookies.</doc>
+           line="999">Frees @cookies.</doc>
       <source-position filename="libsoup/cookies/soup-cookie.h" line="122"/>
       <return-value transfer-ownership="none">
         <type name="none" c:type="void"/>
@@ -18022,7 +18042,7 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
         <parameter name="cookies" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="995">a #GSList of #SoupCookie</doc>
+               line="1001">a #GSList of #SoupCookie</doc>
           <type name="GLib.SList" c:type="GSList*">
             <type name="Cookie"/>
           </type>
@@ -18033,7 +18053,7 @@ is %SOUP_SAME_SITE_POLICY_LAX.</doc>
               c:identifier="soup_cookies_from_request">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="895">Parses @msg's Cookie request header and returns a [struct@GLib.SList] of
+           line="901">Parses @msg's Cookie request header and returns a [struct@GLib.SList] of
 `SoupCookie`s.
 
 As the "Cookie" header, unlike "Set-Cookie", only contains cookie names and
@@ -18044,7 +18064,7 @@ can't generally pass a cookie returned from this method directly to
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="907">a #GSList of
+             line="913">a #GSList of
   `SoupCookie`s, which can be freed with [method@Cookie.free].</doc>
         <type name="GLib.SList" c:type="GSList*">
           <type name="Cookie"/>
@@ -18054,7 +18074,7 @@ can't generally pass a cookie returned from this method directly to
         <parameter name="msg" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="897">a #SoupMessage containing a "Cookie" request header</doc>
+               line="903">a #SoupMessage containing a "Cookie" request header</doc>
           <type name="Message" c:type="SoupMessage*"/>
         </parameter>
       </parameters>
@@ -18063,7 +18083,7 @@ can't generally pass a cookie returned from this method directly to
               c:identifier="soup_cookies_from_response">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="855">Parses @msg's Set-Cookie response headers and returns a [struct@GLib.SList]
+           line="861">Parses @msg's Set-Cookie response headers and returns a [struct@GLib.SList]
 of `SoupCookie`s.
 
 Cookies that do not specify "path" or "domain" attributes will have their
@@ -18072,7 +18092,7 @@ values defaulted from @msg.</doc>
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="865">a #GSList of
+             line="871">a #GSList of
   `SoupCookie`s, which can be freed with [method@Cookie.free].</doc>
         <type name="GLib.SList" c:type="GSList*">
           <type name="Cookie"/>
@@ -18082,7 +18102,7 @@ values defaulted from @msg.</doc>
         <parameter name="msg" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="857">a #SoupMessage containing a "Set-Cookie" response header</doc>
+               line="863">a #SoupMessage containing a "Set-Cookie" response header</doc>
           <type name="Message" c:type="SoupMessage*"/>
         </parameter>
       </parameters>
@@ -18091,20 +18111,20 @@ values defaulted from @msg.</doc>
               c:identifier="soup_cookies_to_cookie_header">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="1005">Serializes a [struct@GLib.SList] of #SoupCookie into a string suitable for
+           line="1011">Serializes a [struct@GLib.SList] of #SoupCookie into a string suitable for
 setting as the value of the "Cookie" header.</doc>
       <source-position filename="libsoup/cookies/soup-cookie.h" line="125"/>
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="libsoup/cookies/soup-cookie.c"
-             line="1012">the serialization of @cookies</doc>
+             line="1018">the serialization of @cookies</doc>
         <type name="utf8" c:type="char*"/>
       </return-value>
       <parameters>
         <parameter name="cookies" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="1007">a #GSList of #SoupCookie</doc>
+               line="1013">a #GSList of #SoupCookie</doc>
           <type name="GLib.SList" c:type="GSList*">
             <type name="Cookie"/>
           </type>
@@ -18114,7 +18134,7 @@ setting as the value of the "Cookie" header.</doc>
     <function name="cookies_to_request" c:identifier="soup_cookies_to_request">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="965">Adds the name and value of each cookie in @cookies to @msg's
+           line="971">Adds the name and value of each cookie in @cookies to @msg's
 "Cookie" request.
 
 If @msg already has a "Cookie" request header, these cookies will be appended
@@ -18128,7 +18148,7 @@ cookies twice, eg, when requeuing a message.</doc>
         <parameter name="cookies" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="967">a #GSList of #SoupCookie</doc>
+               line="973">a #GSList of #SoupCookie</doc>
           <type name="GLib.SList" c:type="GSList*">
             <type name="Cookie"/>
           </type>
@@ -18136,7 +18156,7 @@ cookies twice, eg, when requeuing a message.</doc>
         <parameter name="msg" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="968">a #SoupMessage</doc>
+               line="974">a #SoupMessage</doc>
           <type name="Message" c:type="SoupMessage*"/>
         </parameter>
       </parameters>
@@ -18145,7 +18165,7 @@ cookies twice, eg, when requeuing a message.</doc>
               c:identifier="soup_cookies_to_response">
       <doc xml:space="preserve"
            filename="libsoup/cookies/soup-cookie.c"
-           line="938">Appends a "Set-Cookie" response header to @msg for each cookie in
+           line="944">Appends a "Set-Cookie" response header to @msg for each cookie in
 @cookies.
 
 This is in addition to any other "Set-Cookie" headers
@@ -18158,7 +18178,7 @@ This is in addition to any other "Set-Cookie" headers
         <parameter name="cookies" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="940">a #GSList of #SoupCookie</doc>
+               line="946">a #GSList of #SoupCookie</doc>
           <type name="GLib.SList" c:type="GSList*">
             <type name="Cookie"/>
           </type>
@@ -18166,7 +18186,7 @@ This is in addition to any other "Set-Cookie" headers
         <parameter name="msg" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/cookies/soup-cookie.c"
-               line="941">a #SoupMessage</doc>
+               line="947">a #SoupMessage</doc>
           <type name="Message" c:type="SoupMessage*"/>
         </parameter>
       </parameters>
@@ -18532,7 +18552,7 @@ have included when compiling your code.</doc>
     <function name="header_contains" c:identifier="soup_header_contains">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="619">Parses @header to see if it contains the token @token (matched
+           line="612">Parses @header to see if it contains the token @token (matched
 case-insensitively).
 
 Note that this can't be used with lists that have qvalues.</doc>
@@ -18540,21 +18560,21 @@ Note that this can't be used with lists that have qvalues.</doc>
       <return-value transfer-ownership="none">
         <doc xml:space="preserve"
              filename="libsoup/soup-headers.c"
-             line="630">whether or not @header contains @token</doc>
+             line="623">whether or not @header contains @token</doc>
         <type name="gboolean" c:type="gboolean"/>
       </return-value>
       <parameters>
         <parameter name="header" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="621">An HTTP header suitable for parsing with
+               line="614">An HTTP header suitable for parsing with
   [func@header_parse_list]</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="token" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="623">a token</doc>
+               line="616">a token</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>
@@ -18564,7 +18584,7 @@ Note that this can't be used with lists that have qvalues.</doc>
               introspectable="0">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="606">Frees @list.</doc>
+           line="599">Frees @list.</doc>
       <source-position filename="libsoup/soup-headers.h" line="50"/>
       <return-value transfer-ownership="none">
         <type name="none" c:type="void"/>
@@ -18573,7 +18593,7 @@ Note that this can't be used with lists that have qvalues.</doc>
         <parameter name="list" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="608">a #GSList returned from [func@header_parse_list] or
+               line="601">a #GSList returned from [func@header_parse_list] or
 [func@header_parse_quality_list]</doc>
           <type name="GLib.SList" c:type="GSList*">
             <type name="gpointer" c:type="gpointer"/>
@@ -18585,7 +18605,7 @@ Note that this can't be used with lists that have qvalues.</doc>
               c:identifier="soup_header_free_param_list">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="881">Frees @param_list.</doc>
+           line="874">Frees @param_list.</doc>
       <source-position filename="libsoup/soup-headers.h" line="65"/>
       <return-value transfer-ownership="none">
         <type name="none" c:type="void"/>
@@ -18594,7 +18614,7 @@ Note that this can't be used with lists that have qvalues.</doc>
         <parameter name="param_list" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="883">a #GHashTable returned from
+               line="876">a #GHashTable returned from
   [func@header_parse_param_list] or [func@header_parse_semi_param_list]</doc>
           <type name="GLib.HashTable" c:type="GHashTable*">
             <type name="utf8"/>
@@ -18607,7 +18627,7 @@ Note that this can't be used with lists that have qvalues.</doc>
               c:identifier="soup_header_g_string_append_param">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="985">Appends something like `name=value` to @string, taking care to quote @value
+           line="978">Appends something like `name=value` to @string, taking care to quote @value
 if needed, and if so, to escape any quotes or backslashes in @value.
 
 Alternatively, if @value is a non-ASCII UTF-8 string, it will be
@@ -18625,13 +18645,13 @@ If @value is %NULL, this will just append @name to @string.</doc>
         <parameter name="string" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="987">a #GString being used to construct an HTTP header value</doc>
+               line="980">a #GString being used to construct an HTTP header value</doc>
           <type name="GLib.String" c:type="GString*"/>
         </parameter>
         <parameter name="name" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="988">a parameter name</doc>
+               line="981">a parameter name</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="value"
@@ -18640,7 +18660,7 @@ If @value is %NULL, this will just append @name to @string.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="989">a parameter value, or %NULL</doc>
+               line="982">a parameter value, or %NULL</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>
@@ -18649,7 +18669,7 @@ If @value is %NULL, this will just append @name to @string.</doc>
               c:identifier="soup_header_g_string_append_param_quoted">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="961">Appends something like `name="value"` to
+           line="954">Appends something like `name="value"` to
 @string, taking care to escape any quotes or backslashes in @value.
 
 If @value is (non-ASCII) UTF-8, this will instead use RFC 5987
@@ -18662,19 +18682,19 @@ encoding, just like [func@header_g_string_append_param].</doc>
         <parameter name="string" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="963">a #GString being used to construct an HTTP header value</doc>
+               line="956">a #GString being used to construct an HTTP header value</doc>
           <type name="GLib.String" c:type="GString*"/>
         </parameter>
         <parameter name="name" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="964">a parameter name</doc>
+               line="957">a parameter name</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="value" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="965">a parameter value</doc>
+               line="958">a parameter value</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>
@@ -18682,14 +18702,14 @@ encoding, just like [func@header_g_string_append_param].</doc>
     <function name="header_parse_list" c:identifier="soup_header_parse_list">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="479">Parses a header whose content is described by RFC2616 as `#something`.
+           line="472">Parses a header whose content is described by RFC2616 as `#something`.
 
 "something" does not itself contain commas, except as part of quoted-strings.</doc>
       <source-position filename="libsoup/soup-headers.h" line="45"/>
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="libsoup/soup-headers.c"
-             line="487">a #GSList of
+             line="480">a #GSList of
   list elements, as allocated strings</doc>
         <type name="GLib.SList" c:type="GSList*">
           <type name="utf8"/>
@@ -18699,7 +18719,7 @@ encoding, just like [func@header_g_string_append_param].</doc>
         <parameter name="header" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="481">a header value</doc>
+               line="474">a header value</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>
@@ -18708,7 +18728,7 @@ encoding, just like [func@header_g_string_append_param].</doc>
               c:identifier="soup_header_parse_param_list">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="777">Parses a header which is a comma-delimited list of something like:
+           line="770">Parses a header which is a comma-delimited list of something like:
 `token [ "=" ( token | quoted-string ) ]`.
 
 Tokens that don't have an associated value will still be added to
@@ -18721,7 +18741,7 @@ header).</doc>
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="libsoup/soup-headers.c"
-             line="791">a
+             line="784">a
   #GHashTable of list elements, which can be freed with
   [func@header_free_param_list].</doc>
         <type name="GLib.HashTable" c:type="GHashTable*">
@@ -18733,7 +18753,7 @@ header).</doc>
         <parameter name="header" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="779">a header value</doc>
+               line="772">a header value</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>
@@ -18742,7 +18762,7 @@ header).</doc>
               c:identifier="soup_header_parse_param_list_strict">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="829">A strict version of [func@header_parse_param_list]
+           line="822">A strict version of [func@header_parse_param_list]
 that bails out if there are duplicate parameters.
 
 Note that this function will treat RFC5987-encoded
@@ -18754,7 +18774,7 @@ RFC5987-encoded parameters, use
       <return-value transfer-ownership="full" nullable="1">
         <doc xml:space="preserve"
              filename="libsoup/soup-headers.c"
-             line="842">
+             line="835">
   a #GHashTable of list elements, which can be freed with
   [func@header_free_param_list] or %NULL if there are duplicate
   elements.</doc>
@@ -18767,7 +18787,7 @@ RFC5987-encoded parameters, use
         <parameter name="header" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="831">a header value</doc>
+               line="824">a header value</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>
@@ -18776,7 +18796,7 @@ RFC5987-encoded parameters, use
               c:identifier="soup_header_parse_quality_list">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="517">Parses a header whose content is a list of items with optional
+           line="510">Parses a header whose content is a list of items with optional
 "qvalue"s (eg, Accept, Accept-Charset, Accept-Encoding,
 Accept-Language, TE).
 
@@ -18787,7 +18807,7 @@ the main list.</doc>
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="libsoup/soup-headers.c"
-             line="531">a #GSList of
+             line="524">a #GSList of
   acceptable values (as allocated strings), highest-qvalue first.</doc>
         <type name="GLib.SList" c:type="GSList*">
           <type name="utf8"/>
@@ -18797,7 +18817,7 @@ the main list.</doc>
         <parameter name="header" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="519">a header value</doc>
+               line="512">a header value</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="unacceptable"
@@ -18808,7 +18828,7 @@ the main list.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="520">on
+               line="513">on
   return, will contain a list of unacceptable values</doc>
           <type name="GLib.SList" c:type="GSList**">
             <type name="utf8"/>
@@ -18820,7 +18840,7 @@ the main list.</doc>
               c:identifier="soup_header_parse_semi_param_list">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="803">Parses a header which is a semicolon-delimited list of something
+           line="796">Parses a header which is a semicolon-delimited list of something
 like: `token [ "=" ( token | quoted-string ) ]`.
 
 Tokens that don't have an associated value will still be added to
@@ -18833,7 +18853,7 @@ header).</doc>
       <return-value transfer-ownership="full">
         <doc xml:space="preserve"
              filename="libsoup/soup-headers.c"
-             line="817">a
+             line="810">a
   #GHashTable of list elements, which can be freed with
   [func@header_free_param_list].</doc>
         <type name="GLib.HashTable" c:type="GHashTable*">
@@ -18845,7 +18865,7 @@ header).</doc>
         <parameter name="header" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="805">a header value</doc>
+               line="798">a header value</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>
@@ -18854,7 +18874,7 @@ header).</doc>
               c:identifier="soup_header_parse_semi_param_list_strict">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="855">A strict version of [func@header_parse_semi_param_list]
+           line="848">A strict version of [func@header_parse_semi_param_list]
 that bails out if there are duplicate parameters.
 
 Note that this function will treat RFC5987-encoded
@@ -18866,7 +18886,7 @@ RFC5987-encoded parameters, use
       <return-value transfer-ownership="full" nullable="1">
         <doc xml:space="preserve"
              filename="libsoup/soup-headers.c"
-             line="868">
+             line="861">
   a #GHashTable of list elements, which can be freed with
   [func@header_free_param_list] or %NULL if there are duplicate
   elements.</doc>
@@ -18879,7 +18899,7 @@ RFC5987-encoded parameters, use
         <parameter name="header" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="857">a header value</doc>
+               line="850">a header value</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
       </parameters>
@@ -18927,7 +18947,7 @@ This is a low-level method; normally you would use
               c:identifier="soup_headers_parse_request">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="158">Parses the headers of an HTTP request in @str and stores the
+           line="151">Parses the headers of an HTTP request in @str and stores the
 results in @req_method, @req_path, @ver, and @req_headers.
 
 Beware that @req_headers may be modified even on failure.</doc>
@@ -18935,7 +18955,7 @@ Beware that @req_headers may be modified even on failure.</doc>
       <return-value transfer-ownership="none">
         <doc xml:space="preserve"
              filename="libsoup/soup-headers.c"
-             line="175">%SOUP_STATUS_OK if the headers could be parsed, or an
+             line="168">%SOUP_STATUS_OK if the headers could be parsed, or an
   HTTP error to be returned to the client if they could not be.</doc>
         <type name="guint" c:type="guint"/>
       </return-value>
@@ -18943,19 +18963,19 @@ Beware that @req_headers may be modified even on failure.</doc>
         <parameter name="str" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="160">the headers (up to, but not including, the trailing blank line)</doc>
+               line="153">the headers (up to, but not including, the trailing blank line)</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="len" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="161">length of @str</doc>
+               line="154">length of @str</doc>
           <type name="gint" c:type="int"/>
         </parameter>
         <parameter name="req_headers" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="162">#SoupMessageHeaders to store the header values in</doc>
+               line="155">#SoupMessageHeaders to store the header values in</doc>
           <type name="MessageHeaders" c:type="SoupMessageHeaders*"/>
         </parameter>
         <parameter name="req_method"
@@ -18966,7 +18986,7 @@ Beware that @req_headers may be modified even on failure.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="163">if non-%NULL, will be filled in with the
+               line="156">if non-%NULL, will be filled in with the
   request method</doc>
           <type name="utf8" c:type="char**"/>
         </parameter>
@@ -18978,7 +18998,7 @@ Beware that @req_headers may be modified even on failure.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="165">if non-%NULL, will be filled in with the
+               line="158">if non-%NULL, will be filled in with the
   request path</doc>
           <type name="utf8" c:type="char**"/>
         </parameter>
@@ -18990,7 +19010,7 @@ Beware that @req_headers may be modified even on failure.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="167">if non-%NULL, will be filled in with the HTTP
+               line="160">if non-%NULL, will be filled in with the HTTP
   version</doc>
           <type name="HTTPVersion" c:type="SoupHTTPVersion*"/>
         </parameter>
@@ -19000,7 +19020,7 @@ Beware that @req_headers may be modified even on failure.</doc>
               c:identifier="soup_headers_parse_response">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="346">Parses the headers of an HTTP response in @str and stores the
+           line="339">Parses the headers of an HTTP response in @str and stores the
 results in @ver, @status_code, @reason_phrase, and @headers.
 
 Beware that @headers may be modified even on failure.</doc>
@@ -19008,26 +19028,26 @@ Beware that @headers may be modified even on failure.</doc>
       <return-value transfer-ownership="none">
         <doc xml:space="preserve"
              filename="libsoup/soup-headers.c"
-             line="363">success or failure.</doc>
+             line="356">success or failure.</doc>
         <type name="gboolean" c:type="gboolean"/>
       </return-value>
       <parameters>
         <parameter name="str" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="348">the headers (up to, but not including, the trailing blank line)</doc>
+               line="341">the headers (up to, but not including, the trailing blank line)</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="len" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="349">length of @str</doc>
+               line="342">length of @str</doc>
           <type name="gint" c:type="int"/>
         </parameter>
         <parameter name="headers" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="350">#SoupMessageHeaders to store the header values in</doc>
+               line="343">#SoupMessageHeaders to store the header values in</doc>
           <type name="MessageHeaders" c:type="SoupMessageHeaders*"/>
         </parameter>
         <parameter name="ver"
@@ -19038,7 +19058,7 @@ Beware that @headers may be modified even on failure.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="351">if non-%NULL, will be filled in with the HTTP
+               line="344">if non-%NULL, will be filled in with the HTTP
   version</doc>
           <type name="HTTPVersion" c:type="SoupHTTPVersion*"/>
         </parameter>
@@ -19050,7 +19070,7 @@ Beware that @headers may be modified even on failure.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="353">if non-%NULL, will be filled in with
+               line="346">if non-%NULL, will be filled in with
   the status code</doc>
           <type name="guint" c:type="guint*"/>
         </parameter>
@@ -19062,7 +19082,7 @@ Beware that @headers may be modified even on failure.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="355">if non-%NULL, will be filled in with
+               line="348">if non-%NULL, will be filled in with
   the reason phrase</doc>
           <type name="utf8" c:type="char**"/>
         </parameter>
@@ -19072,7 +19092,7 @@ Beware that @headers may be modified even on failure.</doc>
               c:identifier="soup_headers_parse_status_line">
       <doc xml:space="preserve"
            filename="libsoup/soup-headers.c"
-           line="270">Parses the HTTP Status-Line string in @status_line into @ver,
+           line="263">Parses the HTTP Status-Line string in @status_line into @ver,
 @status_code, and @reason_phrase.
 
 @status_line must be terminated by either "\0" or "\r\n".</doc>
@@ -19080,14 +19100,14 @@ Beware that @headers may be modified even on failure.</doc>
       <return-value transfer-ownership="none">
         <doc xml:space="preserve"
              filename="libsoup/soup-headers.c"
-             line="285">%TRUE if @status_line was parsed successfully.</doc>
+             line="278">%TRUE if @status_line was parsed successfully.</doc>
         <type name="gboolean" c:type="gboolean"/>
       </return-value>
       <parameters>
         <parameter name="status_line" transfer-ownership="none">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="272">an HTTP Status-Line</doc>
+               line="265">an HTTP Status-Line</doc>
           <type name="utf8" c:type="const char*"/>
         </parameter>
         <parameter name="ver"
@@ -19098,7 +19118,7 @@ Beware that @headers may be modified even on failure.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="273">if non-%NULL, will be filled in with the HTTP
+               line="266">if non-%NULL, will be filled in with the HTTP
   version</doc>
           <type name="HTTPVersion" c:type="SoupHTTPVersion*"/>
         </parameter>
@@ -19110,7 +19130,7 @@ Beware that @headers may be modified even on failure.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="275">if non-%NULL, will be filled in with
+               line="268">if non-%NULL, will be filled in with
   the status code</doc>
           <type name="guint" c:type="guint*"/>
         </parameter>
@@ -19122,7 +19142,7 @@ Beware that @headers may be modified even on failure.</doc>
                    allow-none="1">
           <doc xml:space="preserve"
                filename="libsoup/soup-headers.c"
-               line="277">if non-%NULL, will be filled in with
+               line="270">if non-%NULL, will be filled in with
   the reason phrase</doc>
           <type name="utf8" c:type="char**"/>
         </parameter>

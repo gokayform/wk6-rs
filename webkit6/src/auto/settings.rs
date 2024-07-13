@@ -45,6 +45,31 @@ impl Settings {
         SettingsBuilder::new()
     }
 
+    #[cfg(feature = "v2_46")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_46")))]
+    #[doc(alias = "webkit_settings_apply_from_key_file")]
+    pub fn apply_from_key_file(
+        &self,
+        key_file: &glib::KeyFile,
+        group_name: &str,
+    ) -> Result<(), glib::Error> {
+        unsafe {
+            let mut error = std::ptr::null_mut();
+            let is_ok = ffi::webkit_settings_apply_from_key_file(
+                self.to_glib_none().0,
+                key_file.to_glib_none().0,
+                group_name.to_glib_none().0,
+                &mut error,
+            );
+            debug_assert_eq!(is_ok == glib::ffi::GFALSE, !error.is_null());
+            if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            }
+        }
+    }
+
     #[doc(alias = "webkit_settings_get_allow_file_access_from_file_urls")]
     #[doc(alias = "get_allow_file_access_from_file_urls")]
     #[doc(alias = "allow-file-access-from-file-urls")]
@@ -166,6 +191,19 @@ impl Settings {
     pub fn draws_compositing_indicators(&self) -> bool {
         unsafe {
             from_glib(ffi::webkit_settings_get_draw_compositing_indicators(
+                self.to_glib_none().0,
+            ))
+        }
+    }
+
+    #[cfg(feature = "v2_46")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_46")))]
+    #[doc(alias = "webkit_settings_get_enable_2d_canvas_acceleration")]
+    #[doc(alias = "get_enable_2d_canvas_acceleration")]
+    #[doc(alias = "enable-2d-canvas-acceleration")]
+    pub fn enables_2d_canvas_acceleration(&self) -> bool {
+        unsafe {
+            from_glib(ffi::webkit_settings_get_enable_2d_canvas_acceleration(
                 self.to_glib_none().0,
             ))
         }
@@ -776,6 +814,19 @@ impl Settings {
     pub fn set_draw_compositing_indicators(&self, enabled: bool) {
         unsafe {
             ffi::webkit_settings_set_draw_compositing_indicators(
+                self.to_glib_none().0,
+                enabled.into_glib(),
+            );
+        }
+    }
+
+    #[cfg(feature = "v2_46")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_46")))]
+    #[doc(alias = "webkit_settings_set_enable_2d_canvas_acceleration")]
+    #[doc(alias = "enable-2d-canvas-acceleration")]
+    pub fn set_enable_2d_canvas_acceleration(&self, enabled: bool) {
+        unsafe {
+            ffi::webkit_settings_set_enable_2d_canvas_acceleration(
                 self.to_glib_none().0,
                 enabled.into_glib(),
             );
@@ -1606,6 +1657,36 @@ impl Settings {
                 b"notify::draw-compositing-indicators\0".as_ptr() as *const _,
                 Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
                     notify_draw_compositing_indicators_trampoline::<F> as *const (),
+                )),
+                Box_::into_raw(f),
+            )
+        }
+    }
+
+    #[cfg(feature = "v2_46")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_46")))]
+    #[doc(alias = "enable-2d-canvas-acceleration")]
+    pub fn connect_enable_2d_canvas_acceleration_notify<F: Fn(&Self) + 'static>(
+        &self,
+        f: F,
+    ) -> SignalHandlerId {
+        unsafe extern "C" fn notify_enable_2d_canvas_acceleration_trampoline<
+            F: Fn(&Settings) + 'static,
+        >(
+            this: *mut ffi::WebKitSettings,
+            _param_spec: glib::ffi::gpointer,
+            f: glib::ffi::gpointer,
+        ) {
+            let f: &F = &*(f as *const F);
+            f(&from_glib_borrow(this))
+        }
+        unsafe {
+            let f: Box_<F> = Box_::new(f);
+            connect_raw(
+                self.as_ptr() as *mut _,
+                b"notify::enable-2d-canvas-acceleration\0".as_ptr() as *const _,
+                Some(std::mem::transmute::<*const (), unsafe extern "C" fn()>(
+                    notify_enable_2d_canvas_acceleration_trampoline::<F> as *const (),
                 )),
                 Box_::into_raw(f),
             )
@@ -2886,6 +2967,17 @@ impl SettingsBuilder {
             builder: self
                 .builder
                 .property("draw-compositing-indicators", draw_compositing_indicators),
+        }
+    }
+
+    #[cfg(feature = "v2_46")]
+    #[cfg_attr(docsrs, doc(cfg(feature = "v2_46")))]
+    pub fn enable_2d_canvas_acceleration(self, enable_2d_canvas_acceleration: bool) -> Self {
+        Self {
+            builder: self.builder.property(
+                "enable-2d-canvas-acceleration",
+                enable_2d_canvas_acceleration,
+            ),
         }
     }
 

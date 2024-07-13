@@ -1648,6 +1648,7 @@ impl From<InputPurpose> for glib::Value {
     }
 }
 
+#[cfg_attr(feature = "v2_46", deprecated = "Since 2.46")]
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Hash, Clone, Copy)]
 #[non_exhaustive]
 #[doc(alias = "WebKitInsecureContentEvent")]
@@ -1660,6 +1661,7 @@ pub enum InsecureContentEvent {
     __Unknown(i32),
 }
 
+#[allow(deprecated)]
 #[doc(hidden)]
 impl IntoGlib for InsecureContentEvent {
     type GlibType = ffi::WebKitInsecureContentEvent;
@@ -1674,6 +1676,7 @@ impl IntoGlib for InsecureContentEvent {
     }
 }
 
+#[allow(deprecated)]
 #[doc(hidden)]
 impl FromGlib<ffi::WebKitInsecureContentEvent> for InsecureContentEvent {
     #[inline]
@@ -1688,6 +1691,7 @@ impl FromGlib<ffi::WebKitInsecureContentEvent> for InsecureContentEvent {
     }
 }
 
+#[allow(deprecated)]
 impl StaticType for InsecureContentEvent {
     #[inline]
     #[doc(alias = "webkit_insecure_content_event_get_type")]
@@ -1696,6 +1700,7 @@ impl StaticType for InsecureContentEvent {
     }
 }
 
+#[allow(deprecated)]
 impl glib::HasParamSpec for InsecureContentEvent {
     type ParamSpec = glib::ParamSpecEnum;
     type SetValue = Self;
@@ -1706,10 +1711,12 @@ impl glib::HasParamSpec for InsecureContentEvent {
     }
 }
 
+#[allow(deprecated)]
 impl glib::value::ValueType for InsecureContentEvent {
     type Type = Self;
 }
 
+#[allow(deprecated)]
 unsafe impl<'a> glib::value::FromValue<'a> for InsecureContentEvent {
     type Checker = glib::value::GenericValueTypeChecker<Self>;
 
@@ -1720,6 +1727,7 @@ unsafe impl<'a> glib::value::FromValue<'a> for InsecureContentEvent {
     }
 }
 
+#[allow(deprecated)]
 impl ToValue for InsecureContentEvent {
     #[inline]
     fn to_value(&self) -> glib::Value {
@@ -1736,6 +1744,7 @@ impl ToValue for InsecureContentEvent {
     }
 }
 
+#[allow(deprecated)]
 impl From<InsecureContentEvent> for glib::Value {
     #[inline]
     fn from(v: InsecureContentEvent) -> Self {
