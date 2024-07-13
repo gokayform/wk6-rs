@@ -29,6 +29,7 @@ docs:
     GIT_SUBMODULE_STRATEGY: recursive
     GIT_SUBMODULE_UPDATE_FLAGS: --checkout
     RUSTDOCFLAGS: "--cfg docsrs"
+    RUSTFLAGS: --cfg docsrs
   script:
     # generate the docs
     - cargo install rustdoc-stripper
