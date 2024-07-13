@@ -13,7 +13,7 @@ members = [
 exclude = ["gir"]
 
 [workspace.package]
-version = "0.4.0"
+version = "0.5.0"
 edition = "2021"
 authors = ["Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>"]
 categories = ["api-bindings", "gui"]
@@ -37,6 +37,6 @@ gio-sys = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master",
 gio = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.21"}
 soup-sys = {git = "https://gitlab.gnome.org/World/Rust/soup3-rs", package = "soup3-sys", branch = "main", version = "0.8"}
 soup = {git = "https://gitlab.gnome.org/World/Rust/soup3-rs", package = "soup3", branch = "main", version = "0.8"}
-javascriptcore-sys = { package = "javascriptcore6-sys", path = "javascriptcore6/sys", version = "0.4" }
-javascriptcore = { package = "javascriptcore6", path = "javascriptcore6", version = "0.4" }
+javascriptcore-sys = { package = "javascriptcore6-sys", path = "javascriptcore6/sys", version = "0.5" }
+javascriptcore = { package = "javascriptcore6", path = "javascriptcore6", version = "0.5" }
 
