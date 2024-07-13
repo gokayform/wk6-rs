@@ -9,10 +9,9 @@ edition = "2021"
 webkit = { path = "../webkit6", package = "webkit6"}
 
 [dependencies.gtk]
-git = "https://github.com/gtk-rs/gtk4-rs.git"
 package = "gtk4"
-branch = "master"
-version = "0.9"
+workspace = true
+
 
 [[bin]]
 name = "view"
