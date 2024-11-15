@@ -26,15 +26,15 @@ exclude = [
 ]
 
 [workspace.dependencies]
-gtk-sys = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gtk4-sys", branch = "master", version = "0.10"}
-gtk = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gtk4", branch = "master", version = "0.10"}
-gdk-sys = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gdk4-sys", branch = "master", version = "0.10"}
-gdk = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gdk4", branch = "master", version = "0.10"}
-gobject-sys = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.21"}
-glib-sys = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.21"}
-glib = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.21"}
-gio-sys = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.21"}
-gio = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master", version = "0.21"}
+gtk-sys = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gtk4-sys", branch = "main", version = "0.10"}
+gtk = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gtk4", branch = "main", version = "0.10"}
+gdk-sys = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gdk4-sys", branch = "main", version = "0.10"}
+gdk = {git = "https://github.com/gtk-rs/gtk4-rs.git", package = "gdk4", branch = "main", version = "0.10"}
+gobject-sys = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "main", version = "0.21"}
+glib-sys = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "main", version = "0.21"}
+glib = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "main", version = "0.21"}
+gio-sys = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "main", version = "0.21"}
+gio = {git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "main", version = "0.21"}
 soup-sys = {git = "https://gitlab.gnome.org/World/Rust/soup3-rs", package = "soup3-sys", branch = "main", version = "0.8"}
 soup = {git = "https://gitlab.gnome.org/World/Rust/soup3-rs", package = "soup3", branch = "main", version = "0.8"}
 javascriptcore-sys = { package = "javascriptcore6-sys", path = "javascriptcore6/sys", version = "0.5" }
